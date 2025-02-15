@@ -1,7 +1,8 @@
-// Importiere Three.js (nun über die Import-Map aufgelöst) sowie OrbitControls und GLTFLoader als ES Module
+// Importiere Three.js (über die Import Map) sowie OrbitControls, GLTFLoader und DRACOLoader als ES Module
 import * as THREE from 'three';
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples/jsm/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples/jsm/loaders/DRACOLoader.js';
 
 let scene, camera, renderer, controls;
 let earth, moon, iss;
@@ -9,10 +10,8 @@ let earth, moon, iss;
 const ISS_API_URL = 'https://api.wheretheiss.at/v1/satellites/25544';
 
 function init() {
-  // Szene erstellen
   scene = new THREE.Scene();
 
-  // Kamera einrichten
   camera = new THREE.PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight,
@@ -21,15 +20,12 @@ function init() {
   );
   camera.position.set(0, 10, 20);
 
-  // Renderer erstellen und zur Seite hinzufügen
   renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
 
-  // OrbitControls einrichten
   controls = new OrbitControls(camera, renderer.domElement);
 
-  // Lichtquellen hinzufügen
   const pointLight = new THREE.PointLight(0xffffff, 1);
   pointLight.position.set(50, 50, 50);
   scene.add(pointLight);
@@ -37,14 +33,11 @@ function init() {
   const ambientLight = new THREE.AmbientLight(0x404040, 1);
   scene.add(ambientLight);
 
-  // Erde und Mond erstellen
   createEarth();
   createMoon();
 
-  // ISS-Modell laden
   loadISS();
 
-  // Animation starten
   animate();
 
   window.addEventListener('resize', onWindowResize, false);
@@ -52,9 +45,13 @@ function init() {
 
 function createEarth() {
   const textureLoader = new THREE.TextureLoader();
+  const earthTexture = textureLoader.load('textures/earth.jpg');
+  earthTexture.minFilter = THREE.LinearFilter;
+  
   const earthGeometry = new THREE.SphereGeometry(5, 32, 32);
   const earthMaterial = new THREE.MeshStandardMaterial({
-    map: textureLoader.load('textures/earth.jpg')
+    map: earthTexture,
+    side: THREE.DoubleSide
   });
   earth = new THREE.Mesh(earthGeometry, earthMaterial);
   scene.add(earth);
@@ -62,15 +59,18 @@ function createEarth() {
 
 function createMoon() {
   const textureLoader = new THREE.TextureLoader();
+  const moonTexture = textureLoader.load('textures/moon.jpg');
+  moonTexture.minFilter = THREE.LinearFilter;
+  
   const moonGeometry = new THREE.SphereGeometry(1.35, 32, 32);
   const moonMaterial = new THREE.MeshStandardMaterial({
-    map: textureLoader.load('textures/moon.jpg')
+    map: moonTexture,
+    side: THREE.DoubleSide
   });
   moon = new THREE.Mesh(moonGeometry, moonMaterial);
   moon.position.set(38, 0, 0);
   scene.add(moon);
 
-  // Orbit-Ring (nur zur Veranschaulichung)
   const orbitGeometry = new THREE.RingGeometry(38, 38.1, 64);
   const orbitMaterial = new THREE.MeshBasicMaterial({
     color: 0xffffff,
@@ -83,11 +83,18 @@ function createMoon() {
 
 function loadISS() {
   const loader = new GLTFLoader();
+  // DRACOLoader initialisieren und dem GLTFLoader zuweisen:
+  const dracoLoader = new DRACOLoader();
+  dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/');  
+  loader.setDRACOLoader(dracoLoader);
+
   loader.load(
     'models/iss_model.glb',
     (gltf) => {
       iss = gltf.scene;
-      iss.scale.set(0.1, 0.1, 0.1);
+      console.log("ISS Modell geladen:", iss);
+      // Testweise: Skaliere das Modell größer, um es sichtbar zu machen
+      iss.scale.set(1, 1, 1);
       scene.add(iss);
       updateISS();
     },
@@ -105,7 +112,8 @@ async function updateISS() {
 
     const lat = data.latitude * (Math.PI / 180);
     const lon = data.longitude * (Math.PI / 180);
-    const radius = 7;
+    // Radius anpassen, damit die ISS sichtbar liegt
+    const radius = 10;
 
     const x = radius * Math.cos(lat) * Math.cos(lon);
     const z = radius * Math.cos(lat) * Math.sin(lon);
