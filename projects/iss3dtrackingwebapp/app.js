@@ -1,3 +1,4 @@
+// Importiere Three.js sowie OrbitControls und GLTFLoader als ES Module
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.module.js';
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples/jsm/loaders/GLTFLoader.js';
@@ -20,15 +21,15 @@ function init() {
   );
   camera.position.set(0, 10, 20);
 
-  // Renderer erstellen
+  // Renderer erstellen und zur Seite hinzufügen
   renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
 
-  // OrbitControls hinzufügen
+  // OrbitControls einrichten
   controls = new OrbitControls(camera, renderer.domElement);
 
-  // Lichtquellen
+  // Lichtquellen hinzufügen
   const pointLight = new THREE.PointLight(0xffffff, 1);
   pointLight.position.set(50, 50, 50);
   scene.add(pointLight);
@@ -69,7 +70,7 @@ function createMoon() {
   moon.position.set(38, 0, 0);
   scene.add(moon);
 
-  // Orbit-Ring um den Mond (nur zur Veranschaulichung)
+  // Orbit-Ring (nur zur Veranschaulichung)
   const orbitGeometry = new THREE.RingGeometry(38, 38.1, 64);
   const orbitMaterial = new THREE.MeshBasicMaterial({
     color: 0xffffff,
