@@ -4,50 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mein Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <!-- Header -->
     <header>
-        <h1>Willkommen auf meinem Portfolio</h1>
-        <nav>
-            <ul>
-                <li><a href="about.html">Über mich</a></li>
-                <li><a href="projects/projekt1.html">Projekte</a></li>
-                <li><a href="contact.html">Kontakt</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <img src="logo.svg" alt="Logo" class="logo"> <!-- Platz für dein SVG-Logo -->
+            <h1 class="fade-in">Willkommen auf meinem Portfolio</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about" class="scale-up">Über mich</a></li>
+                    <li><a href="#projects" class="scale-up">Projekte</a></li>
+                    <li><a href="#contact" class="scale-up">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <!-- Hauptinhalt -->
-    <main>
-        <section id="about">
+    <main class="container">
+        <section id="about" class="scale-up">
             <h2>Über mich</h2>
-            <p>Ich bin ein Entwickler mit einer Leidenschaft für neue Technologien und kreative Lösungen. Hier zeige ich meine Projekte, die meine Fähigkeiten widerspiegeln.</p>
+            <p>Ich bin ein Entwickler mit einer Leidenschaft für neue Technologien und kreative Lösungen. Hier zeige ich meine Projekte, die meine Fähigkeiten widerspiegeln. Ich liebe es, neue Herausforderungen zu meistern und innovative Lösungen zu finden.</p>
         </section>
 
-        <section id="projects">
+        <section id="projects" class="scale-up">
             <h2>Projekte</h2>
             <div class="project-card">
-                <h3><a href="projects/projekt1.html">Projekt 1</a></h3>
-                <p>Beschreibung des Projekts</p>
+                <h3>Projekt 1</h3>
+                <p>Beschreibung des Projekts: Ein innovatives Web-Tool zur Optimierung von Arbeitsprozessen.</p>
             </div>
             <div class="project-card">
-                <h3><a href="projects/projekt2.html">Projekt 2</a></h3>
-                <p>Beschreibung des Projekts</p>
+                <h3>Projekt 2</h3>
+                <p>Beschreibung des Projekts: Eine mobile App zur Verbesserung der Produktivität im Alltag.</p>
             </div>
             <div class="project-card">
-                <h3><a href="projects/projekt3.html">Projekt 3</a></h3>
-                <p>Beschreibung des Projekts</p>
+                <h3>Projekt 3</h3>
+                <p>Beschreibung des Projekts: Ein kreatives Design-Tool für Designer, das neue Wege geht.</p>
             </div>
         </section>
 
-        <section id="contact">
+        <section id="contact" class="scale-up">
             <h2>Kontakt</h2>
             <p>Du kannst mich über folgende Kanäle erreichen:</p>
             <ul>
-                <li>Email: <a href="mailto:me@example.com">me@example.com</a></li>
-                <li>GitHub: <a href="https://github.com/deinusername" target="_blank">github.com/deinusername</a></li>
+                <li>Email: <a href="mailto:me@example.com" class="scale-up">me@example.com</a></li>
+                <li>GitHub: <a href="https://github.com/deinusername" target="_blank" class="scale-up">github.com/deinusername</a></li>
             </ul>
         </section>
     </main>
@@ -56,5 +60,6 @@
     <footer>
         <p>© 2025 Dein Name. Alle Rechte vorbehalten.</p>
     </footer>
+
 </body>
 </html>
