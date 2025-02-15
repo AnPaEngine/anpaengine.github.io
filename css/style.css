@@ -1,184 +1,227 @@
-/* Reset und Grundstruktur */
-* {
+/* ===================================================================
+    GLOBAL RESET & TYPOGRAPHY
+=================================================================== */
+
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px; /* Baseline für die Typografie */
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Helvetica Neue', sans-serif;
-    background-color: #F4F4F4; /* Helles Grau für den Hintergrund */
-    color: #333333; /* Dunkles Grau für den Text */
-    line-height: 1.75;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #111111; /* Sehr dunkles Grau/Schwarz */
+    color: #f1f1f1; /* Sehr helles Grau für den Text */
+    line-height: 1.6;
     padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* Container für zentrierten Inhalt */
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
+h1, h2, h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
 }
 
-/* Header */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===================================================================
+    HEADER
+=================================================================== */
+
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 0;
-    background-color: #FFFFFF;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    position: relative;
+    background: linear-gradient(135deg, #0a1f1f, #1a2e2e); /* Dunkles, modernes Gradient */
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 header .logo {
-    width: 150px;
-    height: auto;
+    max-width: 100px;
+    margin-bottom: 20px;
 }
 
 header h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #222222;
-    letter-spacing: -1px;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    color: #76D7C4; /* Akzentfarbe für den Titel */
+    animation: fadeIn 2s ease-out;
 }
 
 nav ul {
     list-style-type: none;
+    margin-top: 20px;
+    padding: 0;
     display: flex;
+    justify-content: center;
     gap: 30px;
 }
 
-nav ul li {
-    display: inline-block;
-}
-
 nav ul li a {
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #222222;
-    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #76D7C4;
     padding: 10px 20px;
-    border-radius: 50px;
-    display: inline-block;
+    border-radius: 30px;
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
 }
 
 nav ul li a:hover {
-    background-color: #6F5BFF; /* Akzentfarbe */
-    color: white;
-    transform: translateY(-5px);
+    background-color: #1a4d4d;
+    color: #ffffff;
+    transform: scale(1.05);
 }
 
-nav ul li a:active {
-    transform: translateY(2px);
+/* ===================================================================
+    MAIN CONTENT AREA
+=================================================================== */
+
+main {
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex-grow: 1;
 }
 
-/* Abschnitt */
+/* Section Design */
 section {
-    padding: 60px 0;
-    background-color: #F9F9F9;
-    text-align: center;
+    background-color: #1c2b2b;
+    padding: 40px;
+    margin-bottom: 50px;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 section:hover {
     transform: translateY(-10px);
-    background-color: #FFFFFF;
+    background-color: #2e4141;
 }
 
 section h2 {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #222222;
+    font-size: 2.5rem;
     margin-bottom: 20px;
+    color: #76D7C4;
+    letter-spacing: 1px;
 }
 
 section p {
-    font-size: 1.2rem;
-    color: #777777;
-    line-height: 1.6;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ddd;
 }
 
-/* Projektkarten */
+/* ===================================================================
+    PROJECT CARDS
+=================================================================== */
+
 .project-card {
-    background-color: #FFFFFF;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    background-color: #2a3a3a;
     padding: 30px;
     margin-top: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+    background-color: #3a4d4d;
 }
 
 .project-card h3 {
-    font-size: 2rem;
-    color: #222222;
-    margin-bottom: 15px;
+    font-size: 1.8rem;
+    color: #76D7C4;
 }
 
 .project-card p {
-    color: #555555;
     font-size: 1.1rem;
+    color: #bbb;
 }
 
-/* Kontakt */
+/* ===================================================================
+    FOOTER
+=================================================================== */
+
 footer {
-    background-color: #222222;
-    color: white;
     text-align: center;
     padding: 20px;
-    font-size: 1rem;
+    background-color: #111;
+    color: #bbb;
     margin-top: auto;
 }
 
-/* Links in Kontakt */
-footer a {
-    color: #6F5BFF;
-    text-decoration: none;
-    font-weight: 600;
+footer p {
+    font-size: 0.9rem;
 }
 
-footer a:hover {
-    text-decoration: underline;
-}
+/* ===================================================================
+    RESPONSIVENESS
+=================================================================== */
 
-/* Animationen */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(50px);
+@media (max-width: 1024px) {
+    header h1 {
+        font-size: 2.5rem;
     }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+
+    .project-card {
+        margin-top: 15px;
+        padding: 20px;
     }
 }
 
-/* Anwendung der Animation */
-.fade-in {
-    animation: fadeIn 1s ease-out;
-}
-
-/* Responsivität */
 @media (max-width: 768px) {
     header h1 {
         font-size: 2rem;
     }
 
-    nav ul {
-        flex-direction: column;
-        align-items: center;
+    .project-card h3 {
+        font-size: 1.5rem;
     }
+}
 
-    .project-card {
-        margin: 10px 0;
+/* ===================================================================
+    ANIMATIONS
+=================================================================== */
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
