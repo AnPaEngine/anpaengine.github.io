@@ -1,165 +1,193 @@
-/* Allgemeine Reset- und Basis-Stile */
-* {
+/* ===================================================================
+    GLOBAL RESET & TYPOGRAPHY
+=================================================================== */
+
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f9f9f9; /* Helles, klares Weiß */
-    color: #333; /* Dunkles Grau für den Text */
-    line-height: 1.6;
-    padding: 0;
-    font-size: 16px;
-    overflow-x: hidden;
-    transition: background-color 0.3s ease;
+html {
+    font-size: 16px; /* Baseline für die Typografie */
+    scroll-behavior: smooth;
 }
 
-/* Für die Verwendung von Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #111111; /* Sehr dunkles Grau/Schwarz */
+    color: #f1f1f1; /* Sehr helles Grau für den Text */
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
 
-/* HEADER */
+h1, h2, h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===================================================================
+    HEADER
+=================================================================== */
+
 header {
-    width: 100%;
-    background: linear-gradient(135deg, #FF5E3A, #FF2A68); /* Akzentfarben, modernes Design */
+    background: linear-gradient(135deg, #0a1f1f, #1a2e2e); /* Dunkles, modernes Gradient */
     color: #fff;
-    padding: 20px 0;
+    padding: 40px 20px;
     text-align: center;
-    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+header .logo {
+    max-width: 100px;
+    margin-bottom: 20px;
 }
 
 header h1 {
     font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: opacity 0.3s ease;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    color: #76D7C4; /* Akzentfarbe für den Titel */
+    animation: fadeIn 2s ease-out;
 }
 
-header nav ul {
+nav ul {
     list-style-type: none;
-    padding: 0;
     margin-top: 20px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
 }
 
-header nav ul li {
-    display: inline-block;
-    margin: 0 20px;
-}
-
-header nav ul li a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: 500;
+nav ul li a {
     font-size: 1.2rem;
+    font-weight: 600;
+    color: #76D7C4;
     padding: 10px 20px;
-    border-radius: 50px;
-    transition: all 0.3s ease;
+    border-radius: 30px;
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
 }
 
-header nav ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: scale(1.1);
+nav ul li a:hover {
+    background-color: #1a4d4d;
+    color: #ffffff;
+    transform: scale(1.05);
 }
 
-/* Logo */
-.logo {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 50px;
-    height: auto;
-}
+/* ===================================================================
+    MAIN CONTENT AREA
+=================================================================== */
 
-/* SECTIONS */
-section {
+main {
     padding: 80px 20px;
-    text-align: center;
-    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex-grow: 1;
+}
+
+/* Section Design */
+section {
+    background-color: #1c2b2b;
+    padding: 40px;
+    margin-bottom: 50px;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-10px);
+    background-color: #2e4141;
 }
 
 section h2 {
     font-size: 2.5rem;
-    margin-bottom: 30px;
-    font-weight: 700;
-    color: #333;
+    margin-bottom: 20px;
+    color: #76D7C4;
+    letter-spacing: 1px;
 }
 
 section p {
-    font-size: 1.2rem;
-    color: #666;
-    margin-bottom: 30px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ddd;
 }
 
+/* ===================================================================
+    PROJECT CARDS
+=================================================================== */
+
 .project-card {
-    background-color: #fff;
+    background-color: #2a3a3a;
+    padding: 30px;
+    margin-top: 20px;
     border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+    background-color: #3a4d4d;
 }
 
 .project-card h3 {
     font-size: 1.8rem;
-    color: #333;
-    margin-bottom: 10px;
+    color: #76D7C4;
 }
 
 .project-card p {
-    font-size: 1rem;
-    color: #777;
+    font-size: 1.1rem;
+    color: #bbb;
 }
 
-/* Kontakt */
-ul {
-    list-style: none;
-}
+/* ===================================================================
+    FOOTER
+=================================================================== */
 
-ul li {
-    margin: 10px 0;
-}
-
-ul li a {
-    text-decoration: none;
-    color: #FF5E3A;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-ul li a:hover {
-    text-decoration: underline;
-}
-
-/* FOOTER */
 footer {
-    padding: 20px 0;
     text-align: center;
-    background-color: #333;
-    color: #fff;
-    margin-top: 40px;
-    font-size: 0.9rem;
+    padding: 20px;
+    background-color: #111;
+    color: #bbb;
+    margin-top: auto;
 }
 
 footer p {
-    margin: 0;
+    font-size: 0.9rem;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* ===================================================================
+    RESPONSIVENESS
+=================================================================== */
+
+@media (max-width: 1024px) {
     header h1 {
         font-size: 2.5rem;
     }
 
-    header nav ul li {
-        display: block;
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
         margin: 10px 0;
     }
 
@@ -167,16 +195,33 @@ footer p {
         font-size: 2rem;
     }
 
-    section p {
-        font-size: 1rem;
-    }
-
     .project-card {
-        margin: 10px 0;
+        margin-top: 15px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
     }
 
-    .logo {
-        width: 40px;
-        top: 10px;
+    .project-card h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* ===================================================================
+    ANIMATIONS
+=================================================================== */
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
