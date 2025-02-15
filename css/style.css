@@ -1,155 +1,209 @@
-/* Grundlegende Styles für die Seite */
+/* RESET & BASE STYLES */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Roboto', Arial, sans-serif;
-    background-color: #121212; /* Dunkler Hintergrund */
-    color: #E0E0E0; /* Helles Grau für den Text */
-    line-height: 1.6;
-    padding: 0 20px;
+    font-family: 'Inter', sans-serif; /* Modern, lesbare Schriftart */
+    background-color: #111; /* Tiefes Dunkel für edlen Look */
+    color: #F4F4F9; /* Helles Grau, super für dunklen Hintergrund */
+    line-height: 1.7;
+    padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* Header */
-header {
-    text-align: center;
-    background: linear-gradient(145deg, #1E3A3A, #2C4C4C); /* Sanfter Farbverlauf */
-    padding: 30px 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
+/* Typografie */
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif; /* Serifenlose, elegante Schrift für Titel */
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
-header:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-header h1 {
-    color: #76D7C4; /* Sanftes Grün */
+h1 {
     font-size: 3.5rem;
-    letter-spacing: 2px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 10px;
+    color: #76D7C4; /* Sanftes Aquagrün für den Haupttitel */
+}
+
+h2 {
+    font-size: 2.2rem;
+    color: #76D7C4;
+}
+
+h3 {
+    font-size: 1.8rem;
+    color: #76D7C4;
+}
+
+p, ul, li {
+    font-size: 1.1rem;
+    color: #D1D1D1; /* Dezentes Grau für Text */
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 10px;
+}
+
+/* LAYOUTS & CONTAINER */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+}
+
+header {
+    background: linear-gradient(145deg, #1F3030, #142525); /* Cooler Gradientenhintergrund */
+    text-align: center;
+    padding: 40px 20px;
+    border-bottom: 4px solid #76D7C4; /* Stilvolle Trennung mit einem sanften Akzent */
+}
+
+header .logo {
+    width: 120px;
+    margin-bottom: 20px;
 }
 
 nav ul {
-    list-style-type: none;
+    list-style: none;
+    margin-top: 15px;
     padding: 0;
-    margin-top: 20px;
     display: flex;
     justify-content: center;
+    gap: 30px;
 }
 
 nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #76D7C4;
-    font-size: 1.2rem;
-    font-weight: 500;
-    padding: 12px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
     display: inline-block;
 }
 
+nav ul li a {
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #F4F4F9;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    transition: transform 0.2s ease-in-out, color 0.3s ease;
+}
+
 nav ul li a:hover {
-    background-color: #5D9A9A; /* Dunkleres Grün */
-    transform: translateY(-5px); /* Effekt beim Hover */
+    color: #76D7C4;
+    transform: translateY(-3px); /* Elegante Hover-Animation */
 }
 
-/* Hauptinhalt */
-main {
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Sektion */
 section {
-    background: linear-gradient(145deg, #2C4C4C, #3A6D6D); /* Sanfterer Farbverlauf */
-    padding: 25px;
+    background-color: #1F3030; /* Dunkles, sanftes Blaugrün für eine beruhigende Atmosphäre */
     margin-bottom: 30px;
+    padding: 40px;
     border-radius: 12px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 1000px;
+    transition: background-color 0.3s ease-in-out;
 }
 
 section:hover {
-    background-color: #3A6D6D; /* Dunklerer Farbton beim Hover */
-    transform: translateY(-15px); /* Leichte Bewegung beim Hover */
+    background-color: #2A4545; /* Helleres Blaugrün bei Hover */
+    transform: translateY(-5px); /* Dezent schwebende Animation */
 }
 
-section h2 {
-    color: #76D7C4;
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-section p, .project-card p {
-    color: #D5D5D5;
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-/* Projektkarten */
 .project-card {
-    background-color: #2C4C4C;
-    padding: 20px;
+    background-color: #2A4545;
+    padding: 30px;
     margin-top: 20px;
     border-radius: 12px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    background-color: #3A6D6D;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Subtile Schattierung für Hover-Effekt */
 }
 
 .project-card h3 {
     color: #76D7C4;
-    font-size: 1.8rem;
-    font-weight: bold;
 }
 
-/* Footer */
+.project-card p {
+    font-size: 1.1rem;
+    color: #B3B3B3; /* Helles Grau für den Projekttext */
+}
+
+/* FOOTER */
 footer {
+    background-color: #1F3030;
+    padding: 20px;
     text-align: center;
-    margin-top: 40px;
     font-size: 1rem;
-    color: #A9A9A9;
-    background-color: #1E3A3A;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #A6A6A6;
+    margin-top: auto;
+    letter-spacing: 0.5px;
 }
 
-/* Responsiveness: Für kleine Bildschirme */
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
+/* ANIMATIONEN & INTERAKTIONEN */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes scaleUp {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.scale-up {
+    animation: scaleUp 0.5s ease-out;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 1200px) {
+    .container {
+        padding: 20px;
+    }
+
+    nav ul {
+        gap: 20px;
     }
 
     header h1 {
-        font-size: 2.8rem;
+        font-size: 2.5rem;
     }
 
-    nav ul li {
-        margin: 10px 0;
+    .project-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav ul {
+        flex-direction: column;
     }
 
     nav ul li a {
@@ -157,16 +211,11 @@ footer {
         padding: 8px 16px;
     }
 
-    section {
-        width: 100%;
-        max-width: 100%;
-        padding: 20px;
+    .project-card {
+        margin-top: 10px;
     }
 
-    .project-card {
-        margin-top: 15px;
+    .logo {
+        width: 100px;
     }
 }
-
-/* Webfont import */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
