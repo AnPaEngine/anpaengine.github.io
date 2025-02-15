@@ -1,0 +1,125 @@
+/* Grundlegende Styles für die Seite */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Dunkelgrün-Hintergrund */
+    color: #E0E0E0; /* Helles Grau für den Text */
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    background-color: #1E3A3A; /* Dunkles Grün */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+header h1 {
+    color: #76D7C4; /* Sanftes Grün */
+    font-size: 3rem;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #76D7C4;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #5D9A9A; /* Etwas dunkleres Grün beim Hover */
+}
+
+/* Hauptinhalt */
+main {
+    margin-top: 40px;
+}
+
+section {
+    background-color: #2C4C4C; /* Etwas helleres Grün */
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+section:hover {
+    background-color: #3A6D6D; /* Dunkleres Grün beim Hover */
+    transform: translateY(-10px); /* Leichte Bewegung beim Hover */
+}
+
+section h2 {
+    color: #76D7C4;
+    font-size: 2rem;
+}
+
+section p, .project-card p {
+    color: #D5D5D5; /* Helles Grau für den Text */
+    font-size: 1.1rem;
+}
+
+/* Projektkarte */
+.project-card {
+    background-color: #2C4C4C;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    background-color: #3A6D6D;
+}
+
+.project-card h3 {
+    color: #76D7C4;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 1rem;
+    color: #A9A9A9;
+}
+
+/* Responsiveness: Für kleine Bildschirme */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    nav ul li a {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+
+    .project-card {
+        margin-top: 10px;
+    }
+}
