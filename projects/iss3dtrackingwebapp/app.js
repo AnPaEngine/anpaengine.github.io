@@ -83,9 +83,9 @@ function createMoon() {
 
 function loadISS() {
   const loader = new GLTFLoader();
-  // DRACOLoader initialisieren und dem GLTFLoader zuweisen:
+  // Initialisiere DRACOLoader und weise ihn dem GLTFLoader zu
   const dracoLoader = new DRACOLoader();
-  dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/');  
+  dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.4.3/');
   loader.setDRACOLoader(dracoLoader);
 
   loader.load(
@@ -93,7 +93,7 @@ function loadISS() {
     (gltf) => {
       iss = gltf.scene;
       console.log("ISS Modell geladen:", iss);
-      // Testweise: Skaliere das Modell größer, um es sichtbar zu machen
+      // Skaliere das Modell testweise auf 1, damit es besser sichtbar wird
       iss.scale.set(1, 1, 1);
       scene.add(iss);
       updateISS();
@@ -112,7 +112,6 @@ async function updateISS() {
 
     const lat = data.latitude * (Math.PI / 180);
     const lon = data.longitude * (Math.PI / 180);
-    // Radius anpassen, damit die ISS sichtbar liegt
     const radius = 10;
 
     const x = radius * Math.cos(lat) * Math.cos(lon);
