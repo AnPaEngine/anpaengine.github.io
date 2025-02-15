@@ -1,4 +1,3 @@
-// Importiere Three.js (über die Import Map) sowie OrbitControls, GLTFLoader und DRACOLoader als ES Module
 import * as THREE from 'three';
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples/jsm/loaders/GLTFLoader.js';
@@ -76,7 +75,7 @@ function createMoon() {
     side: THREE.DoubleSide
   });
   moon = new THREE.Mesh(moonGeometry, moonMaterial);
-  moon.position.set(38, 0, 0);
+  moon.position.set(38, 0, 0); // Position des Mondes
   scene.add(moon);
 
   const orbitGeometry = new THREE.RingGeometry(38, 38.1, 64);
@@ -85,7 +84,7 @@ function createMoon() {
     side: THREE.DoubleSide
   });
   const orbit = new THREE.Mesh(orbitGeometry, orbitMaterial);
-  orbit.rotation.x = Math.PI / 2;
+  orbit.rotation.x = Math.PI / 2; // Orbit als Ring darstellen
   scene.add(orbit);
 }
 
@@ -153,6 +152,39 @@ async function updateISS() {
     `;
 
     setTimeout(updateISS, 5000);
- 
-::contentReference[oaicite:0]{index=0}
- 
+  } catch (error) {
+    console.error('Fehler beim Abrufen der ISS-Daten:', error);
+  }
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+
+  // Rotation der Erde und des Mondes
+  if (earth) {
+    earth.rotation.y += 0.005;
+  }
+
+  // Mondrotation und Umlauf um die Erde
+  if (moon) {
+    // Mond um seine eigene Achse rotieren
+    moon.rotation.y += 0.005;
+
+    // Mond um die Erde bewegen
+    const moonDistance = 38;
+    const moonAngle = Date.now() * 0.0001; // langsame Bewegung des Mondes
+    moon.position.x = moonDistance * Math.cos(moonAngle);
+    moon.position.z = moonDistance * Math.sin(moonAngle);
+  }
+
+  controls.update();
+  renderer.render(scene, camera);
+}
+
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+init();
