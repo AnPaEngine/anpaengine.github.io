@@ -6,34 +6,48 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #121212; /* Dunkelgrün-Hintergrund */
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #121212; /* Dunkler Hintergrund */
     color: #E0E0E0; /* Helles Grau für den Text */
     line-height: 1.6;
-    padding: 20px;
+    padding: 0 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Header */
 header {
     text-align: center;
-    background-color: #1E3A3A; /* Dunkles Grün */
-    padding: 20px;
-    border-radius: 8px;
+    background: linear-gradient(145deg, #1E3A3A, #2C4C4C); /* Sanfter Farbverlauf */
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+header:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 header h1 {
     color: #76D7C4; /* Sanftes Grün */
-    font-size: 3rem;
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
 }
 
 nav ul {
     list-style-type: none;
     padding: 0;
-    margin-top: 15px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 nav ul li {
-    display: inline-block;
     margin: 0 15px;
 }
 
@@ -41,59 +55,75 @@ nav ul li a {
     text-decoration: none;
     color: #76D7C4;
     font-size: 1.2rem;
-    padding: 10px 20px;
+    font-weight: 500;
+    padding: 12px 20px;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
 }
 
 nav ul li a:hover {
-    background-color: #5D9A9A; /* Etwas dunkleres Grün beim Hover */
+    background-color: #5D9A9A; /* Dunkleres Grün */
+    transform: translateY(-5px); /* Effekt beim Hover */
 }
 
 /* Hauptinhalt */
 main {
-    margin-top: 40px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* Sektion */
 section {
-    background-color: #2C4C4C; /* Etwas helleres Grün */
-    padding: 20px;
+    background: linear-gradient(145deg, #2C4C4C, #3A6D6D); /* Sanfterer Farbverlauf */
+    padding: 25px;
     margin-bottom: 30px;
-    border-radius: 8px;
+    border-radius: 12px;
     transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 1000px;
 }
 
 section:hover {
-    background-color: #3A6D6D; /* Dunkleres Grün beim Hover */
-    transform: translateY(-10px); /* Leichte Bewegung beim Hover */
+    background-color: #3A6D6D; /* Dunklerer Farbton beim Hover */
+    transform: translateY(-15px); /* Leichte Bewegung beim Hover */
 }
 
 section h2 {
     color: #76D7C4;
-    font-size: 2rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
 
 section p, .project-card p {
-    color: #D5D5D5; /* Helles Grau für den Text */
+    color: #D5D5D5;
     font-size: 1.1rem;
+    line-height: 1.6;
 }
 
-/* Projektkarte */
+/* Projektkarten */
 .project-card {
     background-color: #2C4C4C;
-    padding: 15px;
-    margin-top: 15px;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 12px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
     background-color: #3A6D6D;
 }
 
 .project-card h3 {
     color: #76D7C4;
+    font-size: 1.8rem;
+    font-weight: bold;
 }
 
 /* Footer */
@@ -102,12 +132,20 @@ footer {
     margin-top: 40px;
     font-size: 1rem;
     color: #A9A9A9;
+    background-color: #1E3A3A;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsiveness: Für kleine Bildschirme */
 @media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
     header h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
     }
 
     nav ul li {
@@ -119,7 +157,16 @@ footer {
         padding: 8px 16px;
     }
 
+    section {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+    }
+
     .project-card {
-        margin-top: 10px;
+        margin-top: 15px;
     }
 }
+
+/* Webfont import */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
