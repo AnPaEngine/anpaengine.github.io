@@ -26,15 +26,24 @@ function init() {
 
   controls = new OrbitControls(camera, renderer.domElement);
 
+  // Lichtquellen
+  // Erhöhe die Ambient-Beleuchtung
+  const ambientLight = new THREE.AmbientLight(0x404040, 1.5);
+  scene.add(ambientLight);
+  
+  // Hinzufügen eines Directional Light, um starke Lichtakzente zu setzen
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
+  directionalLight.position.set(10, 10, 10);
+  scene.add(directionalLight);
+  
+  // Optional: Ein Point Light, das weiterhin vorhanden sein kann
   const pointLight = new THREE.PointLight(0xffffff, 1);
   pointLight.position.set(50, 50, 50);
   scene.add(pointLight);
 
-  const ambientLight = new THREE.AmbientLight(0x404040, 1);
-  scene.add(ambientLight);
-
   createEarth();
   createMoon();
+  createStarField(); // Fügt den Sternenhimmel hinzu
 
   loadISS();
 
@@ -81,9 +90,24 @@ function createMoon() {
   scene.add(orbit);
 }
 
+function createStarField() {
+  // Bitte lege eine Datei "textures/stars.jpg" in den Ordner "textures" (Ein Bild eines sternenklaren Himmels)
+  const textureLoader = new THREE.TextureLoader();
+  const starTexture = textureLoader.load('textures/stars.jpg');
+  
+  // Erstelle eine sehr große Kugel, deren Innenseite den Sternenhimmel zeigt
+  const starGeometry = new THREE.SphereGeometry(90, 64, 64);
+  const starMaterial = new THREE.MeshBasicMaterial({
+    map: starTexture,
+    side: THREE.BackSide
+  });
+  const starField = new THREE.Mesh(starGeometry, starMaterial);
+  scene.add(starField);
+}
+
 function loadISS() {
   const loader = new GLTFLoader();
-  // Initialisiere DRACOLoader und weise ihn dem GLTFLoader zu
+  // DRACOLoader initialisieren und dem GLTFLoader zuweisen
   const dracoLoader = new DRACOLoader();
   dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.4.3/');
   loader.setDRACOLoader(dracoLoader);
@@ -93,7 +117,7 @@ function loadISS() {
     (gltf) => {
       iss = gltf.scene;
       console.log("ISS Modell geladen:", iss);
-      // Skaliere das Modell testweise auf 1, damit es besser sichtbar wird
+      // Testweise: Skaliere das Modell auf 1, damit es gut sichtbar wird
       iss.scale.set(1, 1, 1);
       scene.add(iss);
       updateISS();
@@ -112,7 +136,7 @@ async function updateISS() {
 
     const lat = data.latitude * (Math.PI / 180);
     const lon = data.longitude * (Math.PI / 180);
-    const radius = 10;
+    const radius = 10; // Stelle sicher, dass die ISS außerhalb der Erde positioniert wird
 
     const x = radius * Math.cos(lat) * Math.cos(lon);
     const z = radius * Math.cos(lat) * Math.sin(lon);
