@@ -1,3 +1,7 @@
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.module.js';
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples/jsm/loaders/GLTFLoader.js';
+
 let scene, camera, renderer, controls;
 let earth, moon, iss;
 
@@ -22,7 +26,7 @@ function init() {
   document.body.appendChild(renderer.domElement);
 
   // OrbitControls hinzufügen
-  controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls = new OrbitControls(camera, renderer.domElement);
 
   // Lichtquellen
   const pointLight = new THREE.PointLight(0xffffff, 1);
@@ -65,7 +69,7 @@ function createMoon() {
   moon.position.set(38, 0, 0);
   scene.add(moon);
 
-  // Orbit-Ring um den Mond (zur Veranschaulichung)
+  // Orbit-Ring um den Mond (nur zur Veranschaulichung)
   const orbitGeometry = new THREE.RingGeometry(38, 38.1, 64);
   const orbitMaterial = new THREE.MeshBasicMaterial({
     color: 0xffffff,
@@ -77,7 +81,7 @@ function createMoon() {
 }
 
 function loadISS() {
-  const loader = new THREE.GLTFLoader();
+  const loader = new GLTFLoader();
   loader.load(
     'models/iss_model.glb',
     (gltf) => {
@@ -109,7 +113,6 @@ async function updateISS() {
     if (iss) {
       iss.position.set(x, y, z);
     }
-
     setTimeout(updateISS, 5000);
   } catch (error) {
     console.error('Fehler beim Abrufen der ISS-Daten:', error);
