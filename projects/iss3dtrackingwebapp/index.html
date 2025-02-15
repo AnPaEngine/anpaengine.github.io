@@ -13,6 +13,14 @@
       display: block;
     }
   </style>
+  <!-- Import-Map zur Auflösung des bare module specifier "three" -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.module.js"
+    }
+  }
+  </script>
 </head>
 <body>
   <!-- Unser Script wird als ES Modul eingebunden -->
