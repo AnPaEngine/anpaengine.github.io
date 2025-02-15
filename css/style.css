@@ -1,84 +1,54 @@
-/* RESET & BASE STYLES */
+/* Reset und Grundstruktur */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: all 0.3s ease;
-}
-
-html {
-    scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Inter', sans-serif; /* Modern, lesbare Schriftart */
-    background-color: #111; /* Tiefes Dunkel für edlen Look */
-    color: #F4F4F9; /* Helles Grau, super für dunklen Hintergrund */
-    line-height: 1.7;
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #F4F4F4; /* Helles Grau für den Hintergrund */
+    color: #333333; /* Dunkles Grau für den Text */
+    line-height: 1.75;
     padding: 0;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
-/* Typografie */
-h1, h2, h3 {
-    font-family: 'Poppins', sans-serif; /* Serifenlose, elegante Schrift für Titel */
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-h1 {
-    font-size: 3.5rem;
-    color: #76D7C4; /* Sanftes Aquagrün für den Haupttitel */
-}
-
-h2 {
-    font-size: 2.2rem;
-    color: #76D7C4;
-}
-
-h3 {
-    font-size: 1.8rem;
-    color: #76D7C4;
-}
-
-p, ul, li {
-    font-size: 1.1rem;
-    color: #D1D1D1; /* Dezentes Grau für Text */
-}
-
-ul {
-    list-style-type: none;
-    margin-top: 10px;
-}
-
-/* LAYOUTS & CONTAINER */
+/* Container für zentrierten Inhalt */
 .container {
+    width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
-    width: 100%;
 }
 
+/* Header */
 header {
-    background: linear-gradient(145deg, #1F3030, #142525); /* Cooler Gradientenhintergrund */
-    text-align: center;
-    padding: 40px 20px;
-    border-bottom: 4px solid #76D7C4; /* Stilvolle Trennung mit einem sanften Akzent */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 header .logo {
-    width: 120px;
-    margin-bottom: 20px;
+    width: 150px;
+    height: auto;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #222222;
+    letter-spacing: -1px;
 }
 
 nav ul {
-    list-style: none;
-    margin-top: 15px;
-    padding: 0;
+    list-style-type: none;
     display: flex;
-    justify-content: center;
     gap: 30px;
 }
 
@@ -87,116 +57,117 @@ nav ul li {
 }
 
 nav ul li a {
-    font-size: 1.2rem;
     text-decoration: none;
-    color: #F4F4F9;
-    padding: 12px 25px;
-    border-radius: 5px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 1.1rem;
     font-weight: 500;
-    transition: transform 0.2s ease-in-out, color 0.3s ease;
+    color: #222222;
+    transition: all 0.3s ease;
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: inline-block;
 }
 
 nav ul li a:hover {
-    color: #76D7C4;
-    transform: translateY(-3px); /* Elegante Hover-Animation */
+    background-color: #6F5BFF; /* Akzentfarbe */
+    color: white;
+    transform: translateY(-5px);
 }
 
+nav ul li a:active {
+    transform: translateY(2px);
+}
+
+/* Abschnitt */
 section {
-    background-color: #1F3030; /* Dunkles, sanftes Blaugrün für eine beruhigende Atmosphäre */
-    margin-bottom: 30px;
-    padding: 40px;
-    border-radius: 12px;
-    transition: background-color 0.3s ease-in-out;
+    padding: 60px 0;
+    background-color: #F9F9F9;
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 section:hover {
-    background-color: #2A4545; /* Helleres Blaugrün bei Hover */
-    transform: translateY(-5px); /* Dezent schwebende Animation */
+    transform: translateY(-10px);
+    background-color: #FFFFFF;
 }
 
+section h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #222222;
+    margin-bottom: 20px;
+}
+
+section p {
+    font-size: 1.2rem;
+    color: #777777;
+    line-height: 1.6;
+}
+
+/* Projektkarten */
 .project-card {
-    background-color: #2A4545;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
     padding: 30px;
     margin-top: 20px;
-    border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Subtile Schattierung für Hover-Effekt */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .project-card h3 {
-    color: #76D7C4;
+    font-size: 2rem;
+    color: #222222;
+    margin-bottom: 15px;
 }
 
 .project-card p {
+    color: #555555;
     font-size: 1.1rem;
-    color: #B3B3B3; /* Helles Grau für den Projekttext */
 }
 
-/* FOOTER */
+/* Kontakt */
 footer {
-    background-color: #1F3030;
-    padding: 20px;
+    background-color: #222222;
+    color: white;
     text-align: center;
+    padding: 20px;
     font-size: 1rem;
-    color: #A6A6A6;
     margin-top: auto;
-    letter-spacing: 0.5px;
 }
 
-/* ANIMATIONEN & INTERAKTIONEN */
+/* Links in Kontakt */
+footer a {
+    color: #6F5BFF;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Animationen */
 @keyframes fadeIn {
     0% {
         opacity: 0;
+        transform: translateY(50px);
     }
     100% {
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
+/* Anwendung der Animation */
 .fade-in {
     animation: fadeIn 1s ease-out;
 }
 
-@keyframes scaleUp {
-    0% {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-.scale-up {
-    animation: scaleUp 0.5s ease-out;
-}
-
-/* MEDIA QUERIES */
-@media (max-width: 1200px) {
-    .container {
-        padding: 20px;
-    }
-
-    nav ul {
-        gap: 20px;
-    }
-
-    header h1 {
-        font-size: 2.5rem;
-    }
-
-    .project-card {
-        padding: 20px;
-    }
-}
-
+/* Responsivität */
 @media (max-width: 768px) {
     header h1 {
         font-size: 2rem;
@@ -204,18 +175,10 @@ footer {
 
     nav ul {
         flex-direction: column;
-    }
-
-    nav ul li a {
-        font-size: 1rem;
-        padding: 8px 16px;
+        align-items: center;
     }
 
     .project-card {
-        margin-top: 10px;
-    }
-
-    .logo {
-        width: 100px;
+        margin: 10px 0;
     }
 }
