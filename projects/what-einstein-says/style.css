@@ -22,7 +22,7 @@ body {
 /* Einstein */
 #einstein-container {
   position: relative;
-  margin-top: 300px; /* Abstand von oben */
+  margin-top: 100px; /* Abstand von oben */
 }
 
 #einstein {
@@ -70,7 +70,7 @@ body {
   font-size: 1.3rem;
   cursor: pointer;
   transition: transform 0.2s;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 #tellMeButton:hover {
@@ -79,7 +79,7 @@ body {
 
 /* Sprachumschalter */
 #languageSelector {
-  margin-top: 30px;
+  margin-top: 5px;
   padding: 10px 15px;
   font-size: 1rem;
   border: 1px solid #ccc;
