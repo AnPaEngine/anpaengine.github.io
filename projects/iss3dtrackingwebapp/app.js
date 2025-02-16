@@ -6,6 +6,7 @@ import { DRACOLoader } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples
 
 let scene, camera, renderer, controls;
 let earth, moon, starField, iss;
+let moonAngle = 0;
 
 const ISS_API_URL = 'https://api.wheretheiss.at/v1/satellites/25544';
 
@@ -26,7 +27,6 @@ function init() {
 
   controls = new OrbitControls(camera, renderer.domElement);
 
-  // Lichtquellen
   const ambientLight = new THREE.AmbientLight(0x404040, 1.5);
   scene.add(ambientLight);
 
@@ -47,11 +47,8 @@ function init() {
 function createEarth() {
   const textureLoader = new THREE.TextureLoader();
   const earthTexture = textureLoader.load('textures/earth.jpg');
-
   const earthGeometry = new THREE.SphereGeometry(5, 32, 32);
-  const earthMaterial = new THREE.MeshStandardMaterial({
-    map: earthTexture
-  });
+  const earthMaterial = new THREE.MeshStandardMaterial({ map: earthTexture });
   earth = new THREE.Mesh(earthGeometry, earthMaterial);
   scene.add(earth);
 }
@@ -59,25 +56,22 @@ function createEarth() {
 function createMoon() {
   const textureLoader = new THREE.TextureLoader();
   const moonTexture = textureLoader.load('textures/moon.jpg');
-
   const moonGeometry = new THREE.SphereGeometry(1.35, 64, 64);
   const moonMaterial = new THREE.MeshStandardMaterial({
     map: moonTexture,
     roughness: 0.7,
   });
   moon = new THREE.Mesh(moonGeometry, moonMaterial);
-  moon.position.set(38, 0, 0);
   scene.add(moon);
 }
 
 function createStarField() {
   const textureLoader = new THREE.TextureLoader();
   const starTexture = textureLoader.load('textures/stars.jpg');
-
   const starGeometry = new THREE.SphereGeometry(90, 64, 64);
   const starMaterial = new THREE.MeshBasicMaterial({
     map: starTexture,
-    side: THREE.BackSide
+    side: THREE.BackSide,
   });
   starField = new THREE.Mesh(starGeometry, starMaterial);
   scene.add(starField);
@@ -104,7 +98,6 @@ function loadISS() {
   );
 }
 
-// Info-Panel erstellen
 function createInfoPanel() {
   const infoPanel = document.createElement("div");
   infoPanel.id = "infoPanel";
@@ -122,65 +115,17 @@ function createInfoPanel() {
   document.body.appendChild(infoPanel);
 }
 
-async function getCityAndCountry(lat, lon) {
-  try {
-    const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
-    const data = await response.json();
-    return data.address ? `${data.address.city || data.address.town || data.address.village || "Unbekannt"}, ${data.address.country || "Unbekannt"}` : "Über dem Ozean";
-  } catch (error) {
-    console.error("Fehler beim Abrufen der Stadt/Land-Daten:", error);
-    return "Ort unbekannt";
-  }
-}
-
-async function updateISS() {
-  try {
-    const response = await fetch(ISS_API_URL);
-    const data = await response.json();
-
-    const lat = data.latitude;
-    const lon = data.longitude;
-    const alt = data.altitude.toFixed(2);
-    const speed = data.velocity.toFixed(2);
-    const visibility = data.visibility === "daylight" ? "Sichtbar" : "Im Schatten";
-    const footprint = data.footprint.toFixed(2);
-    const timestamp = new Date(data.timestamp * 1000).toLocaleTimeString();
-    const location = await getCityAndCountry(lat, lon);
-
-    const radius = 10;
-    const x = radius * Math.cos(lat * (Math.PI / 180)) * Math.cos(lon * (Math.PI / 180));
-    const z = radius * Math.cos(lat * (Math.PI / 180)) * Math.sin(lon * (Math.PI / 180));
-    const y = radius * Math.sin(lat * (Math.PI / 180));
-
-    if (iss) {
-      iss.position.set(x, y, z);
-    }
-
-    updateInfoPanel(lat, lon, alt, speed, visibility, footprint, timestamp, location);
-    setTimeout(updateISS, 5000);
-  } catch (error) {
-    console.error("Fehler beim Abrufen der ISS-Daten:", error);
-  }
-}
-
-function updateInfoPanel(lat, lon, alt, speed, visibility, footprint, timestamp, location) {
-  const infoPanel = document.getElementById("infoPanel");
-  infoPanel.innerHTML = `
-    🌍 Position: ${lat.toFixed(2)}° N, ${lon.toFixed(2)}° E <br>
-    🏙️ Über: ${location} <br>
-    🚀 Höhe: ${alt} km <br>
-    ⚡ Geschwindigkeit: ${speed} km/h <br>
-    👀 Sichtbarkeit: ${visibility} <br>
-    🌎 Sichtbereich: ${footprint} km <br>
-    ⏰ Aktualisiert: ${timestamp}
-  `;
-}
-
 function animate() {
   requestAnimationFrame(animate);
+  
   earth.rotation.y += 0.001;
-  moon.rotation.y += 0.0001;
   starField.rotation.y += 0.00005;
+  
+  moonAngle += 0.002;
+  const moonDistance = 38;
+  moon.position.x = moonDistance * Math.cos(moonAngle);
+  moon.position.z = moonDistance * Math.sin(moonAngle);
+
   renderer.render(scene, camera);
 }
 
