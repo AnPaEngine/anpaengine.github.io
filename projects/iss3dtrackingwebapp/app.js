@@ -155,8 +155,9 @@ function animate() {
   moon.rotation.y += 0.0001;
 
   // Mond bewegt sich in seiner Umlaufbahn um die Erde
-  moon.position.x = 38 * Math.cos(earth.rotation.y);
-  moon.position.z = 38 * Math.sin(earth.rotation.y);
+  const distance = 38;  // Entfernung des Mondes zur Erde
+  moon.position.x = distance * Math.cos(earth.rotation.y);
+  moon.position.z = distance * Math.sin(earth.rotation.y);
 
   // Sehr langsame Rotation des Sternenhimmels
   starField.rotation.y += 0.00005;
