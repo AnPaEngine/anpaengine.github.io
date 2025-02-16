@@ -21,26 +21,133 @@ function updateISS() {
         const velocity = data.velocity.toFixed(1); // Geschwindigkeit in km/h
         const visibility = data.visibility === "daylight" ? "🌞 Tag" : "🌙 Nacht";
         
-        // Stadt oder Ozean bestimmen (robustere Methode mit präziseren Koordinaten)
-let location = "🌊 Ozean";
+        // Stadt oder Ozean bestimmen (vereinfachte Methode)
+        let location = "🌊 Ozean";
+        if (lat > 48 && lat < 55 && lon > 6 && lon < 14) location = "🇩🇪 Deutschland (Berlin)";
+        else if (lat > 36 && lat < 43 && lon > -9 && lon < 3) location = "🇪🇸 Spanien (Madrid)";
+        else if (lat > 40 && lat < 50 && lon > -80 && lon < -70) location = "🇺🇸 USA (New York)";
+        else if (lat > 33 && lat < 35 && lon > -119 && lon < -117) location = "🇺🇸 USA (Los Angeles)";
+        else if (lat > 55 && lat < 57 && lon > 36 && lon < 38) location = "🇷🇺 Russland (Moskau)";
+        else if (lat > 35 && lat < 45 && lon > 135 && lon < 145) location = "🇯🇵 Japan (Tokyo)";
+        else if (lat > -35 && lat < -25 && lon > 135 && lon < 155) location = "🇦🇺 Australien (Sydney)";
+        else if (lat > -10 && lat < 5 && lon > 110 && lon < 155) location = "🇮🇩 Indonesien (Jakarta)";
+        else if (lat > -5 && lat < 5 && lon > -80 && lon < -35) location = "🇧🇷 Brasilien (São Paulo)";
+        else if (lat > 50 && lat < 60 && lon > -10 && lon < 5) location = "🇬🇧 Großbritannien (London)";
+        else if (lat > 30 && lat < 40 && lon > 20 && lon < 30) location = "🇬🇷 Griechenland (Athen)";
+        else if (lat > -60 && lat < -50 && lon > -70 && lon < -50) location = "🇦🇷 Argentinien (Buenos Aires)";
+        else if (lat > 20 && lat < 30 && lon > 70 && lon < 90) location = "🇮🇳 Indien (Neu-Delhi)";
+        else if (lat > 25 && lat < 35 && lon > -10 && lon < 10) location = "🇫🇷 Frankreich (Paris)";
+        else if (lat > 50 && lat < 60 && lon > 5 && lon < 15) location = "🇳🇱 Niederlande (Amsterdam)";
+        else if (lat > 35 && lat < 45 && lon > -10 && lon < 5) location = "🇵🇹 Portugal (Lissabon)";
+        else if (lat > 10 && lat < 20 && lon > 100 && lon < 110) location = "🇹🇭 Thailand (Bangkok)";
+        else if (lat > 30 && lat < 40 && lon > 110 && lon < 120) location = "🇨🇳 China (Peking)";
+        else if (lat > 60 && lat < 75 && lon > -60 && lon < -10) location = "🇬🇱 Grönland (Nuuk)";
+        else if (lat > 35 && lat < 47 && lon > 6 && lon < 19) location = "🇮🇹 Italien (Rom)";
+        else if (lat > 45 && lat < 50 && lon > 7 && lon < 15) location = "🇨🇭 Schweiz (Zürich)";
+        else if (lat > 35 && lat < 40 && lon > 5 && lon < 10) location = "🇪🇸 Spanien (Barcelona)";
+        else if (lat > 50 && lat < 55 && lon > 10 && lon < 20) location = "🇩🇰 Dänemark (Kopenhagen)";
+        else if (lat > 55 && lat < 65 && lon > 10 && lon < 25) location = "🇸🇪 Schweden (Stockholm)";
+        else if (lat > 50 && lat < 60 && lon > 15 && lon < 30) location = "🇵🇱 Polen (Warschau)";
+        else if (lat > 40 && lat < 50 && lon > 20 && lon < 30) location = "🇭🇺 Ungarn (Budapest)";
+        else if (lat > 50 && lat < 55 && lon > 20 && lon < 30) location = "🇨🇿 Tschechien (Prag)";
+        else if (lat > 45 && lat < 55 && lon > 25 && lon < 35) location = "🇺🇦 Ukraine (Kiew)";
+        else if (lat > 35 && lat < 40 && lon > -90 && lon < -80) location = "🇺🇸 USA (Chicago)";
+        else if (lat > 25 && lat < 35 && lon > -110 && lon < -100) location = "🇺🇸 USA (Dallas)";
+        else if (lat > 30 && lat < 40 && lon > -85 && lon < -75) location = "🇺🇸 USA (Washington D.C.)";
+        else if (lat > 35 && lat < 45 && lon > -100 && lon < -90) location = "🇺🇸 USA (Kansas City)";
+        else if (lat > 35 && lat < 45 && lon > 25 && lon < 35) location = "🇹🇷 Türkei (Istanbul)";
+        else if (lat > -35 && lat < -25 && lon > -65 && lon < -55) location = "🇦🇷 Argentinien (Cordoba)";
+        else if (lat > -35 && lat < -25 && lon > -75 && lon < -65) location = "🇨🇱 Chile (Santiago)";
+        else if (lat > -35 && lat < -25 && lon > -60 && lon < -50) location = "🇺🇾 Uruguay (Montevideo)";
+        else if (lat > -5 && lat < 5 && lon > 35 && lon < 50) location = "🇰🇪 Kenia (Nairobi)";
+        else if (lat > -5 && lat < 5 && lon > 10 && lon < 30) location = "🇨🇩 Demokratische Republik Kongo (Kinshasa)";
+        else if (lat > 10 && lat < 20 && lon > -20 && lon < 0) location = "🇸🇳 Senegal (Dakar)";
+        else if (lat > 20 && lat < 30 && lon > -20 && lon < 0) location = "🇲🇦 Marokko (Rabat)";
+        else if (lat > 10 && lat < 20 && lon > 30 && lon < 40) location = "🇸🇩 Sudan (Khartum)";
+        else if (lat > 30 && lat < 40 && lon > 35 && lon < 45) location = "🇮🇶 Irak (Bagdad)";
+        else if (lat > 25 && lat < 35 && lon > 50 && lon < 60) location = "🇮🇷 Iran (Teheran)";
+        else if (lat > 20 && lat < 30 && lon > 40 && lon < 50) location = "🇸🇦 Saudi-Arabien (Riad)";
+        else if (lat > -30 && lat < -20 && lon > 25 && lon < 35) location = "🇿🇦 Südafrika (Johannesburg)";
+        else if (lat > -10 && lat < 0 && lon > 130 && lon < 145) location = "🇵🇬 Papua-Neuguinea (Port Moresby)";
+        else if (lat > -50 && lat < -40 && lon > 160 && lon < 180) location = "🇳🇿 Neuseeland (Wellington)";
+        else if (lat > 50 && lat < 60 && lon > 30 && lon < 40) location = "🇪🇪 Estland (Tallinn)";
+        else if (lat > 40 && lat < 50 && lon > 10 && lon < 20) location = "🇦🇹 Österreich (Wien)";
+        else if (lat > 45 && lat < 50 && lon > 14 && lon < 24) location = "🇭🇷 Kroatien (Zagreb)";
+        else if (lat > 35 && lat < 45 && lon > 25 && lon < 35) location = "🇧🇬 Bulgarien (Sofia)";
+        else if (lat > 40 && lat < 50 && lon > 20 && lon < 30) location = "🇷🇴 Rumänien (Bukarest)";
+        else if (lat > 35 && lat < 42 && lon > 10 && lon < 20) location = "🇷🇸 Serbien (Belgrad)";
+        else if (lat > 50 && lat < 55 && lon > 30 && lon < 35) location = "🇧🇾 Weißrussland (Minsk)";
+        else if (lat > 50 && lat < 60 && lon > 25 && lon < 30) location = "🇱🇹 Litauen (Vilnius)";
+        else if (lat > 50 && lat < 60 && lon > 20 && lon < 26) location = "🇱🇻 Lettland (Riga)";
+        else if (lat > 50 && lat < 60 && lon > 24 && lon < 30) location = "🇪🇪 Estland (Tallinn)";
+        else if (lat > 45 && lat < 55 && lon > 5 && lon < 10) location = "🇧🇪 Belgien (Brüssel)";
+        else if (lat > 45 && lat < 55 && lon > 4 && lon < 8) location = "🇱🇺 Luxemburg (Luxemburg)";
+        else if (lat > 35 && lat < 45 && lon > 5 && lon < 15) location = "🇸🇮 Slowenien (Ljubljana)";
+        else if (lat > 35 && lat < 45 && lon > 10 && lon < 25) location = "🇭🇺 Ungarn (Budapest)";
+        else if (lat > 45 && lat < 55 && lon > 10 && lon < 20) location = "🇨🇿 Tschechien (Prag)";
+        else if (lat > 35 && lat < 45 && lon > 19 && lon < 29) location = "🇸🇰 Slowakei (Bratislava)";
+        else if (lat > 35 && lat < 45 && lon > -10 && lon < 5) location = "🇪🇸 Spanien (Sevilla)";
+        else if (lat > 50 && lat < 60 && lon > 0 && lon < 5) location = "🇮🇪 Irland (Dublin)";
+        else if (lat > 35 && lat < 45 && lon > -80 && lon < -70) location = "🇺🇸 USA (Boston)";
+        else if (lat > 40 && lat < 50 && lon > -90 && lon < -80) location = "🇺🇸 USA (Detroit)";
+        else if (lat > 40 && lat < 50 && lon > -100 && lon < -90) location = "🇺🇸 USA (Minneapolis)";
+        else if (lat > 35 && lat < 45 && lon > -120 && lon < -110) location = "🇺🇸 USA (Phoenix)";
+        else if (lat > 25 && lat < 35 && lon > -90 && lon < -80) location = "🇺🇸 USA (Atlanta)";
+        else if (lat > 35 && lat < 45 && lon > -90 && lon < -80) location = "🇺🇸 USA (Cleveland)";
+        else if (lat > -10 && lat < 5 && lon > 30 && lon < 40) location = "🇪🇹 Äthiopien (Addis Abeba)";
+        else if (lat > 5 && lat < 15 && lon > -5 && lon < 5) location = "🇨🇮 Elfenbeinküste (Abidjan)";
+        else if (lat > 5 && lat < 15 && lon > 5 && lon < 15) location = "🇳🇬 Nigeria (Lagos)";
+        else if (lat > -30 && lat < -20 && lon > 20 && lon < 30) location = "🇿🇦 Südafrika (Kapstadt)";
+        else if (lat > 10 && lat < 20 && lon > 40 && lon < 50) location = "🇾🇪 Jemen (Sanaa)";
+        else if (lat > 10 && lat < 20 && lon > 50 && lon < 60) location = "🇴🇲 Oman (Maskat)";
+        else if (lat > 10 && lat < 20 && lon > 90 && lon < 100) location = "🇲🇲 Myanmar (Rangun)";
+        else if (lat > 30 && lat < 40 && lon > 100 && lon < 110) location = "🇨🇳 China (Chengdu)";
+        else if (lat > 30 && lat < 40 && lon > 120 && lon < 130) location = "🇰🇷 Südkorea (Seoul)";
+        else if (lat > 30 && lat < 40 && lon > 130 && lon < 140) location = "🇯🇵 Japan (Osaka)";
+        else if (lat > 55 && lat < 65 && lon > 20 && lon < 30) location = "🇫🇮 Finnland (Helsinki)";
+        else if (lat > 45 && lat < 50 && lon > 25 && lon < 30) location = "🇲🇩 Moldawien (Chișinău)";
+        else if (lat > 50 && lat < 60 && lon > 35 && lon < 40) location = "🇷🇺 Russland (Sankt Petersburg)";
+        else if (lat > 35 && lat < 40 && lon > 45 && lon < 55) location = "🇦🇿 Aserbaidschan (Baku)";
+        else if (lat > 40 && lat < 45 && lon > 70 && lon < 80) location = "🇰🇿 Kasachstan (Astana)";
+        else if (lat > 25 && lat < 30 && lon > 30 && lon < 35) location = "🇪🇬 Ägypten (Kairo)";
+        else if (lat > -5 && lat < 5 && lon > 35 && lon < 40) location = "🇹🇿 Tansania (Dodoma)";
+        else if (lat > 5 && lat < 15 && lon > 35 && lon < 45) location = "🇸🇸 Südsudan (Juba)";
+        else if (lat > -30 && lat < -20 && lon > -65 && lon < -55) location = "🇧🇴 Bolivien (La Paz)";
+        else if (lat > -25 && lat < -15 && lon > -60 && lon < -50) location = "🇵🇾 Paraguay (Asunción)";
+        else if (lat > -15 && lat < -5 && lon > -50 && lon < -40) location = "🇧🇷 Brasilien (Brasília)";
+        else if (lat > -40 && lat < -30 && lon > -75 && lon < -65) location = "🇦🇷 Argentinien (Mendoza)";
+        else if (lat > -15 && lat < -5 && lon > 45 && lon < 55) location = "🇲🇬 Madagaskar (Antananarivo)";
+        else if (lat > -25 && lat < -15 && lon > 25 && lon < 35) location = "🇿🇼 Simbabwe (Harare)";
+        else if (lat > -5 && lat < 5 && lon > 10 && lon < 20) location = "🇬🇦 Gabun (Libreville)";
+        else if (lat > 0 && lat < 10 && lon > -80 && lon < -70) location = "🇨🇴 Kolumbien (Bogotá)";
+        else if (lat > 10 && lat < 20 && lon > -90 && lon < -80) location = "🇬🇹 Guatemala (Guatemala-Stadt)";
+        else if (lat > 10 && lat < 20 && lon > -80 && lon < -70) location = "🇻🇪 Venezuela (Caracas)";
+        else if (lat > 10 && lat < 20 && lon > -100 && lon < -90) location = "🇲🇽 Mexiko (Mexiko-Stadt)";
+        else if (lat > 20 && lat < 30 && lon > -110 && lon < -100) location = "🇲🇽 Mexiko (Monterrey)";
+        else if (lat > 10 && lat < 20 && lon > 105 && lon < 115) location = "🇰🇭 Kambodscha (Phnom Penh)";
+        else if (lat > 0 && lat < 10 && lon > 100 && lon < 110) location = "🇻🇳 Vietnam (Ho-Chi-Minh-Stadt)";
+        else if (lat > 40 && lat < 50 && lon > 130 && lon < 140) location = "🇯🇵 Japan (Sapporo)";
+        else if (lat > 45 && lat < 55 && lon > 60 && lon < 70) location = "🇷🇺 Russland (Jekaterinburg)";
+        else if (lat > 55 && lat < 65 && lon > 60 && lon < 70) location = "🇷🇺 Russland (Nowosibirsk)";
+        else if (lat > -10 && lat < 0 && lon > 140 && lon < 150) location = "🇮🇩 Indonesien (Jayapura)";
+        else if (lat > -40 && lat < -30 && lon > 115 && lon < 125) location = "🇦🇺 Australien (Perth)";
+        else if (lat > -30 && lat < -20 && lon > 130 && lon < 140) location = "🇦🇺 Australien (Alice Springs)";
+        else if (lat > 60 && lat < 70 && lon > -150 && lon < -140) location = "🇺🇸 USA (Anchorage, Alaska)";
+        else if (lat > 20 && lat < 30 && lon > -160 && lon < -150) location = "🇺🇸 USA (Hawaii, Honolulu)";
+        else if (lat > -10 && lat < 0 && lon > -80 && lon < -70) location = "🇪🇨 Ecuador (Quito)";
+        else if (lat > 0 && lat < 10 && lon > -60 && lon < -50) location = "🇬🇾 Guyana (Georgetown)";
+        else if (lat > -10 && lat < 0 && lon > -50 && lon < -40) location = "🇧🇷 Brasilien (Belém)"; 
+        else if (lat > -40 && lat < -30 && lon > 140 && lon < 150) location = "🇦🇺 Australien (Melbourne)";
+        else if (lat > -20 && lat < -10 && lon > 140 && lon < 150) location = "🇦🇺 Australien (Darwin)";
+        else if (lat > -40 && lat < -30 && lon > 170 && lon < 180) location = "🇳🇿 Neuseeland (Auckland)";
+        else if (lat > -10 && lat < 10 && lon > -30 && lon < 30) location = "🌊 Atlantischer Ozean";
+        else if (lat > -60 && lat < 60 && lon > 100 && lon < 180) location = "🌊 Pazifischer Ozean";
+        else if (lat > -60 && lat < 60 && lon > 30 && lon < 100) location = "🌊 Indischer Ozean";
+        else if (lat > 60 || lat < -60) location = "🌊 Arktischer Ozean";
 
-// Überprüfe zuerst, ob die Koordinaten wirklich in einem bekannten Land liegen
-const locations = [
-  { latMin: 48, latMax: 55, lonMin: 6, lonMax: 14, name: "🇩🇪 Deutschland (Berlin)" },
-  { latMin: 36, latMax: 43, lonMin: -9, lonMax: 3, name: "🇪🇸 Spanien (Madrid)" },
-  { latMin: 40, latMax: 50, lonMin: -80, lonMax: -70, name: "🇺🇸 USA (New York)" },
-  { latMin: 33, latMax: 35, lonMin: -119, lonMax: -117, name: "🇺🇸 USA (Los Angeles)" },
-  { latMin: 55, latMax: 57, lonMin: 36, lonMax: 38, name: "🇷🇺 Russland (Moskau)" },
-  { latMin: 35, latMax: 45, lonMin: 135, lonMax: 145, name: "🇯🇵 Japan (Tokyo)" },
-  { latMin: -35, latMax: -25, lonMin: 135, lonMax: 155, name: "🇦🇺 Australien (Sydney)" }
-];
-
-for (const place of locations) {
-  if (lat >= place.latMin && lat <= place.latMax && lon >= place.lonMin && lon <= place.lonMax) {
-    location = place.name;
-    break; // Stoppe die Schleife, sobald eine Übereinstimmung gefunden wurde
-  }
-}
+        const radius = 10;
+        const phi = THREE.MathUtils.degToRad(90 - lat);
+        const theta = THREE.MathUtils.degToRad(lon);
 
         iss.position.set(
           radius * Math.sin(phi) * Math.cos(theta),
@@ -49,7 +156,9 @@ for (const place of locations) {
         );
 
         // InfoPanel aktualisieren
-        document.getElementById('infoPanel').innerText = `
+        const infoPanel = document.getElementById("infoPanel");
+        if (infoPanel) {
+          infoPanel.innerHTML = `
             🛰️ <strong>ISS 3D Tracking</strong><br>
             🌎 Breitengrad: ${lat}°<br>
             🌍 Längengrad: ${lon}°<br>
