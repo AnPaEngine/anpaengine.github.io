@@ -1,18 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ISS 3D Tracking Web App</title>
+  
+  <!-- Verknüpfung mit CSS-Dateien -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/tooltip.css">
+  
   <style>
     body {
       margin: 0;
       overflow: hidden;
+      font-family: Arial, sans-serif;
+      background-color: #000;
     }
     canvas {
       display: block;
     }
+    #infoPanel {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      padding: 10px;
+      font-size: 14px;
+      max-width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+    #infoPanel h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .dataItem {
+      margin-bottom: 8px;
+    }
   </style>
+
   <!-- Import Map zur Auflösung des bare module specifier "three" -->
   <script type="importmap">
   {
@@ -23,6 +50,23 @@
   </script>
 </head>
 <body>
-  <script type="module" src="app.js"></script>
+
+  <!-- Info-Panel für Echtzeitdaten -->
+  <div id="infoPanel">
+    <h2>ISS Echtzeitdaten</h2>
+    <div id="issPosition" class="dataItem"></div>
+    <div id="issSpeed" class="dataItem"></div>
+    <div id="issCrew" class="dataItem"></div>
+    <div id="issOrbit" class="dataItem"></div>
+    <div id="issWeather" class="dataItem"></div>
+  </div>
+
+  <!-- 3D Tracking-Canvas für die ISS-Darstellung -->
+  <canvas id="issCanvas"></canvas>
+
+  <!-- Skripte -->
+  <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/api.js"></script>
+
 </body>
 </html>
