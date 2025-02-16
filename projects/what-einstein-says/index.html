@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Einstein Says</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="container">
+    <!-- Sprachumschalter -->
+    <select id="languageSelector">
+      <option value="de">Deutsch</option>
+      <option value="en">English</option>
+    </select>
+
+    <!-- Einstein GIF -->
+    <div id="einstein-container">
+      <img id="einstein" src="assets/einstein.gif" alt="Animierter Einstein">
+    </div>
+
+    <!-- Sprechblase -->
+    <div id="speechBubble-container">
+      <img id="speechBubble" src="assets/speech_bubble.png" alt="Sprechblase">
+      <p id="speechText">Hallo! Ich bin Albert Einstein!</p>
+    </div>
+
+    <!-- Button -->
+    <button id="tellMeButton">Erzähl mir was</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
