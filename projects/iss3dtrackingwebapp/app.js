@@ -120,11 +120,13 @@ function animate() {
   
   earth.rotation.y += 0.001;
   starField.rotation.y += 0.00005;
-  
-  moonAngle += 0.002;
-  const moonDistance = 38;
-  moon.position.x = moonDistance * Math.cos(moonAngle);
-  moon.position.z = moonDistance * Math.sin(moonAngle);
+  // Rotation des Mondes (um seine eigene Achse)
+  moon.rotation.y += 0.0001;
+
+  // Mond bewegt sich in seiner Umlaufbahn um die Erde
+  const distance = 38;  // Entfernung des Mondes zur Erde
+  moon.position.x = distance * Math.cos(earth.rotation.y);
+  moon.position.z = distance * Math.sin(earth.rotation.y);
 
   renderer.render(scene, camera);
 }
