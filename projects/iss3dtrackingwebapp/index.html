@@ -1,151 +1,28 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ISS 3D Tracking Web App</title>
-  
-  <!-- Verknüpfung mit CSS-Dateien -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/tooltip.css">
-  
   <style>
-    /* Grundlegendes Layout für den Körper */
     body {
       margin: 0;
-      padding: 0;
       overflow: hidden;
-      background-color: #f0f0f0; /* Hintergrundfarbe für den gesamten Body */
-      font-family: Arial, sans-serif;
     }
-
-    /* Info-Leiste oben im Bildschirm */
-    #info-bar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.7); /* Halbtransparenter Hintergrund */
-      color: white;
-      padding: 10px;
-      font-size: 18px;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      z-index: 10; /* Sicherstellen, dass die Leiste über den Daten liegt */
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
-    }
-
-    /* Stil für die einzelnen Daten in der Info-Leiste */
-    #info-bar div {
-      margin: 0 10px;
-    }
-
-    /* Stil für den Text in der Leiste */
-    #info-bar div span {
-      font-weight: bold;
-    }
-
-    /* Karten-Stil */
-    .card-container {
-      position: absolute;
-      top: 20px;
-      left: 350px;
-      z-index: 20;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card {
-      background-color: rgba(0, 0, 0, 0.7);
-      color: white;
-      margin-bottom: 10px;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-      cursor: pointer;
-    }
-
-    .card-content {
-      display: none;
-      margin-top: 10px;
-      background-color: #444;
-      padding: 10px;
-      border-radius: 5px;
-    }
-
-    .card:hover {
-      background-color: rgba(0, 0, 0, 0.9);
+    canvas {
+      display: block;
     }
   </style>
+  <!-- Import Map zur Auflösung des bare module specifier "three" -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.module.js"
+    }
+  }
+  </script>
 </head>
 <body>
-
-  <!-- Info-Leiste für Echtzeitdaten -->
-  <div id="info-bar">
-    <div><span>Position:</span> <span id="issPosition">Lade...</span></div>
-    <div><span>Geschwindigkeit:</span> <span id="issSpeed">Lade...</span></div>
-    <div><span>Crew:</span> <span id="issCrew">Lade...</span></div>
-    <div><span>Orbit:</span> <span id="issOrbit">Lade...</span></div>
-    <div><span>Wetter:</span> <span id="issWeather">Lade...</span></div>
-  </div>
-
-  <!-- Karten zur Anzeige der ISS-Daten -->
-  <div class="card-container">
-    <div class="card" id="cardPosition">
-      <h3>ISS Position</h3>
-      <div class="card-content" id="issPositionContent"></div>
-    </div>
-    <div class="card" id="cardSpeed">
-      <h3>ISS Geschwindigkeit</h3>
-      <div class="card-content" id="issSpeedContent"></div>
-    </div>
-    <div class="card" id="cardCrew">
-      <h3>ISS Crew</h3>
-      <div class="card-content" id="issCrewContent"></div>
-    </div>
-    <div class="card" id="cardOrbit">
-      <h3>ISS Orbit</h3>
-      <div class="card-content" id="issOrbitContent"></div>
-    </div>
-    <div class="card" id="cardWeather">
-      <h3>ISS Wetter</h3>
-      <div class="card-content" id="issWeatherContent"></div>
-    </div>
-  </div>
-
-  <!-- Skripte -->
-  <script type="module" src="js/app.js"></script>
-  <script type="module" src="js/api.js"></script>
-
-  <script>
-    // Funktion zum Umschalten der Sichtbarkeit der Karteninhalte
-    function toggleCardContent(cardId) {
-      const cardContent = document.getElementById(cardId);
-      if (cardContent.style.display === 'none' || cardContent.style.display === '') {
-        cardContent.style.display = 'block';
-      } else {
-        cardContent.style.display = 'none';
-      }
-    }
-
-    // Karten mit Klick-Ereignissen versehen
-    document.getElementById('cardPosition').addEventListener('click', function() {
-      toggleCardContent('issPositionContent');
-    });
-    document.getElementById('cardSpeed').addEventListener('click', function() {
-      toggleCardContent('issSpeedContent');
-    });
-    document.getElementById('cardCrew').addEventListener('click', function() {
-      toggleCardContent('issCrewContent');
-    });
-    document.getElementById('cardOrbit').addEventListener('click', function() {
-      toggleCardContent('issOrbitContent');
-    });
-    document.getElementById('cardWeather').addEventListener('click', function() {
-      toggleCardContent('issWeatherContent');
-    });
-  </script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>
