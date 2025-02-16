@@ -1,33 +1,81 @@
-/* Grundlayout */
+/* Grundlayout: Hintergrund und Schrift */
 body {
-  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
+  font-family: 'Roboto', sans-serif;
   background: url('assets/universe_background.jpg') no-repeat center center fixed;
   background-size: cover;
   height: 100vh;
-  overflow: hidden; /* Verhindert Scrollen, da wir alles fix positionieren */
-  color: #333;
-}
-
-/* Container, falls du noch etwas brauchst */
-#container {
   width: 100%;
-  text-align: center;
-  position: relative;
+  overflow: hidden; /* verhindert Scrollbalken, da wir fixed-Positionen nutzen */
 }
 
-/* Sprechblase (ganz oben) */
-#speechBubble-container {
+/* 
+  Ein Container, der am unteren Bildschirmrand fixiert ist 
+  und die Kinder in umgekehrter Reihenfolge (von unten nach oben) anordnet.
+*/
+#bottomContainer {
   position: fixed;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  /* Wir gehen davon aus, dass Einstein ~400px hoch ist,
-     und wir 20px Abstand wollen. Also:
-     bottom: 135px (Einstein) + 400px (Einstein-Höhe) + 20px = 555px */
-  bottom: 555px;
+
+  /* Flex-Layout in Spalten-Richtung, aber reversed:
+     Der erste Kindeintrag im HTML landet unten. */
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+
+  /* Wir wollen 10px Abstand vom unteren Rand: */
+  padding-bottom: 10px;
+  width: 100%;
+  height: 100vh; /* Damit sich die Elemente von unten nach oben verteilen können */
+  box-sizing: border-box;
+}
+
+/* 1. Language-Selector – liegt als erstes im HTML, aber ganz unten im Layout */
+#languageSelector {
+  font-size: 1rem;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+
+  /* kein margin-top, denn wir wollen 10px (vom Container) bis zum Bildschirmrand */
+}
+
+/* 2. Button – 5px über dem Language-Selector */
+#tellMeButton {
+  margin-top: 5px; /* In column-reverse: Abstand nach unten */
+  background-color: #f9d342;
+  color: #222;
+  border: none;
+  border-radius: 15px;
+  padding: 12px 25px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#tellMeButton:hover {
+  transform: scale(1.1);
+}
+
+/* 3. Einstein-GIF – 20px über dem Button */
+#einstein-container {
+  margin-top: 20px; /* Abstand zum Button */
+}
+
+#einstein {
   width: 400px;
-  z-index: 4; /* Ganz oben */
+}
+
+/* 4. Sprechblase – 20px über Einstein */
+#speechBubble-container {
+  margin-top: 20px; /* Abstand zu Einstein */
+  width: 400px;
+  position: relative;
 }
 
 #speechBubble {
@@ -44,76 +92,18 @@ body {
   color: #333;
   text-align: center;
   box-sizing: border-box;
-  overflow: hidden; /* Falls Text zu lang wird */
+  overflow: hidden;
 }
 
-/* Einstein-GIF (darunter) */
-#einstein-container {
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  /* Der Button liegt bei bottom: 55px + 60px (Button-Höhe) + 20px = 135px */
-  bottom: 135px;
-  z-index: 3;
-}
-
-#einstein {
-  width: 400px; /* Höhe ~400px angenommen */
-}
-
-/* "Erzähl mir was"-Button (noch weiter unten) */
-#tellMeButton {
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  /* Der Language-Selector liegt bei bottom: 10px + ~40px Höhe + 5px = 55px */
-  bottom: 55px;
-  z-index: 2;
-
-  background-color: #f9d342;
-  color: #222;
-  border: none;
-  border-radius: 15px;
-  padding: 12px 25px;
-  font-size: 1.3rem;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-#tellMeButton:hover {
-  transform: scale(1.1);
-}
-
-/* Sprachumschalter (ganz unten) */
-#languageSelector {
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 10px; /* 10px Abstand vom unteren Bildschirmrand */
-  z-index: 1;
-
-  padding: 10px 15px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-  cursor: pointer;
-}
-
-/* (Optional) Falls du auf sehr kleinen Screens 
-   etwas skalieren willst, hier ein Beispiel */
+/* (Optional) Kleiner auf schmalen Bildschirmen */
 @media (max-width: 600px) {
+  #einstein {
+    width: 200px;
+  }
   #speechBubble-container {
     width: 250px;
-    bottom: 380px; /* Angepasst, damit es evtl. noch reinpasst */
   }
-
-  #einstein {
-    width: 250px;
-  }
-
-  #tellMeButton {
+  #speechText {
     font-size: 1rem;
-    padding: 10px 20px;
   }
 }
