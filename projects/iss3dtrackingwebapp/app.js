@@ -73,7 +73,7 @@ function init() {
 
   controls = new OrbitControls(camera, renderer.domElement);
 
-  const ambientLight = new THREE.AmbientLight(0x404040, 1.5);
+  const ambientLight = new THREE.AmbientLight(0x404040, 1);
   scene.add(ambientLight);
 
   const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
@@ -88,6 +88,23 @@ function init() {
 
   animate();
   window.addEventListener('resize', onWindowResize, false);
+}
+
+function createInfoPanel() {
+  const infoPanel = document.createElement("div");
+  infoPanel.id = "infoPanel";
+  infoPanel.style.position = "absolute";
+  infoPanel.style.bottom = "10px";
+  infoPanel.style.left = "50%";
+  infoPanel.style.transform = "translateX(-50%)";
+  infoPanel.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+  infoPanel.style.color = "white";
+  infoPanel.style.padding = "10px";
+  infoPanel.style.borderRadius = "5px";
+  infoPanel.style.fontFamily = "Arial, sans-serif";
+  infoPanel.style.fontSize = "14px";
+  infoPanel.style.textAlign = "center";
+  document.body.appendChild(infoPanel);
 }
 
 function createEarth() {
@@ -108,7 +125,6 @@ function createMoon() {
     roughness: 0.7,
   });
   moon = new THREE.Mesh(moonGeometry, moonMaterial);
-  moon.scale.set(1, 1, 1); // Sicherstellen, dass der Mond perfekt rund ist
   scene.add(moon);
 }
 
@@ -152,7 +168,7 @@ function animate() {
   starField.rotation.y += 0.00005;
   moon.rotation.y += 0.0001;
 
-  const distance = 12;
+  const distance = 22;
   moonAngle += 0.002;
   moon.position.set(
     distance * Math.cos(moonAngle),
