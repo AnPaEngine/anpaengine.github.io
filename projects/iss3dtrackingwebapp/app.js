@@ -125,6 +125,7 @@ function createMoon() {
     roughness: 0.7,
   });
   moon = new THREE.Mesh(moonGeometry, moonMaterial);
+  moon.scale.set(1, 1, 1); // Sicherstellen, dass der Mond perfekt rund ist
   scene.add(moon);
 }
 
