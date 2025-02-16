@@ -22,7 +22,7 @@ body {
 /* Einstein */
 #einstein-container {
   position: relative;
-  margin-top: 50px; /* Abstand von oben */
+  margin-bottom: 50px; /* Abstand von oben */
 }
 
 #einstein {
@@ -50,7 +50,7 @@ body {
   font-size: 1.2rem; /* Größere Schrift */
   line-height: 1.5;
   color: #333;
-  padding: 20px;
+  padding: 5px;
   text-align: center;
   z-index: 2;
   position: absolute;
