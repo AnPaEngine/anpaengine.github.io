@@ -285,7 +285,7 @@ function animate() {
   
   earth.rotation.y += 0.001;
   starField.rotation.y += 0.00005;
-  moon.rotation.y += 0.00007;
+  moon.rotation.y += 0.00005;
 
   const distance = 22;
   moonAngle += 0.002;
