@@ -154,6 +154,8 @@ async function updateISS() {
 function animate() {
   requestAnimationFrame(animate);
   earth.rotation.y += 0.001;
+  moon.rotation.y += 0.0008;
+  starField.rotation.y += 0.00005;
   renderer.render(scene, camera);
 }
 
