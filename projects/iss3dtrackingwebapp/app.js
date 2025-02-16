@@ -43,6 +43,7 @@ function init() {
   createStarField(); // Fügt den Sternenhimmel hinzu
 
   loadISS();
+  createInfoPanel();
 
   animate();
 
@@ -68,15 +69,14 @@ function createMoon() {
   const moonTexture = textureLoader.load('textures/moon.jpg');
   moonTexture.minFilter = THREE.LinearFilter;
 
-  // Höhere Detailgenauigkeit für den Mond
-  const moonGeometry = new THREE.SphereGeometry(1.35, 64, 64); // Höhere Detailgenauigkeit für die Kugel
+  const moonGeometry = new THREE.SphereGeometry(1.35, 64, 64);
   const moonMaterial = new THREE.MeshStandardMaterial({
     map: moonTexture,
     side: THREE.DoubleSide,
-    roughness: 0.7, // Optional, um den Effekt realistischer zu machen
+    roughness: 0.7,
   });
   moon = new THREE.Mesh(moonGeometry, moonMaterial);
-  moon.position.set(38, 0, 0); // Positionierung des Mondes
+  moon.position.set(38, 0, 0);
   scene.add(moon);
 
   const orbitGeometry = new THREE.RingGeometry(38, 38.1, 64);
@@ -112,7 +112,6 @@ function loadISS() {
     'models/iss_model.glb',
     (gltf) => {
       iss = gltf.scene;
-      console.log("ISS Modell geladen:", iss);
       iss.scale.set(0.25, 0.25, 0.25);
       scene.add(iss);
       updateISS();
@@ -124,52 +123,76 @@ function loadISS() {
   );
 }
 
+// Info-Panel erstellen
+function createInfoPanel() {
+  const infoPanel = document.createElement("div");
+  infoPanel.id = "infoPanel";
+  infoPanel.style.position = "absolute";
+  infoPanel.style.bottom = "10px";
+  infoPanel.style.left = "50%";
+  infoPanel.style.transform = "translateX(-50%)";
+  infoPanel.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+  infoPanel.style.color = "white";
+  infoPanel.style.padding = "10px";
+  infoPanel.style.borderRadius = "5px";
+  infoPanel.style.fontFamily = "Arial, sans-serif";
+  infoPanel.style.fontSize = "14px";
+  infoPanel.style.textAlign = "center";
+  document.body.appendChild(infoPanel);
+}
+
+async function getCityAndCountry(lat, lon) {
+  try {
+    const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
+    const data = await response.json();
+    return data.address ? `${data.address.city || data.address.town || data.address.village || "Unbekannt"}, ${data.address.country || "Unbekannt"}` : "Über dem Ozean";
+  } catch (error) {
+    console.error("Fehler beim Abrufen der Stadt/Land-Daten:", error);
+    return "Ort unbekannt";
+  }
+}
+
 async function updateISS() {
   try {
     const response = await fetch(ISS_API_URL);
     const data = await response.json();
 
-    const lat = data.latitude * (Math.PI / 180);
-    const lon = data.longitude * (Math.PI / 180);
-    const radius = 10;
+    const lat = data.latitude;
+    const lon = data.longitude;
+    const alt = data.altitude.toFixed(2);
+    const speed = data.velocity.toFixed(2);
+    const visibility = data.visibility === "daylight" ? "Sichtbar" : "Im Schatten";
+    const footprint = data.footprint.toFixed(2);
+    const timestamp = new Date(data.timestamp * 1000).toLocaleTimeString();
+    const location = await getCityAndCountry(lat, lon);
 
-    const x = radius * Math.cos(lat) * Math.cos(lon);
-    const z = radius * Math.cos(lat) * Math.sin(lon);
-    const y = radius * Math.sin(lat);
+    const radius = 10;
+    const x = radius * Math.cos(lat * (Math.PI / 180)) * Math.cos(lon * (Math.PI / 180));
+    const z = radius * Math.cos(lat * (Math.PI / 180)) * Math.sin(lon * (Math.PI / 180));
+    const y = radius * Math.sin(lat * (Math.PI / 180));
 
     if (iss) {
       iss.position.set(x, y, z);
     }
+
+    updateInfoPanel(lat, lon, alt, speed, visibility, footprint, timestamp, location);
     setTimeout(updateISS, 5000);
   } catch (error) {
-    console.error('Fehler beim Abrufen der ISS-Daten:', error);
+    console.error("Fehler beim Abrufen der ISS-Daten:", error);
   }
 }
 
-function animate() {
-  requestAnimationFrame(animate);
-
-  // Rotation der Erde
-  earth.rotation.y += 0.001;
-
-  // Rotation des Mondes (um seine eigene Achse)
-  moon.rotation.y += 0.0001;
-
-  // Mond bewegt sich in seiner Umlaufbahn um die Erde
-  const distance = 38;  // Entfernung des Mondes zur Erde
-  moon.position.x = distance * Math.cos(earth.rotation.y);
-  moon.position.z = distance * Math.sin(earth.rotation.y);
-
-  // Sehr langsame Rotation des Sternenhimmels
-  starField.rotation.y += 0.00005;
-
-  renderer.render(scene, camera);
-}
-
-function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+function updateInfoPanel(lat, lon, alt, speed, visibility, footprint, timestamp, location) {
+  const infoPanel = document.getElementById("infoPanel");
+  infoPanel.innerHTML = `
+    🌍 Position: ${lat.toFixed(2)}° N, ${lon.toFixed(2)}° E <br>
+    🏙️ Über: ${location} <br>
+    🚀 Höhe: ${alt} km <br>
+    ⚡ Geschwindigkeit: ${speed} km/h <br>
+    👀 Sichtbarkeit: ${visibility} <br>
+    🌎 Sichtbereich: ${footprint} km <br>
+    ⏰ Aktualisiert: ${timestamp}
+  `;
 }
 
 init();
