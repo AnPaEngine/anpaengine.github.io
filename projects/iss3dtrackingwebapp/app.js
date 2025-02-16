@@ -173,7 +173,7 @@ function updateISS() {
     .catch(error => console.error("Fehler beim Abrufen der ISS-Daten:", error));
 }
 
-setInterval(updateISS, 30000);
+setInterval(updateISS, 60000);
 
 function init() {
   scene = new THREE.Scene();
@@ -285,7 +285,7 @@ function animate() {
   
   earth.rotation.y += 0.001;
   starField.rotation.y += 0.00005;
-  moon.rotation.y += 0.00009;
+  moon.rotation.y += 0.00007;
 
   const distance = 22;
   moonAngle += 0.002;
