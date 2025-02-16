@@ -22,7 +22,7 @@ body {
 /* Einstein */
 #einstein-container {
   position: relative;
-  margin-bottom: 50px; /* Abstand von oben */
+  margin-top: 300px; /* Abstand von oben */
 }
 
 #einstein {
