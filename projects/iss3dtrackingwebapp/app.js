@@ -10,6 +10,30 @@ let moonAngle = 0;
 
 const ISS_API_URL = 'https://api.wheretheiss.at/v1/satellites/25544';
 
+function updateISS() {
+  fetch(ISS_API_URL)
+    .then(response => response.json())
+    .then(data => {
+      if (iss) {
+        const lat = data.latitude;
+        const lon = data.longitude;
+
+        const radius = 10; // ISS-Entfernung von der Erde
+        const phi = THREE.MathUtils.degToRad(90 - lat);
+        const theta = THREE.MathUtils.degToRad(lon);
+
+        iss.position.set(
+          radius * Math.sin(phi) * Math.cos(theta),
+          radius * Math.cos(phi),
+          radius * Math.sin(phi) * Math.sin(theta)
+        );
+      }
+    })
+    .catch(error => console.error("Fehler beim Abrufen der ISS-Daten:", error));
+}
+
+setInterval(updateISS, 5000);
+
 function init() {
   scene = new THREE.Scene();
 
@@ -120,11 +144,9 @@ function animate() {
   
   earth.rotation.y += 0.001;
   starField.rotation.y += 0.00005;
-  // Rotation des Mondes (um seine eigene Achse)
   moon.rotation.y += 0.0001;
 
-  // Mond bewegt sich in seiner Umlaufbahn um die Erde
-  const distance = 38;  // Entfernung des Mondes zur Erde
+  const distance = 38;
   moon.position.x = distance * Math.cos(earth.rotation.y);
   moon.position.z = distance * Math.sin(earth.rotation.y);
 
