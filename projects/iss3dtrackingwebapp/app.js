@@ -41,12 +41,13 @@ function updateISS() {
         const infoPanel = document.getElementById("infoPanel");
         if (infoPanel) {
           infoPanel.innerHTML = `
-            🚀 <strong>ISS Position</strong><br>
-            📍 Breitengrad: ${lat}° | Längengrad: ${lon}°<br>
-            📏 Höhe: ${altitude} km<br>
+            🛰️ <strong>ISS 3D Tracking</strong><br>
+            🌎 Breitengrad: ${lat}°
+            🌍 Längengrad: ${lon}°<br>
+            🌏 Altitude (Höhe): ${altitude} km<br>
             💨 Geschwindigkeit: ${velocity} km/h<br>
             🗺️ Über: ${location}<br>
-            ☁  Sichtbarkeit: ${visibility}
+            👀 Sichtbarkeit: ${visibility}
           `;
         }
       }
