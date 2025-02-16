@@ -67,7 +67,6 @@ function createMoon() {
   const moonTexture = textureLoader.load('textures/moon.jpg');
   moonTexture.minFilter = THREE.LinearFilter;
 
-  // Höhere Detailgenauigkeit für den Mond
   const moonGeometry = new THREE.SphereGeometry(1.35, 64, 64); // Höhere Detailgenauigkeit für die Kugel
   const moonMaterial = new THREE.MeshStandardMaterial({
     map: moonTexture,
@@ -138,6 +137,12 @@ async function updateISS() {
     if (iss) {
       iss.position.set(x, y, z);
     }
+
+    // Update der Info-Leiste
+    document.getElementById('iss-position').textContent = `Position: Lat ${data.latitude.toFixed(2)}° | Lon ${data.longitude.toFixed(2)}°`;
+    document.getElementById('iss-speed').textContent = `Speed: ${data.velocity.toFixed(2)} km/h`;
+    document.getElementById('iss-altitude').textContent = `Altitude: ${data.altitude.toFixed(2)} km`;
+
     setTimeout(updateISS, 5000); // Aktualisierung alle 5 Sekunden
   } catch (error) {
     console.error('Fehler beim Abrufen der ISS-Daten:', error);
