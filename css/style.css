@@ -136,7 +136,7 @@ section p {
 
 .project-card {
     background-color: #2a3a3a;
-    padding: 30px;
+    padding: 10px; /* Reduzierter Abstand */
     margin-top: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -156,6 +156,7 @@ section p {
 .project-card p {
     font-size: 1.1rem;
     color: #bbb;
+    margin-top: 0; /* Reduzierter Abstand zum oberen Rand der Beschreibung */
 }
 
 /* ===================================================================
