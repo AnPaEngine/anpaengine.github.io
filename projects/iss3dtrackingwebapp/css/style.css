@@ -1,1 +1,50 @@
+/* Grundlegendes Layout für den Körper */
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #000; /* Hintergrundfarbe für den Canvas */
+  font-family: Arial, sans-serif;
+}
 
+/* Canvas auf die ganze Bildschirmgröße strecken */
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Info-Leiste oben im Bildschirm */
+#info-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Halbtransparenter Hintergrund */
+  color: white;
+  padding: 10px;
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  z-index: 10; /* Sicherstellen, dass die Leiste über dem 3D-Canvas liegt */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Stil für die einzelnen Daten in der Info-Leiste */
+#info-bar div {
+  margin: 0 10px;
+}
+
+/* Stil für den Text in der Leiste */
+#info-bar div span {
+  font-weight: bold;
+}
+
+/* Optional: Wenn du die Leiste für kleinere Bildschirme anpassen möchtest */
+@media screen and (max-width: 600px) {
+  #info-bar {
+    font-size: 14px; /* Kleinere Schriftgröße für Mobilgeräte */
+  }
+}
