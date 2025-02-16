@@ -22,11 +22,11 @@ body {
 /* Einstein */
 #einstein-container {
   position: relative;
-  margin-top: 100px; /* Abstand von oben */
+  margin-top: 400px; /* Abstand von oben */
 }
 
 #einstein {
-  width: 350px; /* Größeres GIF */
+  width: 550px; /* Größeres GIF */
 }
 
 /* Sprechblase */
