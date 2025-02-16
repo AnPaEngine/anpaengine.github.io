@@ -68,13 +68,14 @@ function createMoon() {
   const moonTexture = textureLoader.load('textures/moon.jpg');
   moonTexture.minFilter = THREE.LinearFilter;
 
-  const moonGeometry = new THREE.SphereGeometry(1.35, 32, 32);
+  const moonGeometry = new THREE.SphereGeometry(1.35, 32, 32); // Kugelförmige Geometrie
   const moonMaterial = new THREE.MeshStandardMaterial({
     map: moonTexture,
-    side: THREE.DoubleSide
+    side: THREE.DoubleSide,
+    roughness: 0.7, // Optional, um den Effekt realistischer zu machen
   });
   moon = new THREE.Mesh(moonGeometry, moonMaterial);
-  moon.position.set(38, 0, 0);
+  moon.position.set(38, 0, 0); // Positionierung des Mondes
   scene.add(moon);
 
   const orbitGeometry = new THREE.RingGeometry(38, 38.1, 64);
