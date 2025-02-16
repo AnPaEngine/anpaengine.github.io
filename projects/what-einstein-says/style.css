@@ -27,7 +27,7 @@ body {
   align-items: center;
 
   /* Wir wollen 10px Abstand vom unteren Rand: */
-  padding-bottom: 50px;
+  padding-bottom: 10px;
   width: 100%;
   height: 100vh; /* Damit sich die Elemente von unten nach oben verteilen können */
   box-sizing: border-box;
