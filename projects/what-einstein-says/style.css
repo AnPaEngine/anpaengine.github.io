@@ -22,7 +22,7 @@ body {
 /* Einstein */
 #einstein-container {
   position: relative;
-  margin-top: -250px; /* Abstand von oben */
+  margin-top: -70px; /* Abstand von oben */
 }
 
 #einstein {
@@ -33,7 +33,7 @@ body {
 #speechBubble-container {
   position: relative;
   margin: 0 auto;
-  margin-top: 300px; /* Fixiert weiter oben */
+  margin-top: 200px; /* Fixiert weiter oben */
   width: 400px; /* Größere Sprechblase */
   height: auto;
   display: flex;
