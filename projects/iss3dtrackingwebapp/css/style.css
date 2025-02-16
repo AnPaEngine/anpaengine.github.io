@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #000; /* Hintergrundfarbe für den Canvas */
+  background-color: transparent; /* Hintergrundfarbe für den Canvas */
   font-family: Arial, sans-serif;
 }
 
