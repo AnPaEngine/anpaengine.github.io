@@ -90,23 +90,6 @@ function init() {
   window.addEventListener('resize', onWindowResize, false);
 }
 
-function createInfoPanel() {
-  const infoPanel = document.createElement("div");
-  infoPanel.id = "infoPanel";
-  infoPanel.style.position = "absolute";
-  infoPanel.style.bottom = "10px";
-  infoPanel.style.left = "50%";
-  infoPanel.style.transform = "translateX(-50%)";
-  infoPanel.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-  infoPanel.style.color = "white";
-  infoPanel.style.padding = "10px";
-  infoPanel.style.borderRadius = "5px";
-  infoPanel.style.fontFamily = "Arial, sans-serif";
-  infoPanel.style.fontSize = "14px";
-  infoPanel.style.textAlign = "center";
-  document.body.appendChild(infoPanel);
-}
-
 function createEarth() {
   const textureLoader = new THREE.TextureLoader();
   const earthTexture = textureLoader.load('textures/earth.jpg');
@@ -169,7 +152,7 @@ function animate() {
   starField.rotation.y += 0.00005;
   moon.rotation.y += 0.0001;
 
-  const distance = 22;
+  const distance = 12;
   moonAngle += 0.002;
   moon.position.set(
     distance * Math.cos(moonAngle),
