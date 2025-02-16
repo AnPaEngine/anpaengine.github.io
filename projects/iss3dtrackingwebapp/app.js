@@ -5,7 +5,7 @@ import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples/
 import { DRACOLoader } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples/jsm/loaders/DRACOLoader.js';
 
 let scene, camera, renderer, controls;
-let earth, moon, iss;
+let earth, moon, starField, iss;
 
 const ISS_API_URL = 'https://api.wheretheiss.at/v1/satellites/25544';
 
@@ -27,16 +27,13 @@ function init() {
   controls = new OrbitControls(camera, renderer.domElement);
 
   // Lichtquellen
-  // Erhöhe die Ambient-Beleuchtung
   const ambientLight = new THREE.AmbientLight(0x404040, 1.5);
   scene.add(ambientLight);
-  
-  // Hinzufügen eines Directional Light, um starke Lichtakzente zu setzen
+
   const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
   directionalLight.position.set(10, 10, 10);
   scene.add(directionalLight);
-  
-  // Optional: Ein Point Light, das weiterhin vorhanden sein kann
+
   const pointLight = new THREE.PointLight(0xffffff, 1);
   pointLight.position.set(50, 50, 50);
   scene.add(pointLight);
@@ -56,7 +53,7 @@ function createEarth() {
   const textureLoader = new THREE.TextureLoader();
   const earthTexture = textureLoader.load('textures/earth.jpg');
   earthTexture.minFilter = THREE.LinearFilter;
-  
+
   const earthGeometry = new THREE.SphereGeometry(5, 32, 32);
   const earthMaterial = new THREE.MeshStandardMaterial({
     map: earthTexture,
@@ -70,7 +67,7 @@ function createMoon() {
   const textureLoader = new THREE.TextureLoader();
   const moonTexture = textureLoader.load('textures/moon.jpg');
   moonTexture.minFilter = THREE.LinearFilter;
-  
+
   const moonGeometry = new THREE.SphereGeometry(1.35, 32, 32);
   const moonMaterial = new THREE.MeshStandardMaterial({
     map: moonTexture,
@@ -91,23 +88,20 @@ function createMoon() {
 }
 
 function createStarField() {
-  // Bitte lege eine Datei "textures/stars.jpg" in den Ordner "textures" (Ein Bild eines sternenklaren Himmels)
   const textureLoader = new THREE.TextureLoader();
   const starTexture = textureLoader.load('textures/stars.jpg');
-  
-  // Erstelle eine sehr große Kugel, deren Innenseite den Sternenhimmel zeigt
+
   const starGeometry = new THREE.SphereGeometry(90, 64, 64);
   const starMaterial = new THREE.MeshBasicMaterial({
     map: starTexture,
     side: THREE.BackSide
   });
-  const starField = new THREE.Mesh(starGeometry, starMaterial);
+  starField = new THREE.Mesh(starGeometry, starMaterial);
   scene.add(starField);
 }
 
 function loadISS() {
   const loader = new GLTFLoader();
-  // DRACOLoader initialisieren und dem GLTFLoader zuweisen
   const dracoLoader = new DRACOLoader();
   dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.4.3/');
   loader.setDRACOLoader(dracoLoader);
@@ -117,7 +111,6 @@ function loadISS() {
     (gltf) => {
       iss = gltf.scene;
       console.log("ISS Modell geladen:", iss);
-      // Testweise: Skaliere das Modell auf 1, damit es gut sichtbar wird
       iss.scale.set(0.25, 0.25, 0.25);
       scene.add(iss);
       updateISS();
@@ -136,7 +129,7 @@ async function updateISS() {
 
     const lat = data.latitude * (Math.PI / 180);
     const lon = data.longitude * (Math.PI / 180);
-    const radius = 10; // Stelle sicher, dass die ISS außerhalb der Erde positioniert wird
+    const radius = 10;
 
     const x = radius * Math.cos(lat) * Math.cos(lon);
     const z = radius * Math.cos(lat) * Math.sin(lon);
@@ -153,9 +146,20 @@ async function updateISS() {
 
 function animate() {
   requestAnimationFrame(animate);
+
+  // Rotation der Erde
   earth.rotation.y += 0.001;
-  moon.rotation.y += 0.0008;
+
+  // Rotation des Mondes (um seine eigene Achse)
+  moon.rotation.y += 0.0005;
+
+  // Mond bewegt sich in seiner Umlaufbahn um die Erde
+  moon.position.x = 38 * Math.cos(earth.rotation.y);
+  moon.position.z = 38 * Math.sin(earth.rotation.y);
+
+  // Sehr langsame Rotation des Sternenhimmels
   starField.rotation.y += 0.00005;
+
   renderer.render(scene, camera);
 }
 
