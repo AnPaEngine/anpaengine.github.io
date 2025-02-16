@@ -139,9 +139,11 @@ async function updateISS() {
     }
 
     // Update der Info-Leiste
-    document.getElementById('iss-position').textContent = `Position: Lat ${data.latitude.toFixed(2)}° | Lon ${data.longitude.toFixed(2)}°`;
-    document.getElementById('iss-speed').textContent = `Speed: ${data.velocity.toFixed(2)} km/h`;
-    document.getElementById('iss-altitude').textContent = `Altitude: ${data.altitude.toFixed(2)} km`;
+    document.getElementById('issPosition').textContent = `Position: Lat ${data.latitude.toFixed(2)}° | Lon ${data.longitude.toFixed(2)}°`;
+    document.getElementById('issSpeed').textContent = `Speed: ${data.velocity.toFixed(2)} km/h`;
+    document.getElementById('issCrew').textContent = `Crew: ${data.crew}`;
+    document.getElementById('issOrbit').textContent = `Orbit: ${data.orbit}`;
+    document.getElementById('issWeather').textContent = `Weather: ${data.weather}`;
 
     setTimeout(updateISS, 5000); // Aktualisierung alle 5 Sekunden
   } catch (error) {
