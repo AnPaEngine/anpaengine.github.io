@@ -1,12 +1,13 @@
-// Importiere Three.js und andere notwendige Module
+// Importiere Three.js (über die Import Map) sowie OrbitControls, GLTFLoader und DRACOLoader als ES Module
 import * as THREE from 'three';
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples/jsm/loaders/DRACOLoader.js';
-import { getISSData } from './api.js';  // Importiere die getISSData Funktion
 
 let scene, camera, renderer, controls;
 let earth, moon, starField, iss;
+
+const ISS_API_URL = 'https://api.wheretheiss.at/v1/satellites/25544';
 
 function init() {
   scene = new THREE.Scene();
@@ -67,6 +68,7 @@ function createMoon() {
   const moonTexture = textureLoader.load('textures/moon.jpg');
   moonTexture.minFilter = THREE.LinearFilter;
 
+  // Höhere Detailgenauigkeit für den Mond
   const moonGeometry = new THREE.SphereGeometry(1.35, 64, 64); // Höhere Detailgenauigkeit für die Kugel
   const moonMaterial = new THREE.MeshStandardMaterial({
     map: moonTexture,
@@ -124,10 +126,11 @@ function loadISS() {
 
 async function updateISS() {
   try {
-    const data = await getISSData(); // Abruf der ISS-Daten
+    const response = await fetch(ISS_API_URL);
+    const data = await response.json();
 
-    const lat = data.latitude * (Math.PI / 180);  // Umwandlung in Bogenmaß
-    const lon = data.longitude * (Math.PI / 180);  // Umwandlung in Bogenmaß
+    const lat = data.latitude * (Math.PI / 180);
+    const lon = data.longitude * (Math.PI / 180);
     const radius = 10;
 
     const x = radius * Math.cos(lat) * Math.cos(lon);
@@ -137,18 +140,7 @@ async function updateISS() {
     if (iss) {
       iss.position.set(x, y, z);
     }
-
-    // Update der Info-Leiste
-    document.getElementById('issPosition').textContent = `Position: Lat ${data.latitude.toFixed(2)}° | Lon ${data.longitude.toFixed(2)}°`;
-    document.getElementById('issSpeed').textContent = `Speed: ${data.velocity.toFixed(2)} km/h`;
-
-    // Crew-Informationen anzeigen
-    const crewList = data.crew.map(person => person.name).join(', ');
-    document.getElementById('issCrew').textContent = `Crew: ${crewList || 'Keine Daten'}`;
-    document.getElementById('issOrbit').textContent = `Orbit: ${data.orbit}`;
-    document.getElementById('issWeather').textContent = `Weather: N/A`;  // Placeholder für Wetterdaten, falls vorhanden
-
-    setTimeout(updateISS, 5000); // Aktualisierung alle 5 Sekunden
+    setTimeout(updateISS, 5000);
   } catch (error) {
     console.error('Fehler beim Abrufen der ISS-Daten:', error);
   }
