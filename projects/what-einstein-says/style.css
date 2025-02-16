@@ -31,7 +31,7 @@ body {
 
 /* Sprechblase */
 #speechBubble-container {
-  position: fixed; /* Fixiert auf dem Bildschirm */
+  position: relative; /* Fixiert auf dem Bildschirm */
   bottom: 160px; /* 20px oberhalb vom "Erzähl mir was"-Button */
   margin: 0 auto;
   width: 400px; /* Größere Sprechblase */
