@@ -68,7 +68,8 @@ function createMoon() {
   const moonTexture = textureLoader.load('textures/moon.jpg');
   moonTexture.minFilter = THREE.LinearFilter;
 
-  const moonGeometry = new THREE.SphereGeometry(1.35, 32, 32); // Kugelförmige Geometrie
+  // Höhere Detailgenauigkeit für den Mond
+  const moonGeometry = new THREE.SphereGeometry(1.35, 64, 64); // Höhere Detailgenauigkeit für die Kugel
   const moonMaterial = new THREE.MeshStandardMaterial({
     map: moonTexture,
     side: THREE.DoubleSide,
