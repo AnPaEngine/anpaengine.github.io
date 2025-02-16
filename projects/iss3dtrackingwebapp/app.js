@@ -17,6 +17,15 @@ function updateISS() {
       if (iss) {
         const lat = data.latitude.toFixed(2);
         const lon = data.longitude.toFixed(2);
+        const altitude = data.altitude.toFixed(1); // Höhe in km
+        const velocity = data.velocity.toFixed(1); // Geschwindigkeit in km/h
+        const visibility = data.visibility === "daylight" ? "🌞 Tag" : "🌙 Nacht";
+        
+        // Stadt oder Ozean bestimmen (vereinfachte Methode)
+        let location = "🌊 Ozean";
+        if (lat > 48 && lat < 55 && lon > 6 && lon < 14) location = "🇩🇪 Deutschland";
+        else if (lat > 36 && lat < 43 && lon > -9 && lon < 3) location = "🇪🇸 Spanien";
+        else if (lat > 40 && lat < 50 && lon > -80 && lon < -70) location = "🇺🇸 USA (Ostküste)";
 
         const radius = 10;
         const phi = THREE.MathUtils.degToRad(90 - lat);
@@ -31,7 +40,14 @@ function updateISS() {
         // InfoPanel aktualisieren
         const infoPanel = document.getElementById("infoPanel");
         if (infoPanel) {
-          infoPanel.innerHTML = `<strong>ISS Position:</strong><br>Latitude: ${lat}°<br>Longitude: ${lon}°`;
+          infoPanel.innerHTML = `
+            🚀 <strong>ISS Position</strong><br>
+            📍 Breitengrad: ${lat}° | Längengrad: ${lon}°<br>
+            📏 Höhe: ${altitude} km<br>
+            💨 Geschwindigkeit: ${velocity} km/h<br>
+            🗺️ Über: ${location}<br>
+            ☁  Sichtbarkeit: ${visibility}
+          `;
         }
       }
     })
@@ -151,10 +167,6 @@ function animate() {
   earth.rotation.y += 0.001;
   starField.rotation.y += 0.00005;
   moon.rotation.y += 0.0001;
-
-  const distance = 38;
-  moon.position.x = distance * Math.cos(earth.rotation.y);
-  moon.position.z = distance * Math.sin(earth.rotation.y);
 
   renderer.render(scene, camera);
 }
