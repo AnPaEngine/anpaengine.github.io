@@ -6,8 +6,8 @@ import { DRACOLoader } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples
 
 let scene, camera, renderer, controls;
 let earth, moon, starField, iss;
-
 const ISS_API_URL = 'https://api.wheretheiss.at/v1/satellites/25544';
+let infoPanel = document.getElementById('infoPanel');
 
 function init() {
   scene = new THREE.Scene();
@@ -68,12 +68,11 @@ function createMoon() {
   const moonTexture = textureLoader.load('textures/moon.jpg');
   moonTexture.minFilter = THREE.LinearFilter;
 
-  // Höhere Detailgenauigkeit für den Mond
-  const moonGeometry = new THREE.SphereGeometry(1.35, 64, 64); // Höhere Detailgenauigkeit für die Kugel
+  const moonGeometry = new THREE.SphereGeometry(1.35, 64, 64); // Höhere Detailgenauigkeit für den Mond
   const moonMaterial = new THREE.MeshStandardMaterial({
     map: moonTexture,
     side: THREE.DoubleSide,
-    roughness: 0.7, // Optional, um den Effekt realistischer zu machen
+    roughness: 0.7, 
   });
   moon = new THREE.Mesh(moonGeometry, moonMaterial);
   moon.position.set(38, 0, 0); // Positionierung des Mondes
@@ -129,6 +128,7 @@ async function updateISS() {
     const response = await fetch(ISS_API_URL);
     const data = await response.json();
 
+    // ISS-Position berechnen und setzen
     const lat = data.latitude * (Math.PI / 180);
     const lon = data.longitude * (Math.PI / 180);
     const radius = 10;
@@ -140,10 +140,32 @@ async function updateISS() {
     if (iss) {
       iss.position.set(x, y, z);
     }
+
+    // Aktualisieren der ISS-Daten im Info-Panel
+    updateInfoPanel(data);
+
+    // Nächste Datenaktualisierung in 5 Sekunden
     setTimeout(updateISS, 5000);
   } catch (error) {
     console.error('Fehler beim Abrufen der ISS-Daten:', error);
   }
+}
+
+function updateInfoPanel(data) {
+  // Position
+  document.getElementById('issPosition').textContent = `Position: ${data.latitude.toFixed(2)}° N, ${data.longitude.toFixed(2)}° E`;
+  
+  // Geschwindigkeit
+  document.getElementById('issSpeed').textContent = `Geschwindigkeit: ${data.velocity.toFixed(2)} km/h`;
+  
+  // Besatzung (oder eine andere Informationsquelle falls vorhanden)
+  document.getElementById('issCrew').textContent = `Besatzung: Unbekannt`; // Das wäre dynamisch einfügbar, falls die API solche Daten liefert
+  
+  // Orbit (z.B. Höhe)
+  document.getElementById('issOrbit').textContent = `Höhe: ${data.altitude.toFixed(2)} km`;
+  
+  // Wetter (Optional, falls Wetter-API integriert werden soll)
+  document.getElementById('issWeather').textContent = `Wetter: Unbekannt`; // Kann später durch eine Wetter-API ersetzt werden
 }
 
 function animate() {
@@ -152,7 +174,7 @@ function animate() {
   // Rotation der Erde
   earth.rotation.y += 0.001;
 
-  // Rotation des Mondes (um seine eigene Achse)
+  // Rotation des Mondes
   moon.rotation.y += 0.0001;
 
   // Mond bewegt sich in seiner Umlaufbahn um die Erde
