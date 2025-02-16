@@ -1,5 +1,5 @@
 const ISS_API_URL = 'https://api.wheretheiss.at/v1/satellites/25544';  // Positionsdaten der ISS
-const CREW_API_URL = 'http://open-notify.org/astros.json'; // ISS-Crew-Daten (astronauten an Bord)
+const CREW_API_URL = 'https://open-notify.org/astros.json'; // ISS-Crew-Daten (astronauten an Bord)
 
 // Funktion zum Abrufen der ISS-Daten
 async function getISSData() {
