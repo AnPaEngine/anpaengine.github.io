@@ -152,7 +152,7 @@ function animate() {
   earth.rotation.y += 0.001;
 
   // Rotation des Mondes (um seine eigene Achse)
-  moon.rotation.y += 0.0005;
+  moon.rotation.y += 0.0001;
 
   // Mond bewegt sich in seiner Umlaufbahn um die Erde
   moon.position.x = 38 * Math.cos(earth.rotation.y);
