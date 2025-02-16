@@ -1,13 +1,12 @@
-// Importiere Three.js (über die Import Map) sowie OrbitControls, GLTFLoader und DRACOLoader als ES Module
+// Importiere Three.js und andere notwendige Module
 import * as THREE from 'three';
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples/jsm/loaders/DRACOLoader.js';
+import { getISSData } from './api.js';  // Importiere die getISSData Funktion
 
 let scene, camera, renderer, controls;
 let earth, moon, starField, iss;
-const ISS_API_URL = 'https://api.wheretheiss.at/v1/satellites/25544';
-let infoPanel = document.getElementById('infoPanel');
 
 function init() {
   scene = new THREE.Scene();
@@ -68,11 +67,12 @@ function createMoon() {
   const moonTexture = textureLoader.load('textures/moon.jpg');
   moonTexture.minFilter = THREE.LinearFilter;
 
-  const moonGeometry = new THREE.SphereGeometry(1.35, 64, 64); // Höhere Detailgenauigkeit für den Mond
+  // Höhere Detailgenauigkeit für den Mond
+  const moonGeometry = new THREE.SphereGeometry(1.35, 64, 64); // Höhere Detailgenauigkeit für die Kugel
   const moonMaterial = new THREE.MeshStandardMaterial({
     map: moonTexture,
     side: THREE.DoubleSide,
-    roughness: 0.7, 
+    roughness: 0.7, // Optional, um den Effekt realistischer zu machen
   });
   moon = new THREE.Mesh(moonGeometry, moonMaterial);
   moon.position.set(38, 0, 0); // Positionierung des Mondes
@@ -125,10 +125,8 @@ function loadISS() {
 
 async function updateISS() {
   try {
-    const response = await fetch(ISS_API_URL);
-    const data = await response.json();
+    const data = await getISSData(); // Abruf der ISS-Daten
 
-    // ISS-Position berechnen und setzen
     const lat = data.latitude * (Math.PI / 180);
     const lon = data.longitude * (Math.PI / 180);
     const radius = 10;
@@ -140,32 +138,10 @@ async function updateISS() {
     if (iss) {
       iss.position.set(x, y, z);
     }
-
-    // Aktualisieren der ISS-Daten im Info-Panel
-    updateInfoPanel(data);
-
-    // Nächste Datenaktualisierung in 5 Sekunden
-    setTimeout(updateISS, 5000);
+    setTimeout(updateISS, 5000); // Aktualisierung alle 5 Sekunden
   } catch (error) {
     console.error('Fehler beim Abrufen der ISS-Daten:', error);
   }
-}
-
-function updateInfoPanel(data) {
-  // Position
-  document.getElementById('issPosition').textContent = `Position: ${data.latitude.toFixed(2)}° N, ${data.longitude.toFixed(2)}° E`;
-  
-  // Geschwindigkeit
-  document.getElementById('issSpeed').textContent = `Geschwindigkeit: ${data.velocity.toFixed(2)} km/h`;
-  
-  // Besatzung (oder eine andere Informationsquelle falls vorhanden)
-  document.getElementById('issCrew').textContent = `Besatzung: Unbekannt`; // Das wäre dynamisch einfügbar, falls die API solche Daten liefert
-  
-  // Orbit (z.B. Höhe)
-  document.getElementById('issOrbit').textContent = `Höhe: ${data.altitude.toFixed(2)} km`;
-  
-  // Wetter (Optional, falls Wetter-API integriert werden soll)
-  document.getElementById('issWeather').textContent = `Wetter: Unbekannt`; // Kann später durch eine Wetter-API ersetzt werden
 }
 
 function animate() {
@@ -174,7 +150,7 @@ function animate() {
   // Rotation der Erde
   earth.rotation.y += 0.001;
 
-  // Rotation des Mondes
+  // Rotation des Mondes (um seine eigene Achse)
   moon.rotation.y += 0.0001;
 
   // Mond bewegt sich in seiner Umlaufbahn um die Erde
