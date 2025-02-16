@@ -15,10 +15,10 @@ function updateISS() {
     .then(response => response.json())
     .then(data => {
       if (iss) {
-        const lat = data.latitude;
-        const lon = data.longitude;
+        const lat = data.latitude.toFixed(2);
+        const lon = data.longitude.toFixed(2);
 
-        const radius = 10; // ISS-Entfernung von der Erde
+        const radius = 10;
         const phi = THREE.MathUtils.degToRad(90 - lat);
         const theta = THREE.MathUtils.degToRad(lon);
 
@@ -27,6 +27,12 @@ function updateISS() {
           radius * Math.cos(phi),
           radius * Math.sin(phi) * Math.sin(theta)
         );
+
+        // InfoPanel aktualisieren
+        const infoPanel = document.getElementById("infoPanel");
+        if (infoPanel) {
+          infoPanel.innerHTML = `<strong>ISS Position:</strong><br>Latitude: ${lat}°<br>Longitude: ${lon}°`;
+        }
       }
     })
     .catch(error => console.error("Fehler beim Abrufen der ISS-Daten:", error));
