@@ -26,7 +26,6 @@ function init() {
 
   controls = new OrbitControls(camera, renderer.domElement);
 
-  // Lichtquellen
   const ambientLight = new THREE.AmbientLight(0x404040, 1.5);
   scene.add(ambientLight);
 
@@ -34,31 +33,22 @@ function init() {
   directionalLight.position.set(10, 10, 10);
   scene.add(directionalLight);
 
-  const pointLight = new THREE.PointLight(0xffffff, 1);
-  pointLight.position.set(50, 50, 50);
-  scene.add(pointLight);
-
   createEarth();
   createMoon();
-  createStarField(); // Fügt den Sternenhimmel hinzu
-
+  createStarField();
   loadISS();
   createInfoPanel();
 
   animate();
-
   window.addEventListener('resize', onWindowResize, false);
 }
 
 function createEarth() {
   const textureLoader = new THREE.TextureLoader();
   const earthTexture = textureLoader.load('textures/earth.jpg');
-  earthTexture.minFilter = THREE.LinearFilter;
-
   const earthGeometry = new THREE.SphereGeometry(5, 32, 32);
   const earthMaterial = new THREE.MeshStandardMaterial({
-    map: earthTexture,
-    side: THREE.DoubleSide
+    map: earthTexture
   });
   earth = new THREE.Mesh(earthGeometry, earthMaterial);
   scene.add(earth);
@@ -67,32 +57,16 @@ function createEarth() {
 function createMoon() {
   const textureLoader = new THREE.TextureLoader();
   const moonTexture = textureLoader.load('textures/moon.jpg');
-  moonTexture.minFilter = THREE.LinearFilter;
-
   const moonGeometry = new THREE.SphereGeometry(1.35, 64, 64);
-  const moonMaterial = new THREE.MeshStandardMaterial({
-    map: moonTexture,
-    side: THREE.DoubleSide,
-    roughness: 0.7,
-  });
+  const moonMaterial = new THREE.MeshStandardMaterial({ map: moonTexture });
   moon = new THREE.Mesh(moonGeometry, moonMaterial);
   moon.position.set(38, 0, 0);
   scene.add(moon);
-
-  const orbitGeometry = new THREE.RingGeometry(38, 38.1, 64);
-  const orbitMaterial = new THREE.MeshBasicMaterial({
-    color: 0xffffff,
-    side: THREE.DoubleSide
-  });
-  const orbit = new THREE.Mesh(orbitGeometry, orbitMaterial);
-  orbit.rotation.x = Math.PI / 2;
-  scene.add(orbit);
 }
 
 function createStarField() {
   const textureLoader = new THREE.TextureLoader();
   const starTexture = textureLoader.load('textures/stars.jpg');
-
   const starGeometry = new THREE.SphereGeometry(90, 64, 64);
   const starMaterial = new THREE.MeshBasicMaterial({
     map: starTexture,
@@ -117,13 +91,10 @@ function loadISS() {
       updateISS();
     },
     undefined,
-    (error) => {
-      console.error('Fehler beim Laden des ISS-Modells:', error);
-    }
+    (error) => console.error('Fehler beim Laden des ISS-Modells:', error)
   );
 }
 
-// Info-Panel erstellen
 function createInfoPanel() {
   const infoPanel = document.createElement("div");
   infoPanel.id = "infoPanel";
@@ -136,63 +107,56 @@ function createInfoPanel() {
   infoPanel.style.padding = "10px";
   infoPanel.style.borderRadius = "5px";
   infoPanel.style.fontFamily = "Arial, sans-serif";
-  infoPanel.style.fontSize = "14px";
-  infoPanel.style.textAlign = "center";
   document.body.appendChild(infoPanel);
-}
-
-async function getCityAndCountry(lat, lon) {
-  try {
-    const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
-    const data = await response.json();
-    return data.address ? `${data.address.city || data.address.town || data.address.village || "Unbekannt"}, ${data.address.country || "Unbekannt"}` : "Über dem Ozean";
-  } catch (error) {
-    console.error("Fehler beim Abrufen der Stadt/Land-Daten:", error);
-    return "Ort unbekannt";
-  }
 }
 
 async function updateISS() {
   try {
     const response = await fetch(ISS_API_URL);
     const data = await response.json();
-
     const lat = data.latitude;
     const lon = data.longitude;
     const alt = data.altitude.toFixed(2);
     const speed = data.velocity.toFixed(2);
     const visibility = data.visibility === "daylight" ? "Sichtbar" : "Im Schatten";
-    const footprint = data.footprint.toFixed(2);
     const timestamp = new Date(data.timestamp * 1000).toLocaleTimeString();
-    const location = await getCityAndCountry(lat, lon);
 
     const radius = 10;
     const x = radius * Math.cos(lat * (Math.PI / 180)) * Math.cos(lon * (Math.PI / 180));
     const z = radius * Math.cos(lat * (Math.PI / 180)) * Math.sin(lon * (Math.PI / 180));
     const y = radius * Math.sin(lat * (Math.PI / 180));
 
-    if (iss) {
-      iss.position.set(x, y, z);
-    }
+    if (iss) iss.position.set(x, y, z);
 
-    updateInfoPanel(lat, lon, alt, speed, visibility, footprint, timestamp, location);
+    updateInfoPanel(lat, lon, alt, speed, visibility, timestamp);
     setTimeout(updateISS, 5000);
   } catch (error) {
-    console.error("Fehler beim Abrufen der ISS-Daten:", error);
+    console.error('Fehler beim Abrufen der ISS-Daten:', error);
   }
 }
 
-function updateInfoPanel(lat, lon, alt, speed, visibility, footprint, timestamp, location) {
+function updateInfoPanel(lat, lon, alt, speed, visibility, timestamp) {
   const infoPanel = document.getElementById("infoPanel");
   infoPanel.innerHTML = `
     🌍 Position: ${lat.toFixed(2)}° N, ${lon.toFixed(2)}° E <br>
-    🏙️ Über: ${location} <br>
     🚀 Höhe: ${alt} km <br>
     ⚡ Geschwindigkeit: ${speed} km/h <br>
     👀 Sichtbarkeit: ${visibility} <br>
-    🌎 Sichtbereich: ${footprint} km <br>
     ⏰ Aktualisiert: ${timestamp}
   `;
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  earth.rotation.y += 0.001;
+  moon.rotation.y += 0.0001;
+  renderer.render(scene, camera);
+}
+
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
 init();
