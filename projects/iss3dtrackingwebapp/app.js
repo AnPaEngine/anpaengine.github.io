@@ -118,7 +118,7 @@ function loadISS() {
       iss = gltf.scene;
       console.log("ISS Modell geladen:", iss);
       // Testweise: Skaliere das Modell auf 1, damit es gut sichtbar wird
-      iss.scale.set(0.05, 0.05, 0.05);
+      iss.scale.set(0.25, 0.25, 0.25);
       scene.add(iss);
       updateISS();
     },
