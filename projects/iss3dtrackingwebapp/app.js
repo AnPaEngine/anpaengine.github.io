@@ -168,7 +168,7 @@ function animate() {
   starField.rotation.y += 0.00005;
   moon.rotation.y += 0.0001;
 
-  const distance = 12;
+  const distance = 22;
   moonAngle += 0.002;
   moon.position.set(
     distance * Math.cos(moonAngle),
