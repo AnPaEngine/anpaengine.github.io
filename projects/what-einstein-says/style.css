@@ -33,7 +33,7 @@ body {
 #speechBubble-container {
   position: relative;
   margin: 0 auto;
-  margin-top: 200px; /* Fixiert weiter oben */
+  margin-top: 30px; /* Fixiert weiter oben */
   width: 400px; /* Größere Sprechblase */
   height: auto;
   display: flex;
