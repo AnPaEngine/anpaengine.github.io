@@ -22,7 +22,7 @@ body {
 /* Einstein */
 #einstein-container {
   position: relative;
-  margin-top: 100px; /* Abstand von oben */
+  margin-top: 20px; /* Abstand von oben */
 }
 
 #einstein {
@@ -31,19 +31,18 @@ body {
 
 /* Sprechblase */
 #speechBubble-container {
-  position: relative;
+  position: fixed; /* Fixiert auf dem Bildschirm */
+  bottom: 160px; /* 20px oberhalb vom "Erzähl mir was"-Button */
   margin: 0 auto;
-  margin-top: 30px; /* Fixiert weiter oben */
   width: 400px; /* Größere Sprechblase */
-  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 
 #speechBubble {
   width: 100%;
-  z-index: 1;
 }
 
 #speechText {
@@ -52,7 +51,6 @@ body {
   color: #333;
   padding: 5px;
   text-align: center;
-  z-index: 2;
   position: absolute;
   max-width: 90%; /* Sicherheitsabstand */
   max-height: 90%;
@@ -70,7 +68,7 @@ body {
   font-size: 1.3rem;
   cursor: pointer;
   transition: transform 0.2s;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 #tellMeButton:hover {
@@ -79,7 +77,8 @@ body {
 
 /* Sprachumschalter */
 #languageSelector {
-  margin-top: 5px;
+  position: fixed; /* Fixiert auf dem Bildschirm */
+  bottom: 100px; /* 30px Abstand zum Erzähl mir was Button */
   padding: 10px 15px;
   font-size: 1rem;
   border: 1px solid #ccc;
@@ -87,19 +86,19 @@ body {
   background-color: #fff;
   cursor: pointer;
 }
-  
-  @media (max-width: 600px) {
-    #einstein {
-      width: 200px; /* Verkleinere Einstein */
-    }
-  
-    #speechBubble-container {
-      top: -120px; /* Weniger Abstand auf kleineren Bildschirmen */
-      width: 250px; /* Kleinere Sprechblase */
-    }
-  
-    #speechText {
-      font-size: 0.9rem; /* Kleinere Schrift */
-    }
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  #einstein {
+    width: 200px; /* Verkleinere Einstein */
   }
-  
+
+  #speechBubble-container {
+    bottom: 120px; /* Weniger Abstand auf kleineren Bildschirmen */
+    width: 250px; /* Kleinere Sprechblase */
+  }
+
+  #speechText {
+    font-size: 0.9rem; /* Kleinere Schrift */
+  }
+}
