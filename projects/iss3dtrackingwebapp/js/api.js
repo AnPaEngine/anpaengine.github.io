@@ -1,29 +1,24 @@
-const ISS_API_URL = 'https://api.wheretheiss.at/v1/satellites/25544';  // Positionsdaten
-const CREW_API_URL = 'https://api.le-systeme-solaire.net/rest/astronauts'; // Astronauten an Bord
-const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather?q=location&appid=YOUR_API_KEY'; // Beispiel für Wetter, setze hier deine API ein
+const ISS_API_URL = 'https://api.wheretheiss.at/v1/satellites/25544';  // Positionsdaten der ISS
+const CREW_API_URL = 'http://open-notify.org/astros.json'; // ISS-Crew-Daten (astronauten an Bord)
 
 // Funktion zum Abrufen der ISS-Daten
 async function getISSData() {
   try {
+    // Abrufen der ISS-Positionsdaten
     const issResponse = await fetch(ISS_API_URL);
     const issData = await issResponse.json();
 
-    // Crew-Daten abrufen
+    // Abrufen der Crew-Daten
     const crewResponse = await fetch(CREW_API_URL);
     const crewData = await crewResponse.json();
 
-    // Wetterdaten abrufen (z.B. für den Standort der ISS)
-    const weatherResponse = await fetch(`${WEATHER_API_URL}&lat=${issData.latitude}&lon=${issData.longitude}`);
-    const weatherData = await weatherResponse.json();
-
     return {
-      latitude: issData.latitude,
-      longitude: issData.longitude,
-      velocity: issData.velocity,
-      altitude: issData.altitude,
-      crew: crewData.astronauts, // Crew-Daten
-      weather: weatherData.weather[0].description, // Wetterbeschreibung
-      orbit: 'Low Earth Orbit', // Orbit der ISS, dies müsste aus einer separaten Quelle kommen
+      latitude: issData.latitude,           // Latitude der ISS
+      longitude: issData.longitude,         // Longitude der ISS
+      velocity: issData.velocity,           // Geschwindigkeit der ISS
+      altitude: issData.altitude,           // Höhe der ISS
+      crew: crewData.people,                // Crew an Bord der ISS
+      orbit: 'Low Earth Orbit'              // Orbit der ISS (kann als statische Information angezeigt werden)
     };
   } catch (error) {
     console.error('Fehler beim Abrufen der ISS-Daten:', error);
