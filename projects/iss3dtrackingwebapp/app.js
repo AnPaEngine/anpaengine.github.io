@@ -173,7 +173,7 @@ function updateISS() {
     .catch(error => console.error("Fehler beim Abrufen der ISS-Daten:", error));
 }
 
-setInterval(updateISS, 5000);
+setInterval(updateISS, 60000);
 
 function init() {
   scene = new THREE.Scene();
