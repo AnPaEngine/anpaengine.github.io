@@ -126,8 +126,8 @@ async function updateISS() {
   try {
     const data = await getISSData(); // Abruf der ISS-Daten
 
-    const lat = data.latitude * (Math.PI / 180);
-    const lon = data.longitude * (Math.PI / 180);
+    const lat = data.latitude * (Math.PI / 180);  // Umwandlung in Bogenmaß
+    const lon = data.longitude * (Math.PI / 180);  // Umwandlung in Bogenmaß
     const radius = 10;
 
     const x = radius * Math.cos(lat) * Math.cos(lon);
@@ -141,9 +141,12 @@ async function updateISS() {
     // Update der Info-Leiste
     document.getElementById('issPosition').textContent = `Position: Lat ${data.latitude.toFixed(2)}° | Lon ${data.longitude.toFixed(2)}°`;
     document.getElementById('issSpeed').textContent = `Speed: ${data.velocity.toFixed(2)} km/h`;
-    document.getElementById('issCrew').textContent = `Crew: ${data.crew}`;
+
+    // Crew-Informationen anzeigen
+    const crewList = data.crew.map(person => person.name).join(', ');
+    document.getElementById('issCrew').textContent = `Crew: ${crewList || 'Keine Daten'}`;
     document.getElementById('issOrbit').textContent = `Orbit: ${data.orbit}`;
-    document.getElementById('issWeather').textContent = `Weather: ${data.weather}`;
+    document.getElementById('issWeather').textContent = `Weather: N/A`;  // Placeholder für Wetterdaten, falls vorhanden
 
     setTimeout(updateISS, 5000); // Aktualisierung alle 5 Sekunden
   } catch (error) {
