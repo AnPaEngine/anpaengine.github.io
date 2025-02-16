@@ -127,7 +127,7 @@ function updateISS() {
         if (infoPanel) {
           infoPanel.innerHTML = `
             🛰️ <strong>ISS 3D Tracking</strong><br>
-            🌎 Breitengrad: ${lat.toFixed(2)}°
+            🌎 Breitengrad: ${lat.toFixed(2)}°<br>
             🌍 Längengrad: ${lon.toFixed(2)}°<br>
             🌏 Altitude: ${altitude} km<br>
             🚀 Geschwindigkeit: ${velocity} km/h<br>
