@@ -1,44 +1,33 @@
 /* Grundlayout */
 body {
-  font-family: 'Roboto', sans-serif; /* Schöne Schriftart */
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
   background: url('assets/universe_background.jpg') no-repeat center center fixed;
   background-size: cover;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
   height: 100vh;
+  overflow: hidden; /* Verhindert Scrollen, da wir alles fix positionieren */
   color: #333;
 }
 
+/* Container, falls du noch etwas brauchst */
 #container {
+  width: 100%;
   text-align: center;
   position: relative;
-  width: 100%;
 }
 
-/* Einstein */
-#einstein-container {
-  position: relative;
-  margin-top: 20px; /* Abstand von oben */
-}
-
-#einstein {
-  width: 400px; /* Größeres GIF */
-}
-
-/* Sprechblase */
+/* Sprechblase (ganz oben) */
 #speechBubble-container {
-  position: relative; /* Fixiert auf dem Bildschirm */
-  bottom: 160px; /* 20px oberhalb vom "Erzähl mir was"-Button */
-  margin: 0 auto;
-  width: 400px; /* Größere Sprechblase */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Wir gehen davon aus, dass Einstein ~400px hoch ist,
+     und wir 20px Abstand wollen. Also:
+     bottom: 135px (Einstein) + 400px (Einstein-Höhe) + 20px = 555px */
+  bottom: 555px;
+  width: 400px;
+  z-index: 4; /* Ganz oben */
 }
 
 #speechBubble {
@@ -46,20 +35,41 @@ body {
 }
 
 #speechText {
-  font-size: 1.2rem; /* Größere Schrift */
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  margin: 0;
+  padding: 5px;
+  font-size: 1.2rem;
   line-height: 1.5;
   color: #333;
-  padding: 5px;
   text-align: center;
-  position: absolute;
-  max-width: 90%; /* Sicherheitsabstand */
-  max-height: 90%;
-  overflow: hidden; /* Kein Überlauf */
   box-sizing: border-box;
+  overflow: hidden; /* Falls Text zu lang wird */
 }
 
-/* Button */
+/* Einstein-GIF (darunter) */
+#einstein-container {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Der Button liegt bei bottom: 55px + 60px (Button-Höhe) + 20px = 135px */
+  bottom: 135px;
+  z-index: 3;
+}
+
+#einstein {
+  width: 400px; /* Höhe ~400px angenommen */
+}
+
+/* "Erzähl mir was"-Button (noch weiter unten) */
 #tellMeButton {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Der Language-Selector liegt bei bottom: 10px + ~40px Höhe + 5px = 55px */
+  bottom: 55px;
+  z-index: 2;
+
   background-color: #f9d342;
   color: #222;
   border: none;
@@ -68,17 +78,20 @@ body {
   font-size: 1.3rem;
   cursor: pointer;
   transition: transform 0.2s;
-  margin-top: 5px;
 }
 
 #tellMeButton:hover {
   transform: scale(1.1);
 }
 
-/* Sprachumschalter */
+/* Sprachumschalter (ganz unten) */
 #languageSelector {
-  position: fixed; /* Fixiert auf dem Bildschirm */
-  bottom: 100px; /* 30px Abstand zum Erzähl mir was Button */
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px; /* 10px Abstand vom unteren Bildschirmrand */
+  z-index: 1;
+
   padding: 10px 15px;
   font-size: 1rem;
   border: 1px solid #ccc;
@@ -87,18 +100,20 @@ body {
   cursor: pointer;
 }
 
-/* Responsive Design */
+/* (Optional) Falls du auf sehr kleinen Screens 
+   etwas skalieren willst, hier ein Beispiel */
 @media (max-width: 600px) {
-  #einstein {
-    width: 200px; /* Verkleinere Einstein */
-  }
-
   #speechBubble-container {
-    bottom: 120px; /* Weniger Abstand auf kleineren Bildschirmen */
-    width: 250px; /* Kleinere Sprechblase */
+    width: 250px;
+    bottom: 380px; /* Angepasst, damit es evtl. noch reinpasst */
   }
 
-  #speechText {
-    font-size: 0.9rem; /* Kleinere Schrift */
+  #einstein {
+    width: 250px;
+  }
+
+  #tellMeButton {
+    font-size: 1rem;
+    padding: 10px 20px;
   }
 }
