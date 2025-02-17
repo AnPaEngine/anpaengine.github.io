@@ -43,7 +43,7 @@
           "Wenn der Mensch sich unentwegt geistig betätigt, wird er niemals müde."
         ],
         "buttonText": "Erzähl mir was",
-        "greeting": "Hallo! Ich bin Albert Einstein!"
+        "greeting": "Hallo, mein Name ist Albert Einstein. Ich bin ein theoretischer Physiker und habe an der Entwicklung der Relativitätstheorie gearbeitet. Es freut mich sehr, Sie kennenzulernen."
       },
       "en": {
         "quotes": [
@@ -88,7 +88,7 @@
           "A person who is constantly engaged in mental activity never gets tired."
         ],
         "buttonText": "Tell me something",
-        "greeting": "Hello! I am Albert Einstein!"
+        "greeting": "Hello, my name is Albert Einstein. I am a theoretical physicist and I have worked on the development of the theory of relativity. It is a pleasure to meet you."
       }
     }
   }
