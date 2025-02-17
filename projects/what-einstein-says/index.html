@@ -8,22 +8,23 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="bottomContainer">
-    <!-- 4. Sprechblase (oben) -->
+  <div id="mainContainer">
+    
+    <!-- GANZ OBEN:  Sprechblase -->
     <div id="speechBubble-container">
       <img id="speechBubble" src="assets/speech_bubble.png" alt="Sprechblase"/>
       <p id="speechText">Hallo! Ich bin Albert Einstein!</p>
     </div>
 
-    <!-- 3. Einstein-GIF (darunter) -->
+    <!-- DARUNTER (20px Abstand): Einstein-GIF -->
     <div id="einstein-container">
       <img id="einstein" src="assets/einstein.gif" alt="Einstein"/>
     </div>
 
-    <!-- Button -->
+    <!-- DARUNTER (20px Abstand): Button -->
     <button id="tellMeButton">Erzähl mir was</button>
 
-    <!-- Sprachumschalter -->
+    <!-- GANZ UNTEN (5px Abstand zum Button, + 10px Polster zum Rand): Sprachumschalter -->
     <select id="languageSelector">
       <option value="de">Deutsch</option>
       <option value="en">English</option>
