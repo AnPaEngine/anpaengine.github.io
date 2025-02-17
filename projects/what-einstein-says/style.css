@@ -10,6 +10,25 @@ body {
   overflow: hidden; /* Kein Scrollen */
 }
 
+.exit-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5); /* Dunkler halbtransparenter Hintergrund */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.exit-button:hover {
+  background-color: rgba(0, 0, 0, 0.7); /* Dunklerer Hintergrund beim Hover */
+}
+
 /* Flex-Container, der alle Elemente von oben nach unten anordnet */
 #mainContainer {
   display: flex;
