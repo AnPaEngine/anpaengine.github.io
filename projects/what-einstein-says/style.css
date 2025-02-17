@@ -34,14 +34,17 @@ body {
 
 #speechText {
   position: absolute;
-  top: 5px;
-  left: 5px;
-  right: 5px;
-  bottom: 5px;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
   margin: 0;
   font-size: 1.2rem;
   line-height: 1.5;
   color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   box-sizing: border-box;
   overflow: hidden;
