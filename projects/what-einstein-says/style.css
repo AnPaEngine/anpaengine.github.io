@@ -13,16 +13,12 @@ body {
 /* Flex-Container, der alle Elemente von oben nach unten anordnet */
 #mainContainer {
   display: flex;
-  flex-direction: column;       /* Stapelt Kinder von oben nach unten */
-  justify-content: flex-start;  /* Start = oben */
-  align-items: center;          /* Zentrierung horizontal */
+  flex-direction: column;
+  justify-content: center;  /* Zentriert die Gruppe vertikal */
+  align-items: center;      /* Zentriert die Gruppe horizontal */
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  
-  /* Unten 10px "Polster", damit das letzte Element (Language-Selector) 
-     wirklich 10px vom Rand entfernt ist */
-  padding-bottom: 10px;
 }
 
 /* 1) Sprechblase (ganz oben) */
