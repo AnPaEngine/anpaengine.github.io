@@ -91,7 +91,7 @@ body {
 /* Responsive: kleiner auf Handy */
 @media (max-width: 600px) {
   #speechBubble-container {
-    width: 450px;
+    width: 420px;
   }
   #einstein {
     width: 350px;
