@@ -48,6 +48,7 @@ body {
   text-align: center;
   box-sizing: border-box;
   overflow: hidden;
+  transform: translateY(-10px); /* Verschiebt das Element 10px nach oben */
 }
 
 /* 2) Einstein-GIF: 20px Abstand nach oben (Sprechblase) */
