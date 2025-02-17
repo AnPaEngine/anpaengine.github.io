@@ -23,7 +23,7 @@ body {
 
 /* 1) Sprechblase (ganz oben) */
 #speechBubble-container {
-  width: 500px;
+  width: 550px;
   position: relative;
   margin-top: 20px; /* Damit sie nicht direkt am Seitenrand klebt */
 }
