@@ -5,77 +5,31 @@ body {
   font-family: 'Roboto', sans-serif;
   background: url('assets/universe_background.jpg') no-repeat center center fixed;
   background-size: cover;
+  width: 100%;
   height: 100vh;
-  width: 100%;
-  overflow: hidden; /* verhindert Scrollbalken, da wir fixed-Positionen nutzen */
+  overflow: hidden; /* Kein Scrollen */
 }
 
-/* 
-  Ein Container, der am unteren Bildschirmrand fixiert ist 
-  und die Kinder in umgekehrter Reihenfolge (von unten nach oben) anordnet.
-*/
-#bottomContainer {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-
-  /* Flex-Layout in Spalten-Richtung, aber reversed:
-     Der erste Kindeintrag im HTML landet unten. */
+/* Flex-Container, der alle Elemente von oben nach unten anordnet */
+#mainContainer {
   display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-
-  /* Wir wollen 10px Abstand vom unteren Rand: */
-  padding-bottom: 10px;
+  flex-direction: column;       /* Stapelt Kinder von oben nach unten */
+  justify-content: flex-start;  /* Start = oben */
+  align-items: center;          /* Zentrierung horizontal */
   width: 100%;
-  height: 100vh; /* Damit sich die Elemente von unten nach oben verteilen können */
+  height: 100%;
   box-sizing: border-box;
+  
+  /* Unten 10px "Polster", damit das letzte Element (Language-Selector) 
+     wirklich 10px vom Rand entfernt ist */
+  padding-bottom: 10px;
 }
 
-/* 1. Language-Selector – liegt als erstes im HTML, aber ganz unten im Layout */
-#languageSelector {
-  font-size: 1rem;
-  padding: 10px 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-  cursor: pointer;
-
-  /* kein margin-top, denn wir wollen 10px (vom Container) bis zum Bildschirmrand */
-}
-
-/* 2. Button – 5px über dem Language-Selector */
-#tellMeButton {
-  margin-top: 5px; /* In column-reverse: Abstand nach unten */
-  background-color: #f9d342;
-  color: #222;
-  border: none;
-  border-radius: 15px;
-  padding: 12px 25px;
-  font-size: 1.3rem;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-#tellMeButton:hover {
-  transform: scale(1.1);
-}
-
-/* 3. Einstein-GIF – 20px über dem Button */
-#einstein-container {
-  margin-top: 20px; /* Abstand zum Button */
-}
-
-#einstein {
-  width: 400px;
-}
-
-/* 4. Sprechblase – 20px über Einstein */
+/* 1) Sprechblase (ganz oben) */
 #speechBubble-container {
-  margin-top: 10px; /* Abstand zu Einstein */
   width: 400px;
   position: relative;
+  margin-top: 20px; /* Damit sie nicht direkt am Seitenrand klebt */
 }
 
 #speechBubble {
@@ -95,12 +49,49 @@ body {
   overflow: hidden;
 }
 
-/* (Optional) Kleiner auf schmalen Bildschirmen */
+/* 2) Einstein-GIF: 20px Abstand nach oben (Sprechblase) */
+#einstein-container {
+  margin-top: 20px;
+}
+
+#einstein {
+  width: 400px;
+}
+
+/* 3) Button: 20px Abstand nach oben (Einstein) */
+#tellMeButton {
+  margin-top: 20px;
+  background-color: #f9d342;
+  color: #222;
+  border: none;
+  border-radius: 15px;
+  padding: 12px 25px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#tellMeButton:hover {
+  transform: scale(1.1);
+}
+
+/* 4) Language-Selector: 5px Abstand nach oben (Button) */
+#languageSelector {
+  margin-top: 5px;
+  font-size: 1rem;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+/* Responsive: kleiner auf Handy */
 @media (max-width: 600px) {
-  #einstein {
-    width: 200px;
-  }
   #speechBubble-container {
+    width: 250px;
+  }
+  #einstein {
     width: 250px;
   }
   #speechText {
