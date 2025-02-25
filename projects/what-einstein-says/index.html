@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Einstein Says</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <button id="exit-button" class="exit-button">🔙 Exit</button>
+  <div id="mainContainer">
+    
+    <!-- GANZ OBEN:  Sprechblase -->
+    <div id="speechBubble-container">
+      <img id="speechBubble" src="assets/speech_bubble.png" alt="Sprechblase"/>
+      <p id="speechText">Hallo! Ich bin Albert Einstein!</p>
+    </div>
+
+    <!-- DARUNTER (20px Abstand): Einstein-GIF -->
+    <div id="einstein-container">
+      <img id="einstein" src="assets/einstein.gif" alt="Einstein"/>
+    </div>
+
+    <!-- DARUNTER (20px Abstand): Button -->
+    <button id="tellMeButton">Erzähl mir was</button>
+
+    <!-- GANZ UNTEN (5px Abstand zum Button, + 10px Polster zum Rand): Sprachumschalter -->
+    <select id="languageSelector">
+      <option value="de">Deutsch</option>
+      <option value="en">English</option>
+    </select>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+  document.getElementById('exit-button').addEventListener('click', function() {
+    window.location.href = '../../index.html'; 
+  });
+</script>
+</body>
+</html>
