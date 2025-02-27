@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <meta name="description"
+    content="An impressive and flawless site template that includes various UI elements and countless features, attractive ready-made blocks and rich pages, basically everything you need to create a unique and professional website.">
+  <meta name="keywords"
+    content="Tailwind CSS, business, corporate, creative, gulp, marketing, minimal, modern, multipurpose, one page, responsive, saas, sass, seo, startup, html5 template, site template">
+  <meta name="author" content="elemis">
+  <title>AnPa Engine - Portfolio</title>
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Manrope:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="shortcut icon" href="../assets/images/main/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" type="text/css" href="../assets/fonts/unicons/unicons.css">
+  <link rel="stylesheet" href="../assets/css/plugins.css">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../assets/css/colors/aqua.css">
+  <link rel="preload" href="../assets/css/fonts/thicccboi.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="stylesheet" href="../assets/css/icon.css">
+  <style>
+    .navbar.navbar-light.fixed .btn:not(.btn-expand):not(.btn-gradient) {
+      background: #54a8c7 !important;
+      border-color: #54a8c7 !important;
+      color: #ffffff !important;
+    }
+
+    .accordion-wrapper .card-header button {
+      color: #54a8c7;
+    }
+
+    @media (min-width: 992px) {
+      .navbar-expand-lg.navbar-light .dropdown:not(.dropdown-submenu)>.dropdown-toggle:after {
+        color: #54a8c7 !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="font-THICCCBOI text-[.85rem]">
+  <div class="grow shrink-0">
+    <header class="relative wrapper  bg-[#262b32] opacity-100 ">
+
+      
+
+
+
+
+
+
+
+      <nav class="navbar navbar-expand-lg center-nav navbar-dark bg-[#262b32] opacity-100">
+        <div class="container xl:flex-row lg:flex-row !flex-nowrap items-center">
+          <div class="navbar-brand w-full">
+            <a href="../index.html">
+              <img src="../assets/images/main/main_logo.svg" alt="image" style="width: 150px; height: 90px; margin-top: 10px; margin-bottom: 10px; margin-left: -25px;">
+            </a>
+          </div>
+          <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
+            <div class="offcanvas-header xl:hidden lg:hidden">
+              <h3 class="text-white xl:text-[1.5rem] text-[calc(1.275rem_+_0.3vw)]  !mb-0">AnPaEngine</h3>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body xl:!ml-auto lg:!ml-auto flex flex-col !h-full">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link text-white" href="../index.html">Start</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="../pages/about.html">Über mich</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="../pages/techstack.html">Mein Tech-Stack</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="../pages/certsandbadges.html">Zertifikate & Badges</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="../pages/projects.html">Projekte</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="navbar-other w-full !flex !ml-auto">
+            <ul class="navbar-nav !flex-row !items-center !ml-auto">
+              <li class="nav-item">
+                <a href="../pages/contact.html" class="btn btn-sm btn-primary text-[#262b32] !bg-[#45c4a0] border-[#45c4a0] hover:text-[#262b32] hover:bg-[#45c4a0] hover:border-[#45c4a0] focus:shadow-[rgba(92,140,229,1)] active:text-[#262b32] active:bg-[#45c4a0] active:border-[#45c4a0] disabled:text-[#262b32] disabled:bg-[#45c4a0] disabled:border-[#45c4a0] !rounded-[50rem]">Kontakt</a>
+              </li>
+              <li class="nav-item xl:hidden lg:hidden">
+                <button class="hamburger offcanvas-nav-btn"><span></span></button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- /.navbar -->
+      <div class="offcanvas offcanvas-top !bg-[#ffffff] " id="offcanvas-search" data-bs-scroll="true">
+        <div class="container flex !flex-row py-6">
+          <form
+            class=" search-form relative before:content-['\eca5'] before:block before:absolute before:-translate-y-2/4 before:text-[1rem] before:text-[#343f52] before:z-[1] before:right-auto before:top-2/4 before:font-Unicons w-full before:left-0 focus:!outline-offset-0 focus:outline-0">
+            <input id="search-form1" type="text"
+              class="form-control text-[0.8rem] !shadow-none pl-[1.75rem] !pr-[.75rem] border-0 bg-inherit m-0 block w-full font-medium leading-[1.7] text-[#60697b] px-4 py-[0.6rem] rounded-[0.4rem] focus:!outline-offset-0 focus:outline-0"
+              placeholder="Type keyword and hit enter">
+          </form>
+          <button type="button"
+            class="btn-close leading-none text-[#343f52] transition-all duration-[0.2s] ease-in-out p-0 border-0 motion-reduce:transition-none before:text-[1.05rem] before:content-['\ed3b'] before:w-[1.8rem] before:h-[1.8rem] before:leading-[1.8rem] before:shadow-none before:transition-[background] before:duration-[0.2s] before:ease-in-out before:flex before:justify-center before:items-center before:m-0 before:p-0 before:rounded-[100%] hover:no-underline bg-inherit before:bg-[rgba(0,0,0,.08)] before:font-Unicons hover:before:bg-[rgba(0,0,0,.11)] focus:outline-0"
+            data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <!-- /.container -->
+      </div>
+      <!-- /.offcanvas -->
+    </header>
+
+
+
+
+
+
+
+
+
+    <!-- /.navbar -->
+    <div class="offcanvas offcanvas-top !bg-[#ffffff] " id="offcanvas-search" data-bs-scroll="true">
+        <div class="container flex !flex-row py-6">
+          <form
+            class=" search-form relative before:content-['\eca5'] before:block before:absolute before:-translate-y-2/4 before:text-[1rem] before:text-[#343f52] before:z-[1] before:right-auto before:top-2/4 before:font-Unicons w-full before:left-0 focus:!outline-offset-0 focus:outline-0">
+            <input id="search-form1" type="text"
+              class="form-control text-[0.8rem] !shadow-none pl-[1.75rem] !pr-[.75rem] border-0 bg-inherit m-0 block w-full font-medium leading-[1.7] text-[#60697b] px-4 py-[0.6rem] rounded-[0.4rem] focus:!outline-offset-0 focus:outline-0"
+              placeholder="Type keyword and hit enter">
+          </form>
+          <button type="button"
+            class="btn-close leading-none text-[#343f52] transition-all duration-[0.2s] ease-in-out p-0 border-0 motion-reduce:transition-none before:text-[1.05rem] before:content-['\ed3b'] before:w-[1.8rem] before:h-[1.8rem] before:leading-[1.8rem] before:shadow-none before:transition-[background] before:duration-[0.2s] before:ease-in-out before:flex before:justify-center before:items-center before:m-0 before:p-0 before:rounded-[100%] hover:no-underline bg-inherit before:bg-[rgba(0,0,0,.08)] before:font-Unicons hover:before:bg-[rgba(0,0,0,.11)] focus:outline-0"
+            data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <!-- /.container -->
+      </div>
+      <!-- /.offcanvas -->
+    </header>
+    <!-- /header -->
+    <section
+      class="wrapper  bg-[#262b32] opacity-100  angled lower-start relative border-0
+     before:content-[''] before:block before:absolute before:z-0 before:border-y-transparent before:border-[#262b32] before:border-0 before:border-solid before:right-0 after:bottom-[-4rem] after:content-[''] after:block after:absolute after:z-0 after:border-l-[100vw] after:border-r-transparent after:border-b-[4rem] after:border-y-transparent after:border-[#262b32] after:border-0 after:border-solid after:right-0">
+      <div class="container pt-7 xl:pt-12 lg:pt-12 md:pt-12 pb-8">
+        <div class="flex flex-wrap mx-0 mt-[-50px] items-center">
+          <div class="lg:w-6/12 xl:w-6/12 w-full flex-[0_0_auto] max-w-full px-0 mt-[50px]" data-cues="slideInDown"
+            data-group="page-title" data-delay="600">
+            <h1 class="text-[calc(1.375rem_+_1.5vw)] font-bold leading-[1.15] xl:text-[2.5rem] text-white mb-4">Genutzt habe ich schon<br>
+                <span class="typer !text-[#45c4a0]  whitespace-nowrap" data-delay="100"
+                  data-words="Python,React,Laravel,PHP,JavaScript,Django,Java,HTML,CSS,TailwindCSS,Bootstrap"></span><span
+                  class="cursor text-[#45c4a0] " data-owner="typer"></span></h1>
+              <p class="lead !text-[1.2rem] !leading-[1.5] text-white mb-7 md:!pr-32 xl:pr-0 lg:pr-0 xxl:!pr-20">Ich habe bereits in verschiedene Programmiersprachen, Frameworks und Tools reingeschnuppert und einige davon schon häufiger genutzt.  
+                Profi bin ich noch nicht, aber ich lerne ständig dazu und erweitere mein Tech-Stack Schritt für Schritt.  
+                Mit jeder neuen Herausforderung wächst mein Wissen und die Liste der Technologien, mit denen ich arbeite.</p>
+            </div>
+          <!-- /column -->
+          <div
+            class="lg:w-5/12 xl:w-5/12 w-full flex-[0_0_auto] max-w-full px-0 mt-[50px] lg:!ml-[8.33333333%] xl:!ml-[8.33333333%] mb-[-8rem] relative z-[3]"
+            data-cues="slideInDown">
+            <div class="!relative">
+              <figure class="!rounded-[.4rem] !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)]"><img
+                  class="!rounded-[.4rem]" src="../assets/images/photos/hero_techstack.png"
+                  srcset="assets/img/photos/hero_techstack@2x.png 2x" alt="image"></figure>
+            </div>
+            <!-- /div -->
+          </div>
+          <!-- /column -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
+      <div class="mt-[80px]"></div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <section class="wrapper !bg-[#ffffff] ">
+        <div class="container pt-20 xl:pt-28 lg:pt-28 md:pt-28 pb-16 xl:pb-20 lg:pb-20 md:pb-20">
+            <div class="mt-[80px]"></div>
+          <div class="flex flex-wrap mx-[-15px] xl:mx-[-20px] lg:mx-[-20px] mb-10 mt-[-25px]">
+            <div class="xl:w-6/12 lg:w-6/12 w-full flex-[0_0_auto] xl:px-[20px] lg:px-[20px] px-[15px] max-w-full mt-[25px]">
+              <h3 class="text-[calc(1.285rem_+_0.42vw)] font-bold xl:text-[1.6rem] !leading-[1.3] !mb-0">Ich bin noch kein Profi, aber lernbereit und neugierig. Mein Tech-Stack wächst und ich werde immer besser!</h3>
+            </div>
+            <!-- /column -->
+            <div class="xl:w-6/12 lg:w-6/12 w-full flex-[0_0_auto] xl:px-[20px] lg:px-[20px] px-[15px] max-w-full mt-[25px]">
+              <p class="lead text-[0.9rem] font-medium leading-[1.65] !mb-0">Ich bin immer auf der Suche nach neuen Technologien, um mein Wissen zu erweitern und mich ständig zu verbessern. Mein Tech-Stack ist noch in der Entwicklung, aber ich habe bereits mit verschiedenen Programmiersprachen, Frameworks und Tools gearbeitet. Einige davon habe ich schon intensiv genutzt, andere nur reingeschnuppert. Jede neue Herausforderung bringt neue Lernmöglichkeiten und hilft mir, immer besser zu werden. Hier stelle ich dir vor, welche Technologien ich genutzt habe und weiter vertiefe.</p>
+            </div>
+            <!-- /column -->
+          </div>
+          <!-- /.row -->
+          <div class="flex flex-wrap mx-[-15px] row-cols-2 row-cols-md-3 row-cols-xl-5 xl:mx-[-15px] lg:mx-[-15px] mt-[-30px] justify-center">
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+              <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                  <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/python_logo.svg" alt="image"></figure>
+                </div>
+                <!--/.card-body -->
+              </div>
+              <!--/.card -->
+            </div>
+            <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+              <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                  <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/react_logo.svg" alt="image"></figure>
+                </div>
+                <!--/.card-body -->
+              </div>
+              <!--/.card -->
+            </div>
+            <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+              <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                  <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/laravel_logo.svg" alt="image"></figure>
+                </div>
+                <!--/.card-body -->
+              </div>
+              <!--/.card -->
+            </div>
+            <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+              <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                  <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/php_logo.svg" alt="image"></figure>
+                </div>
+                <!--/.card-body -->
+              </div>
+              <!--/.card -->
+            </div>
+            <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+                <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                  <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                    <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/javascript_logo.svg" alt="image"></figure>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+                <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                  <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                    <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/github_logo.svg" alt="image"></figure>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+                <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                  <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                    <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/scrum_logo.svg" alt="image"></figure>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+                <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                  <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                    <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/django_logo.svg" alt="image"></figure>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+                <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                  <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                    <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/java_logo.svg" alt="image"></figure>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+                <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                  <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                    <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/html_logo.svg" alt="image"></figure>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+                <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                  <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                    <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/css_logo.svg" alt="image"></figure>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+                <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                  <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                    <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/canva_logo.svg" alt="image"></figure>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+                <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                  <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                    <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/pipedrive_logo.svg" alt="image"></figure>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+                <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                  <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                    <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/trello_logo.svg" alt="image"></figure>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+                <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                  <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                    <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/vscode_logo.svg" alt="image"></figure>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+                <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                  <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                    <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/wordpress_logo.svg" alt="image"></figure>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+                <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                  <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                    <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/tailwindcss_logo.svg" alt="image"></figure>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+                <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                  <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                    <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/bootstrap_logo.svg" alt="image"></figure>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+                <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                  <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                    <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/nginx_logo.svg" alt="image"></figure>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+                <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                  <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                    <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/filezilla_logo.svg" alt="image"></figure>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+                <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                  <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                    <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/phpstorm_logo.svg" alt="image"></figure>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+                <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                  <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                    <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/chatgpt_logo.svg" alt="image"></figure>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+                <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                  <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                    <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/linkedin_logo.svg" alt="image"></figure>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+            <div class="xl:w-1/5 lg:w-4/12 md:w-4/12 w-6/12 flex-[0_0_auto] px-[15px] max-w-full mt-[30px]">
+                <div class="card !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)] !h-full items-center">
+                  <div class="card-body items-center flex !px-3 py-6 xl:!p-8 lg:!p-8 md:!p-8">
+                    <figure class="md:!px-3 xl:!px-0 xxl:!px-3  !mb-0"><img src="../assets/images/tech/msteams_logo.svg" alt="image"></figure>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+            <!--/column -->
+          </div>
+          <!--/.row -->
+        </div>
+</section>
+<!-- /section -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="wrapper !bg-[#ffffff] ">
+    <div class="container pt-20 xl:pt-28 lg:pt-28 md:pt-28 pb-16 xl:pb-20 lg:pb-20 md:pb-20">
+      <div class="flex flex-wrap mx-[-15px] xl:mx-[-35px] lg:mx-[-20px] mt-[-30px] mb-10">
+        <div class="xl:w-6/12 lg:w-6/12 w-full flex-[0_0_auto] xl:px-[35px] lg:px-[20px] px-[15px] max-w-full mt-[30px] xl:!order-2 lg:!order-2">
+          <ul class="progress-list m-0 p-0 list-none">
+            <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>Python</strong></p>
+                <div class="progressbar line relative soft-violet" data-value="40"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>React</strong></p>
+                <div class="progressbar line relative soft-blue" data-value="50"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>Laravel</strong></p>
+                <div class="progressbar line relative soft-leaf" data-value="60"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>PHP</strong></p>
+                <div class="progressbar line relative soft-pink" data-value="55"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>JavaScript</strong></p>
+                <div class="progressbar line relative soft-violet" data-value="50"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>GitHub</strong></p>
+                <div class="progressbar line relative soft-blue" data-value="80"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>Scrum</strong></p>
+                <div class="progressbar line relative soft-leaf" data-value="85"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>Django</strong></p>
+                <div class="progressbar line relative soft-pink" data-value="20"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>Java</strong></p>
+                <div class="progressbar line relative soft-violet" data-value="40"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>HTML</strong></p>
+                <div class="progressbar line relative soft-blue" data-value="80"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>CSS</strong></p>
+                <div class="progressbar line relative soft-leaf" data-value="80"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>Canva</strong></p>
+                <div class="progressbar line relative soft-pink" data-value="90"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>PipeDrive</strong></p>
+                <div class="progressbar line relative soft-violet" data-value="70"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>Trello</strong></p>
+                <div class="progressbar line relative soft-blue" data-value="30"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>Visual Studio Code</strong></p>
+                <div class="progressbar line relative soft-leaf" data-value="85"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>WordPress</strong></p>
+                <div class="progressbar line relative soft-pink" data-value="80"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>TailwindCSS</strong></p>
+                <div class="progressbar line relative soft-violet" data-value="20"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>Bootstrap</strong></p>
+                <div class="progressbar line relative soft-blue" data-value="20"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>NGINX</strong></p>
+                <div class="progressbar line relative soft-leaf" data-value="60"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>FileZilla</strong></p>
+                <div class="progressbar line relative soft-pink" data-value="70"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>PHPStorm</strong></p>
+                <div class="progressbar line relative soft-violet" data-value="75"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>ChatGPT</strong></p>
+                <div class="progressbar line relative soft-blue" data-value="95"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>LinkedIn</strong></p>
+                <div class="progressbar line relative soft-leaf" data-value="90"></div>
+              </li>
+              <li class="mb-[1rem]">
+                <p class="!mb-[.25rem]"><strong>Microsoft Teams</strong></p>
+                <div class="progressbar line relative soft-pink" data-value="95"></div>
+              </li>
+          </ul>
+          <!-- /.progress-list -->
+        </div>
+        <!--/column -->
+        <div class="xl:w-6/12 lg:w-6/12 w-full flex-[0_0_auto] xl:px-[35px] lg:px-[20px] px-[15px] max-w-full mt-[30px]">
+          <h2 class="text-[calc(1.305rem_+_0.66vw)] font-bold xl:text-[1.6rem] leading-[1.3] !mb-3">Wie ist mein aktueller Stand?</h2>
+          <p class="lead text-[1.1rem] !leading-[1.65] font-medium mb-5">Die im Chart dargestellten Levels spiegeln meine aktuellen Kenntnisse in den jeweiligen Programmiersprachen, Frameworks und Tools wider. Diese Einschätzung ist subjektiv, gibt jedoch eine erste Orientierung über meine Fähigkeiten.<br><br>
+            Im Laufe der Zeit habe ich Erfahrungen mit einer breiten Palette von Programmiersprachen, Frameworks und Tools gesammelt. In Programmiersprachen wie Python und Java habe ich grundlegende Kenntnisse, die sich derzeit auf etwa 40% meiner Fähigkeiten belaufen. Bei React und Laravel fühle ich mich bereits sicherer und habe meine Kenntnisse auf einem mittleren Niveau von 50-60% ausgebaut. PHP ist eine weitere wichtige Sprache in meinem Tech-Stack, die ich mit etwa 55% beherrsche. Auch mit JavaScript arbeite ich mit einer soliden Kompetenz von 50%.<br><br>
+            Besondere Stärken habe ich in Tools wie GitHub, Visual Studio Code und PHPStorm. GitHub nutze ich auf einem fortgeschrittenen Niveau mit 80%, was mir bei der Versionskontrolle und der Zusammenarbeit in Projekten sehr hilft. Visual Studio Code und PHPStorm gehören zu den Programmen, die ich regelmäßig einsetze, mit Kenntnissen von 85% bzw. 75%. Außerdem habe ich mit Content-Management-Systemen wie WordPress gearbeitet, wo ich auf einem Level von 80% liege und verschiedene Webseiten und Projekte damit umgesetzt habe. Auch im Bereich der Webgestaltung fühle ich mich mit HTML und CSS sehr sicher, mit einem Wissensstand von 80%.<br><br>
+            Mein Wissen erstreckt sich jedoch auch auf wichtige Projektmanagement- und Kommunikationstools. So habe ich Erfahrungen mit Trello und PipeDrive, wobei ich mich in Trello mit etwa 30% noch in der Lernphase befinde, während ich mit PipeDrive auf einem soliden Level von 70% arbeite. Tools wie Canva, die ich zum Erstellen von Designs nutze, beherrsche ich auf einem sehr guten Niveau von 90%. Microsoft Teams sowie LinkedIn gehören ebenfalls zu den Tools, mit denen ich vertraut bin und auf einem hohen Niveau von 95% bzw. 90% beherrsche. Außerdem habe ich grundlegende Erfahrungen mit Scrum, das mir hilft, Projekte effizient und strukturiert zu managen, mit einem Wissen von etwa 85%.<br><br>
+            Besondere Erwähnung verdient auch meine Arbeit mit NGINX und TailwindCSS, die aktuell mit etwa 60% bzw. 20% vertreten sind und in denen ich noch großes Potenzial zur Weiterentwicklung sehe. Was meine Kenntnisse in ChatGPT betrifft, so habe ich hier eine hohe Expertise aufgebaut, die bei 95% liegt und mir sowohl bei der schnellen Informationsbeschaffung als auch in der Unterstützung bei Projekten hilft.<br><br>
+            Ich bin stets motiviert, meine Fähigkeiten zu erweitern und zu vertiefen, insbesondere in den Bereichen, in denen ich noch weniger erfahren bin. Der kontinuierliche Lernprozess und die Verbesserung meiner Fähigkeiten sind mir besonders wichtig, um meinen Tech-Stack stetig zu erweitern und mich in meiner beruflichen Entwicklung weiterzuentwickeln.</p>
+        </div>
+        <!--/column -->
+      </div>
+      <!--/.row -->
+      <div class="flex flex-wrap mx-[-15px] xl:mx-[-35px] lg:mx-[-20px] mt-[-30px] !text-center">
+        <!--/column -->
+        <div class="mt-[80px]"></div>
+      </div>
+      <div class="mt-[80px]"></div>
+      <!--/.row -->
+    </div>
+</section>
+<!-- /section -->
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="mt-[-80px]"></div> 
+<!-- /.content-wrapper -->
+<footer class="bg-[#21262c] opacity-100 text-[#cacaca]">
+    <div class="container pt-20 xl:pt-20 lg:pt-20 md:pt-20 pb-16 xl:pb-20 lg:pb-20 md:pb-10">
+      <div class="flex flex-wrap mx-[-15px] mt-[-30px] xl:mt-0 lg:mt-0">
+        <div class="md:w-4/12 xl:w-3/12 lg:w-3/12 w-full flex-[0_0_auto] px-[15px] max-w-full xl:mt-0 lg:mt-0 mt-[30px]">
+          <div class="widget text-[#cacaca]">
+            <img src="../assets/images/main/main_logo.svg" alt="image" style="width: 150px; height: 90px; margin-bottom: 34px; margin-left: -21px;">
+            <p class="!mb-4">© 2025 AnPaEngine. <br class="hidden xl:block lg:block text-[#cacaca]">Alle Rechte vorbehalten.</p>
+            <nav class="nav social social-white">
+              <!-- <a class="text-[#cacaca] text-[1rem] transition-all duration-[0.2s] ease-in-out translate-y-0 motion-reduce:transition-none hover:translate-y-[-0.15rem] m-[0_.7rem_0_0]" href="https://github.com/AnPaEngine/">
+                <i class="uil uil-github before:content-['\eb2e'] !text-white text-[1rem]"></i>
+              </a> -->
+              <a class="text-[#cacaca] text-[1rem] transition-all duration-[0.2s] ease-in-out translate-y-0 motion-reduce:transition-none hover:translate-y-[-0.15rem] m-[0_.7rem_0_0]" href="https://www.linkedin.com/in/antoniopacino/">
+                <i class="uil uil-linkedin before:content-['\eb31'] !text-white text-[1rem]"></i>
+              </a>
+            </nav>
+            <!-- /.social -->
+          </div>
+          <!-- /.widget -->
+        </div>
+        <!-- /column -->
+        <div class="md:w-4/12 xl:w-3/12 lg:w-3/12 w-full flex-[0_0_auto] px-[15px] max-w-full xl:mt-0 lg:mt-0 mt-[30px]">
+          <div class="widget text-[#cacaca]">
+            <h4 class="widget-title text-white !mb-3 !text-[1rem] !leading-[1.45]">Mehr erfahren</h4>
+            <ul class="pl-0 list-none !mb-0">
+                <li><a class="text-[#cacaca] hover:text-[#45c4a0]" href="../index.html">Start</a></li>
+                <li class="mt-[0.35rem]"><a class="text-[#cacaca] hover:text-[#45c4a0]" href="../pages/about.html">Über mich</a></li>
+                <li class="mt-[0.35rem]"><a class="text-[#cacaca] hover:text-[#45c4a0]" href="../pages/techstack.html">Tech-Stack</a></li>
+                <li class="mt-[0.35rem]"><a class="text-[#cacaca] hover:text-[#45c4a0]" href="../pages/certsandbadges.html">Zertifikate & Badges</a></li>
+                <li class="mt-[0.35rem]"><a class="text-[#cacaca] hover:text-[#45c4a0]" href="../pages/projects.html">Projekte</a></li>
+                <li class="mt-[0.35rem]"><a class="text-[#cacaca] hover:text-[#45c4a0]" href="../pages/contact.html">Kontakt</a></li>
+              </ul>
+          </div>
+          <!-- /.widget -->
+        </div>
+        <!-- /column -->
+        <div class="md:w-4/12 xl:w-3/12 lg:w-3/12 w-full flex-[0_0_auto] px-[15px] max-w-full xl:mt-0 lg:mt-0 mt-[30px]">
+          <!-- Badge -->
+          <div class="flex justify-center items-center my-4">
+            <img src="../assets/images/badges/badge1.svg" alt="Badge" class="w-[80px] h-auto">
+        </div>
+          <!-- /.widget -->
+        </div>
+      </div>
+      <!--/.row -->
+    </div>
+    <!-- /.container -->  
+  </footer>
+  <!-- progress wrapper -->
+  <div
+    class="progress-wrap fixed w-[2.3rem] h-[2.3rem] cursor-pointer block shadow-[inset_0_0_0_0.1rem_rgba(128,130,134,0.25)] z-[1010] opacity-0 invisible translate-y-3 transition-all duration-[0.2s] ease-[linear,margin-right] delay-[0s] rounded-[100%] right-6 bottom-6 motion-reduce:transition-none after:absolute after:content-['\e951'] after:text-center after:leading-[2.3rem] after:text-[1.2rem] after:text-[#54a8c7] after:h-[2.3rem] after:w-[2.3rem] after:cursor-pointer after:block after:z-[1] after:transition-all after:duration-[0.2s] after:ease-linear after:left-0 after:top-0 motion-reduce:after:transition-none after:font-Unicons">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+      <path
+        class="fill-none stroke-[#54a8c7] stroke-[4] box-border transition-all duration-[0.2s] ease-linear motion-reduce:transition-none"
+        d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+    </svg>
+  </div>
+  <script src="../assets/js/plugins.js"></script>
+  <script src="../assets/js/theme.js"></script>
+</body>
+</html>

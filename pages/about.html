@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <meta name="description"
+    content="An impressive and flawless site template that includes various UI elements and countless features, attractive ready-made blocks and rich pages, basically everything you need to create a unique and professional website.">
+  <meta name="keywords"
+    content="Tailwind CSS, business, corporate, creative, gulp, marketing, minimal, modern, multipurpose, one page, responsive, saas, sass, seo, startup, html5 template, site template">
+  <meta name="author" content="elemis">
+  <title>AnPa Engine - Portfolio</title>
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Manrope:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="shortcut icon" href="../assets/images/main/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" type="text/css" href="../assets/fonts/unicons/unicons.css">
+  <link rel="stylesheet" href="../assets/css/plugins.css">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../assets/css/colors/aqua.css">
+  <link rel="preload" href="../assets/css/fonts/thicccboi.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="stylesheet" href="../assets/css/icon.css">
+  <style>
+    .navbar.navbar-light.fixed .btn:not(.btn-expand):not(.btn-gradient) {
+      background: #54a8c7 !important;
+      border-color: #54a8c7 !important;
+      color: #ffffff !important;
+    }
+
+    .accordion-wrapper .card-header button {
+      color: #54a8c7;
+    }
+
+    @media (min-width: 992px) {
+      .navbar-expand-lg.navbar-light .dropdown:not(.dropdown-submenu)>.dropdown-toggle:after {
+        color: #54a8c7 !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="font-THICCCBOI text-[.85rem]">
+  <div class="grow shrink-0">
+    <header class="relative wrapper  bg-[#262b32] opacity-100 ">
+
+      
+
+
+
+
+
+
+
+      <nav class="navbar navbar-expand-lg center-nav navbar-dark bg-[#262b32] opacity-100">
+        <div class="container xl:flex-row lg:flex-row !flex-nowrap items-center">
+          <div class="navbar-brand w-full">
+            <a href="../index.html">
+              <img src="../assets/images/main/main_logo.svg" alt="image" style="width: 150px; height: 90px; margin-top: 10px; margin-bottom: 10px; margin-left: -25px;">
+            </a>
+          </div>
+          <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
+            <div class="offcanvas-header xl:hidden lg:hidden">
+              <h3 class="text-white xl:text-[1.5rem] text-[calc(1.275rem_+_0.3vw)]  !mb-0">AnPaEngine</h3>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body xl:!ml-auto lg:!ml-auto flex flex-col !h-full">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link text-white" href="../index.html">Start</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="../pages/about.html">Über mich</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="../pages/techstack.html">Mein Tech-Stack</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="../pages/certsandbadges.html">Zertifikate & Badges</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="../pages/projects.html">Projekte</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="navbar-other w-full !flex !ml-auto">
+            <ul class="navbar-nav !flex-row !items-center !ml-auto">
+              <li class="nav-item">
+                <a href="../pages/contact.html" class="btn btn-sm btn-primary text-[#262b32] !bg-[#45c4a0] border-[#45c4a0] hover:text-[#262b32] hover:bg-[#45c4a0] hover:border-[#45c4a0] focus:shadow-[rgba(92,140,229,1)] active:text-[#262b32] active:bg-[#45c4a0] active:border-[#45c4a0] disabled:text-[#262b32] disabled:bg-[#45c4a0] disabled:border-[#45c4a0] !rounded-[50rem]">Kontakt</a>
+              </li>
+              <li class="nav-item xl:hidden lg:hidden">
+                <button class="hamburger offcanvas-nav-btn"><span></span></button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- /.navbar -->
+      <div class="offcanvas offcanvas-top !bg-[#ffffff] " id="offcanvas-search" data-bs-scroll="true">
+        <div class="container flex !flex-row py-6">
+          <form
+            class=" search-form relative before:content-['\eca5'] before:block before:absolute before:-translate-y-2/4 before:text-[1rem] before:text-[#343f52] before:z-[1] before:right-auto before:top-2/4 before:font-Unicons w-full before:left-0 focus:!outline-offset-0 focus:outline-0">
+            <input id="search-form1" type="text"
+              class="form-control text-[0.8rem] !shadow-none pl-[1.75rem] !pr-[.75rem] border-0 bg-inherit m-0 block w-full font-medium leading-[1.7] text-[#60697b] px-4 py-[0.6rem] rounded-[0.4rem] focus:!outline-offset-0 focus:outline-0"
+              placeholder="Type keyword and hit enter">
+          </form>
+          <button type="button"
+            class="btn-close leading-none text-[#343f52] transition-all duration-[0.2s] ease-in-out p-0 border-0 motion-reduce:transition-none before:text-[1.05rem] before:content-['\ed3b'] before:w-[1.8rem] before:h-[1.8rem] before:leading-[1.8rem] before:shadow-none before:transition-[background] before:duration-[0.2s] before:ease-in-out before:flex before:justify-center before:items-center before:m-0 before:p-0 before:rounded-[100%] hover:no-underline bg-inherit before:bg-[rgba(0,0,0,.08)] before:font-Unicons hover:before:bg-[rgba(0,0,0,.11)] focus:outline-0"
+            data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <!-- /.container -->
+      </div>
+      <!-- /.offcanvas -->
+    </header>
+
+
+
+
+
+
+
+
+
+    <!-- /.navbar -->
+    <div class="offcanvas offcanvas-top !bg-[#ffffff] " id="offcanvas-search" data-bs-scroll="true">
+        <div class="container flex !flex-row py-6">
+          <form
+            class=" search-form relative before:content-['\eca5'] before:block before:absolute before:-translate-y-2/4 before:text-[1rem] before:text-[#343f52] before:z-[1] before:right-auto before:top-2/4 before:font-Unicons w-full before:left-0 focus:!outline-offset-0 focus:outline-0">
+            <input id="search-form1" type="text"
+              class="form-control text-[0.8rem] !shadow-none pl-[1.75rem] !pr-[.75rem] border-0 bg-inherit m-0 block w-full font-medium leading-[1.7] text-[#60697b] px-4 py-[0.6rem] rounded-[0.4rem] focus:!outline-offset-0 focus:outline-0"
+              placeholder="Type keyword and hit enter">
+          </form>
+          <button type="button"
+            class="btn-close leading-none text-[#343f52] transition-all duration-[0.2s] ease-in-out p-0 border-0 motion-reduce:transition-none before:text-[1.05rem] before:content-['\ed3b'] before:w-[1.8rem] before:h-[1.8rem] before:leading-[1.8rem] before:shadow-none before:transition-[background] before:duration-[0.2s] before:ease-in-out before:flex before:justify-center before:items-center before:m-0 before:p-0 before:rounded-[100%] hover:no-underline bg-inherit before:bg-[rgba(0,0,0,.08)] before:font-Unicons hover:before:bg-[rgba(0,0,0,.11)] focus:outline-0"
+            data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <!-- /.container -->
+      </div>
+      <!-- /.offcanvas -->
+    </header>
+    <!-- /header -->
+    <section
+      class="wrapper  bg-[#262b32] opacity-100  angled lower-start relative border-0
+     before:content-[''] before:block before:absolute before:z-0 before:border-y-transparent before:border-[#262b32] before:border-0 before:border-solid before:right-0 after:bottom-[-4rem] after:content-[''] after:block after:absolute after:z-0 after:border-l-[100vw] after:border-r-transparent after:border-b-[4rem] after:border-y-transparent after:border-[#262b32] after:border-0 after:border-solid after:right-0">
+      <div class="container pt-7 xl:pt-12 lg:pt-12 md:pt-12 pb-8">
+        <div class="flex flex-wrap mx-0 mt-[-50px] items-center">
+          <div class="lg:w-6/12 xl:w-6/12 w-full flex-[0_0_auto] max-w-full px-0 mt-[50px]" data-cues="slideInDown"
+            data-group="page-title" data-delay="600">
+            <h1 class="text-[calc(1.375rem_+_1.5vw)] font-bold leading-[1.15] xl:text-[2.5rem] text-white mb-4">Was mich begeistert:<br>
+              <span class="typer !text-[#45c4a0]  whitespace-nowrap" data-delay="100"
+                data-words="Tiere,Gaming,Serien,Programmierung,Wissenschaft,Physik,Astronomie,Handwerk"></span><span
+                class="cursor text-[#45c4a0] " data-owner="typer"></span></h1>
+            <p class="lead !text-[1.2rem] !leading-[1.5] text-white mb-7 md:!pr-32 xl:pr-0 lg:pr-0 xxl:!pr-20">Hi, ich bin Antonio, eine Mischung aus Programmierer, Gamer und Tierliebhaber. Wenn ich nicht gerade versuche, das Universum zu verstehen, bastle ich an neuen Projekten, zocke ein gutes Game oder schaue die nächste Serie. Multitasking? Kann ich, solange genug Tee da ist!</p>
+          </div>
+          <!-- /column -->
+          <div
+            class="lg:w-5/12 xl:w-5/12 w-full flex-[0_0_auto] max-w-full px-0 mt-[50px] lg:!ml-[8.33333333%] xl:!ml-[8.33333333%] mb-[-8rem] relative z-[3]"
+            data-cues="slideInDown">
+            <div class="!relative">
+              <figure class="!rounded-[.4rem] !shadow-[0_0.25rem_1.75rem_rgba(30,34,40,0.07)]"><img
+                  class="!rounded-[.4rem]" src="../assets/images/photos/hero_me2.png"
+                  srcset="assets/img/photos/hero_me2@2x.png 2x" alt="image"></figure>
+            </div>
+            <!-- /div -->
+          </div>
+          <!-- /column -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
+    </section>
+    <div class="mt-[80px]"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="wrapper !bg-[#ffffff] ">
+        <div class="container pt-20 xl:pt-28 lg:pt-28 md:pt-28 pb-16 xl:pb-20 lg:pb-20 md:pb-20">
+          <div class="flex flex-wrap mx-[-15px] xl:mx-[-35px] lg:mx-[-20px] mt-[-50px]">
+            <div class="xl:w-6/12 lg:w-6/12 w-full flex-[0_0_auto] xl:px-[35px] lg:px-[20px] px-[15px] max-w-full mt-[50px] !mb-0">
+                <div class="mt-[80px]"></div>
+              <h3 class="text-[calc(1.285rem_+_0.42vw)] font-bold xl:text-[1.6rem] !leading-[1.3] mb-4">Meine berufliche Laufbahn</h3>
+              <p class="lead text-[0.9rem] font-medium !leading-[1.65] !mb-6">Mein beruflicher Werdegang ist alles andere als langweilig. Ich bin durch verschiedene Bereiche gehüpft, bis mich meine Leidenschaft für die IT schließlich dorthin geführt hat, wo ich heute bin. Der Weg war nicht immer gerade, aber genau das hat ihn spannend gemacht. Auf dieser Reise habe ich vieles gelernt, neue Fähigkeiten entdeckt und mich immer wieder herausgefordert. Jede Erfahrung hat mich nicht nur beruflich, sondern auch persönlich wachsen lassen. Hier erzähle ich, wie sich all diese Erlebnisse und Lektionen zu dem entwickelt haben, was mich heute ausmacht.</p>
+            </div>
+            <!--/column -->
+            <div class="xl:w-6/12 lg:w-6/12 w-full flex-[0_0_auto] xl:px-[35px] lg:px-[20px] px-[15px] max-w-full mt-[50px]">
+                <div class="mt-[80px]"></div>
+              <div id="accordion-3" class="accordion-wrapper">
+                <div class="card accordion-item mb-5">
+                  <div class="card-header !mb-0 !p-[.9rem_1.3rem_.85rem] !border-0 !bg-inherit" id="accordion-heading-3-1">
+                    <button class="hover:!text-[#3f78e0] collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-collapse-3-1" aria-expanded="false" aria-controls="accordion-collapse-3-1">Frühe Berufserfahrungen: Vielfältiger Einstieg ins Berufsleben</button>
+                  </div>
+                  <!-- /.card-header -->
+                  <div id="accordion-collapse-3-1" class="collapse" aria-labelledby="accordion-heading-3-1" data-bs-target="#accordion-3">
+                    <div class="card-body flex-[1_1_auto] p-[0_1.25rem_.25rem_2.35rem]">
+                      <p>Nach meinem Abschluss der Mittleren Reife war ich 16 Jahre alt und wollte direkt ins Berufsleben starten. Mein Weg führte mich zunächst durch sehr unterschiedliche Bereiche: Ich arbeitete als Maler, Zusteller, Servicekraft und Auslieferungsfahrer. Jede dieser Tätigkeiten brachte mir wichtige Fähigkeiten bei, vor allem im Umgang mit Menschen und in der praktischen Umsetzung von Aufgaben. Doch ich wollte mehr – mehr Technik, mehr Präzision.<br><br>
+                        Die nächste Station war als Kfz-Mechatroniker, was mir tiefgehendes technisches Wissen vermittelte. Ich lernte, komplexe Systeme zu verstehen und Lösungen für technische Herausforderungen zu finden. Im Fahrzeughandel konnte ich meine Kommunikationsfähigkeiten ausbauen und dabei meine Interessen für Technik und Automobile vertiefen. Weitere Erfahrungen sammelte ich am Stuttgarter Flughafen, als Optikeraushilfe, in der Lagerarbeit und als Platinenbestücker, bevor ich als Maschinen- und Anlagenbediener tätig war. Diese Stationen haben meine Problemlösungsfähigkeiten geschärft und mir einen breiten Blick auf unterschiedliche Arbeitswelten gegeben.</p>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.collapse -->
+                </div>
+                <!-- /.card -->
+                <div class="card accordion-item mb-5">
+                  <div class="card-header !mb-0 !p-[.9rem_1.3rem_.85rem] !border-0 !bg-inherit" id="accordion-heading-3-2">
+                    <button class="hover:!text-[#3f78e0] collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-collapse-3-2" aria-expanded="false" aria-controls="accordion-collapse-3-2">Technische Fähigkeiten und praktische Erfahrung</button>
+                  </div>
+                  <!-- /.card-header -->
+                  <div id="accordion-collapse-3-2" class="collapse" aria-labelledby="accordion-heading-3-2" data-bs-target="#accordion-3">
+                    <div class="card-body flex-[1_1_auto] p-[0_1.25rem_.25rem_2.35rem]">
+                      <p>Jeder Beruf, den ich im Laufe meiner Karriere ausgeübt habe, hat mir praktische Fähigkeiten vermittelt, die heute in meiner Arbeit als Fachinformatiker für Anwendungsentwicklung von unschätzbarem Wert sind. Ob im Handwerk, in der Logistik oder der Automobilbranche, überall gab es Herausforderungen, die technisches Verständnis und eine lösungsorientierte Denkweise erforderten. Diese Erfahrungen haben mich geprägt und zu einem vielseitigen Problemlöser gemacht.<br><br>
+                        Zusätzlich habe ich durch meine Führerscheinausbildung und den Flurförderausweis fundierte Kenntnisse in Fahrzeugtechnik und Logistikprozessen erlangt, was meine Fähigkeit, in verschiedenen technischen Bereichen zu agieren, weiter verstärkt hat. Diese praktische Erfahrung hat mir die Fähigkeit verliehen, technische Systeme zu verstehen, zu optimieren und zu reparieren. Fähigkeiten, die ich nun in meiner IT-Karriere nutze, um komplexe Anwendungen zu entwickeln.</p>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.collapse -->
+                </div>
+                <!-- /.card -->
+                <div class="card accordion-item mb-5">
+                  <div class="card-header !mb-0 !p-[.9rem_1.3rem_.85rem] !border-0 !bg-inherit" id="accordion-heading-3-3">
+                    <button class="hover:!text-[#3f78e0] collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-collapse-3-3" aria-expanded="false" aria-controls="accordion-collapse-3-3">Der Wendepunkt: Der Weg in die IT</button>
+                  </div>
+                  <!-- /.card-header -->
+                  <div id="accordion-collapse-3-3" class="collapse" aria-labelledby="accordion-heading-3-3" data-bs-target="#accordion-3">
+                    <div class="card-body flex-[1_1_auto] p-[0_1.25rem_.25rem_2.35rem]">
+                      <p>Obwohl ich in den ersten Jahren meiner beruflichen Laufbahn viele verschiedene Tätigkeiten ausübte, blieb mein Interesse an der IT stets präsent. Direkt nach der Schule hatte ich mich für eine Ausbildung zum Fachinformatiker beworben, war sogar bis in die Endrunde gekommen. Doch leider musste ich mich einem älteren Konkurrenten geschlagen geben, der das Abitur hatte. Stattdessen trat ich eine Ausbildung bei der Post an. Eine Entscheidung, die ich aufgrund des Drucks, unbedingt eine Ausbildung zu beginnen, traf. Diese Ausbildung beendete ich jedoch nicht, da ich wusste, dass mein wahres Ziel die IT war.<br><br>
+                        Mit 29 Jahren entschied ich mich dann, endlich den Schritt zu wagen und eine Umschulung zum Fachinformatiker für Anwendungsentwicklung zu machen. Dies war keine Entscheidung, die ich auf Grund äußerer Umstände traf, sondern aus Überzeugung und Leidenschaft für die IT. Ich wollte diesen Weg gehen, weil mich das Thema faszinierte und ich wusste, dass es für mich der richtige Beruf ist. Dieser Entschluss war von Herzen, und ich habe den Schritt aus eigenem Antrieb gewagt, um meine Berufung endlich zu leben.</p>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.collapse -->
+                </div>
+                <!-- /.card -->
+                <div class="card accordion-item mb-5">
+                  <div class="card-header !mb-0 !p-[.9rem_1.3rem_.85rem] !border-0 !bg-inherit" id="accordion-heading-3-4">
+                    <button class="hover:!text-[#3f78e0] collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-collapse-3-4" aria-expanded="false" aria-controls="accordion-collapse-3-4">Heute: Fachinformatiker für Anwendungsentwicklung</button>
+                  </div>
+                  <!-- /.card-header -->
+                  <div id="accordion-collapse-3-4" class="collapse" aria-labelledby="accordion-heading-3-4" data-bs-target="#accordion-3">
+                    <div class="card-body flex-[1_1_auto] p-[0_1.25rem_.25rem_2.35rem]">
+                      <p>Heute arbeite ich als Fachinformatiker für Anwendungsentwicklung, und meine Begeisterung für die IT ist größer denn je. Besonders fasziniert mich die Vielseitigkeit in der Anwendungsentwicklung. Mein großes Interesse gilt der künstlichen Intelligenz, 3D-Animationen, Webentwicklung und Webdesign sowie Desktopanwendungen und Mobile Apps. Ich bin stolz darauf, Anforderungen präzise umzusetzen und mit meinen Arbeiten zu überzeugen. Mein Ziel ist es nicht nur, gut zu sein, sondern besser zu werden, mich stetig weiterzubilden und zu den Besten in meinem Fach zu gehören. Zertifikate und Weiterbildungen sind für mich nicht nur ein Mittel zum Zweck, sondern ein Weg, meine Fähigkeiten zu erweitern und in vielen Bereichen breit aufgestellt zu sein. Vielfältigkeit ist mir sehr wichtig, sowohl im beruflichen als auch im persönlichen Bereich. Ich möchte mich immer wieder herausfordern und weiterentwickeln.</p>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.collapse -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <!-- /.accordion-wrapper -->
+            </div>
+            <!--/column -->
+          </div>
+          <!--/.row -->
+        </div>
+</section>
+<!-- /section -->
+
+
+
+
+
+
+
+
+
+
+<section class="wrapper bg-gradient-blend">
+    <div class="container pt-24 xl:pt-18 lg:pt-32 md:pt-32 pb-14 xl:pb-32 lg:pb-32 md:pb-32 xl:pb-28 lg:pb-40">
+      <div class="row">
+        <div class="lg:w-3/12 flex-[0_0_auto] px-[15px] max-w-full !mx-auto">
+        </div>
+        <!-- /column -->
+      </div>
+      <!-- /.row -->
+      <div class="row mt-10">
+        <div class="md:w-10/12 lg:w-9/12 xl:w-9/12 xxl:w-8/12 w-full flex-[0_0_auto] px-[15px] max-w-full !mx-auto !text-center">
+          <h3 class="text-[calc(1.365rem_+_1.38vw)] font-bold leading-[1.2] xl:text-[1.6rem] mb-5 xl:!px-14">Warum Softwareentwicklung für mich mehr als nur ein Job ist</h3>
+          <p class="lead text-[1.1rem]">In meinem Berufsalltag als Fachinformatiker für Anwendungsentwicklung kann ich meine technischen Fähigkeiten voll ausleben und meine Leidenschaft für kreative Problemlösungen nutzen. Der Weg dorthin war lang, aber er fühlte sich stets richtig an, denn die IT war immer mein wahrer Berufswunsch. Nachdem ich meine berufliche Orientierung endlich bewusst auf die IT ausgerichtet habe, fühle ich mich nun genau dort, wo ich hingehöre.<br><br>
+            In meiner täglichen Arbeit beschäftige ich mich mit der Entwicklung von Softwarelösungen, von der Analyse der Anforderungen bis hin zur Umsetzung in Code. Ich entwickle nicht nur Anwendungen, sondern stelle sicher, dass sie die Bedürfnisse der Nutzer exakt erfüllen. Besonders fasziniert mich die Vielseitigkeit in der Anwendungsentwicklung, vom Design und der Architektur von Web- und Desktopanwendungen bis hin zu den neuesten Entwicklungen im Bereich Mobile Apps und KI.<br><br>
+            Meine Schwerpunkte liegen in der Programmierung, Webentwicklung, Webdesign und der kontinuierlichen Verbesserung von Anwendungen. Doch nicht nur die Technik begeistert mich, sondern auch die kreative Seite der Softwareentwicklung, die Gestaltung einer nutzerfreundlichen Oberfläche und das Schaffen von Lösungen, die den Arbeitsalltag erleichtern.<br><br>
+            Meine Motivation? Einfach: Ich möchte nicht nur gut in dem sein, was ich tue, sondern ich strebe danach, zu den Besten in meinem Fach zu gehören. Ich sehe jede Herausforderung als Möglichkeit, zu wachsen und mich weiterzuentwickeln. Der Weg zur Perfektion ist ein kontinuierlicher Prozess und ich bin bereit, mich immer weiter zu verbessern und mein Wissen zu erweitern. Für mich geht es nicht nur um die Software, sondern um die Menschen, die sie nutzen, und darum, ihre Bedürfnisse auf die bestmögliche Weise zu erfüllen.</a></p>
+        </div>
+        <!-- /column -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container -->
+    <div class="overflow-hidden">
+      <div class="divider text-[#fefefe] mx-[-0.5rem]">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 92.26"><path fill="currentColor" d="M1206,21.2c-60-5-119-36.92-291-5C772,51.11,768,48.42,708,43.13c-60-5.68-108-29.92-168-30.22-60,.3-147,27.93-207,28.23-60-.3-122-25.94-182-36.91S30,5.93,0,16.2V92.26H1440v-87l-30,5.29C1348.94,22.29,1266,26.19,1206,21.2Z"/></svg>
+      </div>
+    </div>
+    <!-- /.overflow-hidden -->
+  </section>
+  <!-- /section -->
+  
+  
+
+
+
+
+  
+
+
+
+
+  <div class="mt-[80px]"></div>
+  <section class="wrapper">
+    <div class="container pt-20 xl:pt-10 lg:pt-28 md:pt-28 pb-16 xl:pb-20 lg:pb-20 md:pb-20">
+      <div class="flex flex-wrap mx-[-15px] xsm:mt-[-50px] mt-[-80px] md:mx-[-20px] xl:mx-[-35px] items-center mb-10 xl:!mb-14 lg:!mb-14 md:!mb-14">
+        <div class="xl:w-6/12 lg:w-6/12 w-full flex-[0_0_auto] xl:px-[35px] lg:px-[20px] md:px-[20px] px-[15px] max-w-full mt-[80px]">
+          <div class="flex flex-wrap mx-[-15px] xl:mx-[-12.5px] lg:mx-[-12.5px] md:mx-[-12.5px] mt-[-25px]">
+            <div class="xl:w-6/12 lg:w-6/12 md:w-6/12 w-full flex-[0_0_auto] xl:px-[12.5px] lg:px-[12.5px] md:px-[12.5px] px-[15px] max-w-full mt-[25px]">
+              <figure class="rounded-[0.4rem]"><img class="rounded-[0.4rem]" src="../../assets/images/photos/universe.png" srcset="../../assets/images/photos/universe@2x.png 2x" alt="image"></figure>
+            </div>
+            <!--/column -->
+            <div class="xl:w-6/12 lg:w-6/12 md:w-6/12 w-full flex-[0_0_auto] xl:px-[12.5px] lg:px-[12.5px] md:px-[12.5px] px-[15px] max-w-full !self-end mt-[25px]">
+              <figure class="rounded-[0.4rem]"><img class="rounded-[0.4rem]" src="../../assets/images/photos/pets.png" srcset="../../assets/images/photos/pets@2x.png 2x" alt="image"></figure>
+            </div>
+            <!--/column -->
+            <div class="w-full flex-[0_0_auto] xl:px-[12.5px] lg:px-[12.5px] md:px-[12.5px] px-[15px] max-w-full mt-[25px]">
+              <figure class="!rounded-[.4rem] xl:!mx-5 lg:!mx-5 md:!mx-5"><img class="!rounded-[.4rem]" src="../../assets/images/photos/gaming.png" srcset="../../assets/images/photos/gaming@2x.png 2x" alt="image"></figure>
+            </div>
+            <!--/column -->
+          </div>
+          <!--/.row -->
+        </div>
+        <!--/column -->
+        <div class="xl:w-6/12 lg:w-6/12 w-full flex-[0_0_auto] xl:px-[35px] lg:px-[20px] md:px-[20px] px-[15px] max-w-full mt-[80px]">
+          <h3 class="text-[calc(1.325rem_+_0.9vw)] font-bold !leading-[1.25] xl:text-[1.6rem] mb-5">Freizeit? Ja, die gibt es auch!</h3>
+          <p class="!mb-6 lead text-[1.1rem]">In meiner Freizeit mache ich, was mich wirklich interessiert und fasziniert. Zum Beispiel Gaming. Ich liebe es, in virtuelle Welten einzutauchen, spannende Herausforderungen zu meistern und manchmal einfach nur Chaos anzurichten. Ob gezielt oder aus Versehen bleibt mein Geheimnis.
+            Tiere haben es mir ebenfalls angetan. Ich könnte stundenlang beobachten, was sie so treiben, und frage mich oft, ob sie manchmal auch über uns Menschen nachdenken. Wahrscheinlich eher nicht, aber die Vorstellung gefällt mir.<br><br>
+            Wissenschaft und Physik? Absolut mein Ding. Schwarze Löcher, Zeitreisen, Quantenverschränkung. Klingt nach Science Fiction, ist aber real. Ich finde es einfach genial, wie viel wir schon über das Universum wissen und gleichzeitig fast nichts. Astronomie haut mich dabei besonders um. Der Gedanke, dass irgendwo da draußen vielleicht jemand in den Himmel schaut und sich dasselbe fragt wie wir, ist einfach spannend.<br><br>
+            Auch das Handwerk liegt mir. Ich liebe es, Dinge zu reparieren oder zu optimieren, auch wenn es manchmal eher nach kreativem Improvisieren aussieht. Aber wenn es am Ende funktioniert, zählt das doch, oder?
+            Und dann wären da noch Serien. Gute Stories, starke Charaktere und packende Plots. Bin dabei. Ob Science Fiction, Thriller oder etwas mit richtig viel Tiefgang, wenn mich eine Serie packt, dann aber richtig.
+            Kurz gesagt. Ich liebe es, Neues zu entdecken, mich in Dinge reinzudenken und mich von den kleinen und großen Wundern der Welt faszinieren zu lassen.</p>
+          </div>
+            <!--/column -->
+          </div>
+          <!--/.row -->
+        </div>
+        <!--/column -->
+      </div>
+      <div class="mt-[80px]"></div>
+    </section>
+  <!-- /section -->
+
+
+
+
+
+
+
+
+
+  <div class="mt-[80px]"></div>
+  <section class="wrapper !bg-[#ffffff] ">
+    <div class="container pt-20 xl:pt-28 lg:pt-28 md:pt-28 pb-16 xl:pb-20 lg:pb-20 md:pb-20">
+      <div class="card image-wrapper bg-full bg-image bg-overlay bg-overlay-300 text-white mt-[-1.25rem] xl:!mt-0 lg:!mt-0  xl:-translate-y-2/4 lg:-translate-y-2/4  mb-lg-n50p border-radius-lg-top bg-cover [background-size:100%] bg-[center_center] bg-no-repeat !bg-scroll !relative z-0 !rounded-[0.4rem] before:rounded-[0.4rem] before:bg-[rgba(30,34,40,.4)] before:content-[''] before:block before:absolute before:z-[1] before:w-full before:h-full before:left-0 before:top-0" data-image-src="../../assets/images/photos/bgabout.png">
+        <div class="card-body !p-10 xl:!p-14">
+          <div class="flex flex-wrap mx-[-15px] !text-center">
+            <div class="xl:w-11/12 xxl:w-9/12 w-full flex-[0_0_auto] px-[15px] max-w-full !mx-auto">
+                <h3 class="text-white text-[calc(1.365rem_+_1.38vw)] font-bold leading-[1.2] xl:text-[1.6rem] mb-5 xl:!px-14">Lass uns sprechen</h3>
+                <p class="text-white lead text-[1.1rem]">Ich bin immer auf der Suche nach neuen Herausforderungen, spannenden Projekten und Möglichkeiten, mich weiterzuentwickeln. Wenn du einen engagierten Entwickler suchst, der mit Leidenschaft programmiert, Probleme kreativ löst und sich stetig verbessern will, dann sollten wir uns unterhalten.<br><br>Schreib mir gerne eine Nachricht, wenn du eine interessante Stelle hast oder einfach mehr über mich erfahren möchtest. Ich freue mich darauf, mehr über dein Unternehmen, deine Projekte und mögliche gemeinsame Perspektiven zu erfahren.</p><br>
+            </div>
+            <!-- /column -->
+          </div>
+          <!-- /.row -->
+          <div class="flex justify-center">
+            <a href="../pages/contact.html" class="btn btn-white !rounded-[50rem]">Kontakt</a>
+          </div>
+        </div>
+        <!--/.card-body -->
+      </div>
+      <!--/.card -->
+    </div>
+  </section>
+<!-- /section -->
+
+
+
+
+
+
+
+
+
+<div class="mt-[-80px]"></div> 
+<!-- /.content-wrapper -->
+<footer class="bg-[#21262c] opacity-100 text-[#cacaca]">
+    <div class="container pt-20 xl:pt-20 lg:pt-20 md:pt-20 pb-16 xl:pb-20 lg:pb-20 md:pb-10">
+      <div class="flex flex-wrap mx-[-15px] mt-[-30px] xl:mt-0 lg:mt-0">
+        <div class="md:w-4/12 xl:w-3/12 lg:w-3/12 w-full flex-[0_0_auto] px-[15px] max-w-full xl:mt-0 lg:mt-0 mt-[30px]">
+          <div class="widget text-[#cacaca]">
+            <img src="../assets/images/main/main_logo.svg" alt="image" style="width: 150px; height: 90px; margin-bottom: 34px; margin-left: -21px;">
+            <p class="!mb-4">© 2025 AnPaEngine. <br class="hidden xl:block lg:block text-[#cacaca]">Alle Rechte vorbehalten.</p>
+            <nav class="nav social social-white">
+              <!-- <a class="text-[#cacaca] text-[1rem] transition-all duration-[0.2s] ease-in-out translate-y-0 motion-reduce:transition-none hover:translate-y-[-0.15rem] m-[0_.7rem_0_0]" href="https://github.com/AnPaEngine/">
+                <i class="uil uil-github before:content-['\eb2e'] !text-white text-[1rem]"></i>
+              </a> -->
+              <a class="text-[#cacaca] text-[1rem] transition-all duration-[0.2s] ease-in-out translate-y-0 motion-reduce:transition-none hover:translate-y-[-0.15rem] m-[0_.7rem_0_0]" href="https://www.linkedin.com/in/antoniopacino/">
+                <i class="uil uil-linkedin before:content-['\eb31'] !text-white text-[1rem]"></i>
+              </a>
+            </nav>
+            <!-- /.social -->
+          </div>
+          <!-- /.widget -->
+        </div>
+        <!-- /column -->
+        <div class="md:w-4/12 xl:w-3/12 lg:w-3/12 w-full flex-[0_0_auto] px-[15px] max-w-full xl:mt-0 lg:mt-0 mt-[30px]">
+          <div class="widget text-[#cacaca]">
+            <h4 class="widget-title text-white !mb-3 !text-[1rem] !leading-[1.45]">Mehr erfahren</h4>
+            <ul class="pl-0 list-none !mb-0">
+              <li><a class="text-[#cacaca] hover:text-[#45c4a0]" href="../index.html">Start</a></li>
+              <li class="mt-[0.35rem]"><a class="text-[#cacaca] hover:text-[#45c4a0]" href="../pages/about.html">Über mich</a></li>
+              <li class="mt-[0.35rem]"><a class="text-[#cacaca] hover:text-[#45c4a0]" href="../pages/techstack.html">Tech-Stack</a></li>
+              <li class="mt-[0.35rem]"><a class="text-[#cacaca] hover:text-[#45c4a0]" href="../pages/certsandbadges.html">Zertifikate & Badges</a></li>
+              <li class="mt-[0.35rem]"><a class="text-[#cacaca] hover:text-[#45c4a0]" href="../pages/projects.html">Projekte</a></li>
+              <li class="mt-[0.35rem]"><a class="text-[#cacaca] hover:text-[#45c4a0]" href="../pages/contact.html">Kontakt</a></li>
+            </ul>
+          </div>
+          <!-- /.widget -->
+        </div>
+        <!-- /column -->
+        <div class="md:w-4/12 xl:w-3/12 lg:w-3/12 w-full flex-[0_0_auto] px-[15px] max-w-full xl:mt-0 lg:mt-0 mt-[30px]">
+          <!-- Badge -->
+          <div class="flex justify-center items-center my-4">
+            <img src="../assets/images/badges/badge1.svg" alt="Badge" class="w-[80px] h-auto">
+        </div>
+          <!-- /.widget -->
+        </div>
+      </div>
+      <!--/.row -->
+    </div>
+    <!-- /.container -->  
+  </footer>
+  <!-- progress wrapper -->
+  <div
+    class="progress-wrap fixed w-[2.3rem] h-[2.3rem] cursor-pointer block shadow-[inset_0_0_0_0.1rem_rgba(128,130,134,0.25)] z-[1010] opacity-0 invisible translate-y-3 transition-all duration-[0.2s] ease-[linear,margin-right] delay-[0s] rounded-[100%] right-6 bottom-6 motion-reduce:transition-none after:absolute after:content-['\e951'] after:text-center after:leading-[2.3rem] after:text-[1.2rem] after:text-[#54a8c7] after:h-[2.3rem] after:w-[2.3rem] after:cursor-pointer after:block after:z-[1] after:transition-all after:duration-[0.2s] after:ease-linear after:left-0 after:top-0 motion-reduce:after:transition-none after:font-Unicons">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+      <path
+        class="fill-none stroke-[#54a8c7] stroke-[4] box-border transition-all duration-[0.2s] ease-linear motion-reduce:transition-none"
+        d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+    </svg>
+  </div>
+  <script src="../assets/js/plugins.js"></script>
+  <script src="../assets/js/theme.js"></script>
+</body>
+</html>
