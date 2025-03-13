@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', function() {
     orderButton.textContent = 'Ich möchte eine Bestellung aufgeben.';
     orderButton.classList.add('chatbox-answer');
     orderButton.addEventListener('click', function() {
-      window.location.href = '#';
+      window.location.href = 'mailto:support@bitblade.io';
       clearChat();
       displayCategories();
     });
@@ -336,11 +336,11 @@ document.addEventListener('DOMContentLoaded', function() {
       addEndConfirmationButtons();
     });
 
-    // Spezielle Optionen (je nach Kategorie, ggf. anzupassen)
+    // Spezielle Optionen (je nach Kategorie, ggf. anpassbar)
     if (currentCategory.name === "Kosten und Preisgestaltung" && currentQuestionIndex === 0) {
-      addSpecialOption(nextActionButtons, 'Ja, zu den Preisen.', '#');
+      addSpecialOption(nextActionButtons, 'Ja, zu den Preisen.', '/preise');
     } else if (currentCategory.name === "Funktionen und Features" && [1, 2].includes(currentQuestionIndex)) {
-      addSpecialOption(nextActionButtons, 'Ja, zur umfangreichen Funktionsliste', '#');
+      addSpecialOption(nextActionButtons, 'Ja, zur umfangreichen Funktionsliste', '/funktionen');
     }
 
     nextActionButtons.appendChild(continueButton);
@@ -415,10 +415,8 @@ document.addEventListener('DOMContentLoaded', function() {
     addEndConfirmationButtons();
   });
 
-  // Chat-Initialisierung: Begrüßung und anschließende Anzeige der Kategorien
+  // Chat-Initialisierung: Begrüßung und sofortige Anzeige der Kategorien (ohne Verzögerung)
   clearChat();
   addMessage("Hallo, ich bin der PBXAssistent! Ich beantworte Ihnen gerne alle Fragen rund um unsere Produkte!", "bot");
-  setTimeout(function() {
-    displayCategories();
-  }, 3000);
+  displayCategories();
 });
