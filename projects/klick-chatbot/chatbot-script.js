@@ -1,8 +1,11 @@
+// chatbot-script.js
 document.addEventListener('DOMContentLoaded', function() {
-  const chatbox = document.getElementById('chatbox');
-  const closeChat = document.getElementById('closeChat');
-  const chatboxMessages = document.querySelector('.chatbox-messages');
-    
+    const chatbotIcon = document.getElementById('chatbotIcon');
+    const chatbox = document.getElementById('chatbox');
+    const closeChat = document.getElementById('closeChat');
+    const chatboxMessages = document.querySelector('.chatbox-messages');
+
+    // Kategorien und Fragen
     const categories = [
         { 
             name: "Grundlagen von CloudPBX und VoIP", 
@@ -251,96 +254,96 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     let currentCategory = null;
-  let currentQuestionIndex = 0;
+let currentQuestionIndex = 0;
 
-  function displayCategories() {
+function displayCategories() {
     addMessage("Wählen Sie ein Thema aus:", "bot");
 
     categories.forEach(category => {
-      const categoryButton = document.createElement('button');
-      categoryButton.textContent = category.name;
-      categoryButton.classList.add('chatbox-answer');
-      categoryButton.addEventListener('click', function() {
-        currentCategory = category;
-        chatboxMessages.innerHTML = '';
-        displayQuestions();
-      });
-      chatboxMessages.appendChild(categoryButton);
+        const categoryButton = document.createElement('button');
+        categoryButton.textContent = category.name;
+        categoryButton.classList.add('chatbox-answer');
+        categoryButton.addEventListener('click', function() {
+            currentCategory = category;
+            chatboxMessages.innerHTML = '';
+            displayQuestions();
+        });
+        chatboxMessages.appendChild(categoryButton);
     });
 
-    // Scrollen zum Anfang
+    // Verzögertes Scrollen zum Anfang
     setTimeout(() => {
-      chatboxMessages.scrollTop = 0;
+        chatboxMessages.scrollTop = 0; // Scrollen zum Anfang
     }, 0);
-  }
+}
 
-  function displayQuestions() {
+function displayQuestions() {
     if (!currentCategory) return;
 
     addMessage("Wählen Sie Ihre Frage aus:", "bot");
 
     currentCategory.questions.forEach((question, index) => {
-      const questionButton = document.createElement('button');
-      questionButton.textContent = question.question;
-      questionButton.classList.add('chatbox-answer');
-      questionButton.addEventListener('click', function() {
-        clearChat();
-        addMessage(question.question, "user");
-        addMessage(question.answer, "bot");
-        currentQuestionIndex = index;
-        displayNextActions();
-      });
-      chatboxMessages.appendChild(questionButton);
+        const questionButton = document.createElement('button');
+        questionButton.textContent = question.question;
+        questionButton.classList.add('chatbox-answer');
+        questionButton.addEventListener('click', function() {
+            clearChat();
+            addMessage(question.question, "user");
+            addMessage(question.answer, "bot");
+            currentQuestionIndex = index;
+            displayNextActions();
+        });
+        chatboxMessages.appendChild(questionButton);
     });
 
+    // Verzögertes Scrollen zum Anfang
     setTimeout(() => {
-      chatboxMessages.scrollTop = 0;
+        chatboxMessages.scrollTop = 0; // Scrollen zum Anfang
     }, 0);
-  }
+}
 
-  function displayNextActions() {
+function displayNextActions() {
     const nextActionButtons = document.createElement('div');
 
     const continueButton = document.createElement('button');
     continueButton.textContent = 'Ich habe weitere Fragen zu diesem Thema.';
     continueButton.classList.add('chatbox-answer');
     continueButton.addEventListener('click', function() {
-      clearChat();
-      currentQuestionIndex = 0;
-      displayQuestions();
+        clearChat();
+        currentQuestionIndex = 0;
+        displayQuestions();
     });
 
     const newCategoryButton = document.createElement('button');
     newCategoryButton.textContent = 'Ich habe Fragen zu einem anderen Thema.';
     newCategoryButton.classList.add('chatbox-answer');
     newCategoryButton.addEventListener('click', function() {
-      clearChat();
-      displayCategories();
+        clearChat();
+        displayCategories();
     });
 
     const orderButton = document.createElement('button');
     orderButton.textContent = 'Ich möchte eine Bestellung aufgeben.';
     orderButton.classList.add('chatbox-answer');
     orderButton.addEventListener('click', function() {
-      window.location.href = 'mailto:support@bitblade.io';
-      clearChat();
-      displayCategories();
+        window.location.href = 'mailto:support@bitblade.io'; // E-Mail senden
+        clearChat();
+        displayCategories(); // Kategorieseite neu laden
     });
 
     const endButton = document.createElement('button');
     endButton.textContent = 'Ich habe keine weiteren Fragen.';
     endButton.classList.add('chatbox-answer');
     endButton.addEventListener('click', function() {
-      clearChat();
-      addMessage('Möchten Sie den Chat wirklich beenden?', 'bot');
-      addEndConfirmationButtons();
+        clearChat();
+        addMessage('Möchten Sie den Chat wirklich beenden?', 'bot');
+        addEndConfirmationButtons(); // Zeigt Ja/Nein Optionen an
     });
 
-    // Spezielle Optionen (je nach Kategorie, ggf. anpassbar)
     if (currentCategory.name === "Kosten und Preisgestaltung" && currentQuestionIndex === 0) {
-      addSpecialOption(nextActionButtons, 'Ja, zu den Preisen.', '/preise');
+        addSpecialOption(nextActionButtons, 'Ja, zu den Preisen.', '/preise');
     } else if (currentCategory.name === "Funktionen und Features" && [1, 2].includes(currentQuestionIndex)) {
-      addSpecialOption(nextActionButtons, 'Ja, zur umfangreichen Funktionsliste', '/funktionen');
+        addSpecialOption(nextActionButtons, 'Ja, zur umfangreichen Funktionsliste', '/funktionen');
     }
 
     nextActionButtons.appendChild(continueButton);
@@ -349,74 +352,83 @@ document.addEventListener('DOMContentLoaded', function() {
     nextActionButtons.appendChild(endButton);
     chatboxMessages.appendChild(nextActionButtons);
 
+    // Verzögertes Scrollen zum Anfang
     setTimeout(() => {
-      chatboxMessages.scrollTop = 0;
+        chatboxMessages.scrollTop = 0; // Scrollen zum Anfang
     }, 0);
-  }
+}
 
-  function addEndConfirmationButtons() {
+function addEndConfirmationButtons() {
     const confirmationButtons = document.createElement('div');
 
     const yesButton = document.createElement('button');
     yesButton.textContent = 'Ja';
     yesButton.classList.add('chatbox-answer');
     yesButton.addEventListener('click', function() {
-      chatbox.classList.remove('visible');
-      clearChat();
+        chatbox.classList.remove('visible');
+        chatbotIcon.style.display = 'block';
+        clearChat();
     });
 
     const noButton = document.createElement('button');
     noButton.textContent = 'Nein';
     noButton.classList.add('chatbox-answer');
     noButton.addEventListener('click', function() {
-      clearChat();
-      displayCategories();
+        clearChat();
+        displayCategories();
     });
 
     confirmationButtons.appendChild(yesButton);
     confirmationButtons.appendChild(noButton);
     chatboxMessages.appendChild(confirmationButtons);
-    chatboxMessages.scrollTop = chatboxMessages.scrollHeight;
-  }
+    chatboxMessages.scrollTop = chatboxMessages.scrollHeight; // Scrollen zum Ende für Bestätigungsbuttons
+}
 
-  function addSpecialOption(container, optionText, url) {
+function addSpecialOption(container, optionText, url) {
     const specialButton = document.createElement('button');
     specialButton.textContent = optionText;
     specialButton.classList.add('chatbox-answer');
     specialButton.addEventListener('click', function() {
-      clearChat();
-      addMessage(optionText, "user");
-      window.open(url, '_blank');
-      resetChat();
+        clearChat();  // Chatverlauf löschen
+        addMessage(optionText, "user");
+        window.open(url, '_blank'); // Öffnet die URL in einem neuen Fenster
+        resetChat();  // Zurücksetzen auf den Anfangszustand
     });
     container.appendChild(specialButton);
-  }
+}
 
-  function addMessage(message, sender) {
+function addMessage(message, sender) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('chatbox-message', sender);
     messageElement.textContent = message;
     chatboxMessages.appendChild(messageElement);
-  }
+}
 
-  function clearChat() {
-    chatboxMessages.innerHTML = '';
-  }
+function clearChat() {
+    chatboxMessages.innerHTML = ''; // Vorherigen Chatverlauf löschen
+}
 
-  function resetChat() {
+function resetChat() {
     currentCategory = null;
     currentQuestionIndex = 0;
-    displayCategories();
-  }
+    displayCategories(); // Starte den Chat mit den Kategorien neu
+}
 
-  closeChat.addEventListener('click', function() {
+chatbotIcon.addEventListener('click', function() {
+    chatbotIcon.style.display = 'none';  // GIF ausblenden
+    chatbox.classList.add('visible');    // Chatbox anzeigen
+    clearChat(); // Entfernt alle alten Nachrichten
+    addMessage("Hallo, ich bin der PBXAssistent! Ich beantworte Ihnen gerne alle Fragen rund um unsere Produkte!", "bot"); // Begrüßungsnachricht
+
+    // Verzögerung von 1,5 Sekunden vor dem Anzeigen der Kategorien
+    setTimeout(function() {
+        displayCategories(); // Zeige danach die Kategorien an
+    }, 3000);
+});
+
+closeChat.addEventListener('click', function() {
     clearChat();
     addMessage('Möchten Sie den Chat wirklich beenden?', 'bot');
-    addEndConfirmationButtons();
-  });
-
-  // Chat-Initialisierung: Begrüßung und sofortige Anzeige der Kategorien (ohne Verzögerung)
-  clearChat();
-  addMessage("Hallo, ich bin der PBXAssistent! Ich beantworte Ihnen gerne alle Fragen rund um unsere Produkte!", "bot");
-  displayCategories();
+    addEndConfirmationButtons(); // Zeigt Ja/Nein Optionen an
+});
 });
